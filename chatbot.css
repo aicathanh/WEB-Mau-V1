@@ -175,23 +175,26 @@
 }
 
 .chatbot-message {
-    max-width: 90%; /* Tăng nhẹ để tin nhắn người dùng vẫn gọn */
     padding: 12px 16px;
     border-radius: 14px;
     font-size: 14px;
     line-height: 1.5;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    display: block; /* Đảm bảo là block để nhận width 100% */
 }
 
 .chatbot-message.bot {
-    max-width: 100% !important; /* Ép tối đa */
-    width: 100% !important; /* Ép rộng 100% */
-    background: rgba(255, 255, 255, 0.08); /* Tăng độ sáng nền bot một chút cho dễ phân biệt */
+    width: 100% !important;
+    max-width: 100% !important;
+    background: rgba(255, 255, 255, 0.08);
     color: #e5e2e1;
-    align-self: stretch; 
+    align-self: stretch !important;
     border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 14px; /* Bo góc phải cho đều */
     overflow-x: auto;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
 }
 
 .chatbot-message.user {
@@ -199,6 +202,8 @@
     color: #131313;
     align-self: flex-end;
     border-bottom-right-radius: 4px;
+    max-width: 85%; /* Tin nhắn người dùng thu gọn về bên phải */
+    margin-left: auto; /* Đẩy sang phải */
 }
 
 .chatbot-footer {
