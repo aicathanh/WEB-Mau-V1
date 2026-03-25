@@ -43,40 +43,19 @@
     `;
     document.body.appendChild(chatContainer);
 
-    // Lightbox Modal setup
-    const modal = document.createElement('div');
-    modal.className = 'chatbot-image-modal';
-    modal.innerHTML = `
-        <span class="close-modal">&times;</span>
-        <div class="modal-content-container">
-            <img id="modal-img" src="" alt="Zoomed view">
-            <div id="modal-table-container"></div>
-        </div>
-    `;
-    document.body.appendChild(modal);
-
-    modal.addEventListener('click', () => {
-        modal.classList.remove('active');
-    });
-
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
+    const chatMessages = document.getElementById('chatbot-messages');
+    const chatWindow = document.getElementById('chatbot-window');
     const toggleBtn = document.getElementById('chatbot-toggle');
     const closeBtn = document.getElementById('chatbot-close');
     const refreshBtn = document.getElementById('chatbot-refresh');
-    const chatWindow = document.getElementById('chatbot-window');
-    const messagesContainer = document.getElementById('chatbot-messages');
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
 
-    // State
-    let knowledgeBase = '';
+    let history = [];
+    let knowledgeBase = "";
     let isChatOpen = false;
-    let messageHistory = [];
-    let userMessageCount = 0; // Biến đếm số câu hỏi của khách
-    let isLeadCaptured = false; // Đánh dấu đã lưu SĐT chưa
-    const DEFAULT_GREETING = "Xin chào bạn! 👋 Tôi là AI Sơn trợ lý của hãng sơn Lotus. Tôi có thể giúp gì cho bạn hôm nay?";
 
-    // Cấu hình OpenRouter API / Custom Endpoint
-    const OPENROUTER_API_KEY = "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f";
+    // OpenRouter / 9Router Configuration
     const OPENROUTER_MODEL = "ces-chatbot-gpt-5.4";
     const OPENROUTER_URL = "https://9router.vuhai.io.vn/v1/chat/completions";
 
@@ -99,95 +78,27 @@
                 console.warn("Lỗi không tìm thấy file chatbot_data.txt. Sẽ sử dụng kiến thức mặc định.");
             }
         } catch (error) {
-            console.error("Lỗi khi tải bộ não kiến thức:", error);
-        }
-    }
-    loadKnowledgeBase();
-
-    function createMessageElement(content, isUser = false) {
-        const div = document.createElement('div');
-        div.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
-        if (isUser) {
-            div.textContent = content;
-        } else {
-            const markdownContainer = document.createElement('div');
-            markdownContainer.className = 'chat-markdown';
-            if (typeof marked !== 'undefined') {
-                markdownContainer.innerHTML = marked.parse(content);
-                // Gắn sự kiện zoom ảnh sau khi render markdown
-                markdownContainer.querySelectorAll('img').forEach(img => {
-                    img.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        showImageModal(img.src);
-                    });
-                });
-                // Chống cuộn toàn trang khi đang cuộn bảng
-                markdownContainer.querySelectorAll('table').forEach(table => {
-                    table.addEventListener('wheel', (e) => {
-                        const isAtLeft = table.scrollLeft <= 0;
-                        const isAtRight = table.scrollLeft + table.clientWidth >= table.scrollWidth;
-                        if (e.deltaX < 0 && isAtLeft) return;
-                        if (e.deltaX > 0 && isAtRight) return;
-                        e.stopPropagation();
-                    });
-                });
-            } else {
-                markdownContainer.textContent = content;
-            }
-            div.appendChild(markdownContainer);
-        }
-        return div;
-    }
-
-    function showImageModal(src) {
-        const modalImg = document.getElementById('modal-img');
-        const modalTableContainer = document.getElementById('modal-table-container');
-        modalTableContainer.innerHTML = ''; // Reset table inside modal
-        modalImg.src = src;
-        modalImg.style.display = 'block';
-        modal.classList.add('active');
-    }
-
-    function showTableModal(html) {
-        const modalImg = document.getElementById('modal-img');
-        const modalTableContainer = document.getElementById('modal-table-container');
-        modalImg.style.display = 'none';
-        modalTableContainer.innerHTML = html;
-        modal.classList.add('active');
-    }
-
-    function addMessage(content, isUser = false) {
-        const msgEl = createMessageElement(content, isUser);
-        messagesContainer.appendChild(msgEl);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        if (!isUser) {
-            messageHistory.push({ role: "assistant", content });
+            console.error("Error loading knowledge base:", error);
         }
     }
 
-    function showTypingIndicator() {
-        const div = document.createElement('div');
-        div.className = 'chatbot-message bot typing';
-        div.id = 'typing-indicator';
-        div.innerHTML = `
-            <span>AI đang gõ</span>
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
+    // Hàm tạo System Prompt
+    function getSystemPrompt() {
+        return `
+Bạn là Trợ Lý AI Sơn Lotus - chuyên gia tư vấn về các giải pháp sơn an toàn hệ nước cho gỗ, kim loại và vật liệu mới.
+Nhiệm vụ của bạn là hỗ trợ khách truy cập lịch sự, cung cấp thông tin chính xác về các sản phẩm, bảng giá, định mức và quy trình thi công.
+
+Dưới đây là cơ sở dữ liệu kiến thức (Knowledge Base) của bạn:
+${knowledgeBase}
+
+Quy tắc giao tiếp bắt buộc:
+1. Luôn chào hỏi thân thiện và kết thúc bằng cách mời họ đặt thêm câu hỏi.
+2. Bạn phải định dạng các câu trả lời của mình bằng Markdown đầy đủ (in đậm ý chính, dùng gạch đầu dòng).
+3. Tuyệt đối không tự ý bịa đặt các chương trình khuyến mãi (như giảm giá 30% hay mẫu thử miễn phí) nếu không có trong Knowledge Base.
+4. Nếu người dùng hỏi điều gì ngoài phạm vi dữ liệu trên, hãy hướng dẫn họ để lại Số điện thoại hoặc gọi Hotline 0943 966 662 để gặp kỹ thuật viên tư vấn trực tiếp.
+5. **QUY TẮC TƯ VẤN TRỌNG TÂM:** Nếu khách hỏi chung chung về "Sơn gỗ", bạn KHÔNG ĐƯỢC trả lời dài dòng ngay. Phải hỏi: "Dạ, anh/chị cho em hỏi mình dùng cho **gỗ tự nhiên** hay **gỗ công nghiệp** ạ?" vì 2 loại này có quy trình hoàn toàn khác nhau.
+6. **NGUYÊN TẮC 'DIAGNOSTIC':** Luôn ưu tiên hỏi để làm rõ nhu cầu (Trong nhà hay ngoài trời? Cần màu hay trong suốt?) trước khi báo giá hoặc đưa quy trình chi tiết. Tránh trả lời quá dài khiến khách hàng bị ngộp thông tin.
         `;
-        messagesContainer.appendChild(div);
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    function removeTypingIndicator() {
-        const indicator = document.getElementById('typing-indicator');
-        if (indicator) indicator.remove();
-    }
-
-    async function loadInitialMessages() {
-        if (messagesContainer.children.length === 0) {
-            addMessage(DEFAULT_GREETING);
-        }
     }
 
     const badge = document.getElementById('chatbot-badge');
@@ -221,132 +132,174 @@
         setTimeout(() => toggleBtn.style.transform = 'scale(1)', 10);
     });
 
+    // Refresh chat
     refreshBtn.addEventListener('click', () => {
-        if (confirm("Làm mới cuộc trò chuyện? (Lịch sử chat hiện tại sẽ bị xóa)")) {
-            messagesContainer.innerHTML = '';
-            messageHistory = [];
-            userMessageCount = 0;
-            isLeadCaptured = false;
-            addMessage(DEFAULT_GREETING);
+        if (confirm("Làm mới cuộc trò chuyện?")) {
+            history = [];
+            chatMessages.innerHTML = '';
+            addMessage("bot", "Dạ, AI Sơn Lotus đã sẵn sàng. Em có thể giúp gì cho bạn hôm nay?");
         }
     });
 
-    // CRM Integration (Google Sheets Webhook)
-    async function pushToCRM(data) {
-        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzR391uHa8ityRntWm3ooW0J6XprapwE3OE3x2dJ9sDFBTzW2neBQC5SB2jCEQQ9CgB7A/exec";
-        try {
-            // Chuẩn hoá dữ liệu trước khi gửi
-            const payload = {
-                timestamp: new Date().toISOString(),
-                source: window.location.href,
-                ...data
-            };
-            
-            // Chế độ 'no-cors' để tránh lỗi CORS khi gọi Apps Script trực tiếp từ trình duyệt
-            await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                mode: 'no-cors',
-                cache: 'no-cache',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-        } catch (e) {
-            console.warn("CRM Sync failed", e);
-        }
-    }
+    // Handle Input resize
+    chatInput.addEventListener('input', () => {
+        chatInput.style.height = 'auto';
+        chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + 'px';
+        sendBtn.disabled = !chatInput.value.trim();
+    });
 
+    // Send logic
     async function sendMessage() {
         const text = chatInput.value.trim();
         if (!text) return;
 
-        addMessage(text, true);
+        addMessage("user", text);
         chatInput.value = '';
         chatInput.style.height = 'auto';
         sendBtn.disabled = true;
-        
-        userMessageCount++;
-        messageHistory.push({ role: "user", content: text });
 
-        // Logic thu thập Lead (SĐT)
-        const phoneRegex = /(0[3|5|7|8|9])+([0-9]{8})\b/g;
-        const foundPhone = text.match(phoneRegex);
-        if (foundPhone && !isLeadCaptured) {
-            isLeadCaptured = true;
-            pushToCRM({ 
-                type: 'lead_capture', 
-                status: 'success', 
-                customer_phone: foundPhone[0],
-                last_message: text 
-            });
-        }
-
-        // Logic gửi báo cáo định kỳ (Tăng khả năng chốt sale ngay cả khi khách chưa để lại SĐT)
-        if (userMessageCount % 5 === 0 && !isLeadCaptured) {
-             pushToCRM({ 
-                type: 'potential_interest', 
-                status: 'engaged', 
-                message_count: userMessageCount,
-                last_activity: text
-            });
-        }
-
-        showTypingIndicator();
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'message bot typing';
+        typingDiv.innerHTML = '<span class="dot"></span><span class="dot"></span><span class="dot"></span>';
+        chatMessages.appendChild(typingDiv);
+        scrollToBottom();
 
         try {
-            const systemPrompt = `Bạn là Trợ lý bán hàng chuyên nghiệp của Sơn Lotus. 
-Dưới đây là kiến thức của bạn: 
-${knowledgeBase}
-
-HƯỚNG DẪN TRẢ LỜI:
-1. Luôn lịch sự, niềm nở. Sử dụng Markdown để trình bày (đặc biệt là Bảng cho báo giá).
-2. Nếu khách hỏi giá, hãy trình bày bằng bảng (Quy cách, 1kg, 5kg, 20kg).
-3. Nếu khách hỏi quy trình, hãy nêu các bước rõ ràng và đính kèm Link ảnh nếu có trong dữ liệu.
-4. Ưu tiên hướng dẫn khách để lại SĐT để được tư vấn kỹ thuật/pha màu miễn phí.
-5. Luôn ưu tiên dùng kiến thức trong file đính kèm. Nếu không có, hãy trả lời dựa trên định vị thương hiệu là Sơn hệ nước an toàn.`;
-
+            history.push({ role: "user", content: text });
+            
             const response = await fetch(OPENROUTER_URL, {
                 method: "POST",
                 headers: {
-                    "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     model: OPENROUTER_MODEL,
                     messages: [
-                        { role: "system", content: systemPrompt },
-                        ...messageHistory.slice(-10) // Gửi 10 tin nhắn gần nhất để giữ ngữ cảnh
+                        { role: "system", content: getSystemPrompt() },
+                        ...history
                     ]
                 })
             });
 
             const data = await response.json();
-            removeTypingIndicator();
-            
+            chatMessages.removeChild(typingDiv);
+
             if (data.choices && data.choices[0]) {
                 const botReply = data.choices[0].message.content;
-                addMessage(botReply);
-            } else {
-                addMessage("Xin lỗi, tôi gặp chút trục trặc khi kết nối. Bạn có thể thử lại sau giây lát!");
+                history.push({ role: "assistant", content: botReply });
+                addMessage("bot", botReply);
+
+                // Ghi nhận lead khi khách nói điều gì đó tiềm năng (trừ khi là thông tin cá nhân)
+                if (history.length % 4 === 0) {
+                     pushToCRM({ 
+                        type: 'interaction', 
+                        content: text,
+                        summary: botReply.substring(0, 100) + '...'
+                    });
+                }
             }
         } catch (error) {
-            removeTypingIndicator();
-            console.error("Chat Error:", error);
-            addMessage("Rất tiếc, hệ thống đang bận. Bạn vui lòng nhắn lại sau nhé!");
+            chatMessages.removeChild(typingDiv);
+            addMessage("bot", "Xin lỗi, em đang gặp chút vấn đề kết nối. Bạn vui lòng thử lại sau giây lát ạ!");
         }
     }
 
-    // Event Listeners
     sendBtn.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keydown', (e) => {
+    chatInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             sendMessage();
         }
     });
 
-    chatInput.addEventListener('input', () => {
-        chatInput.style.height = 'auto';
-        chatInput.style.height = (chatInput.scrollHeight) + 'px';
-        sendBtn.disabled = chatInput.value.trim() === '';
+    function addMessage(sender, text) {
+        const div = document.createElement('div');
+        div.className = `message ${sender}`;
+        
+        let content = text;
+        if (sender === 'bot') {
+            // Render markdown for bot
+            if (typeof marked !== 'undefined') {
+                content = marked.parse(text);
+            }
+        } else {
+            // Plane text for user to avoid injection
+            content = document.createTextNode(text).textContent;
+        }
+        
+        div.innerHTML = content;
+        chatMessages.appendChild(div);
+        
+        // Setup lightbox feature for images in markdown
+        if (sender === 'bot') {
+            const images = div.querySelectorAll('img');
+            images.forEach(img => {
+                img.style.cursor = 'zoom-in';
+                img.addEventListener('click', () => {
+                   openLightbox(img.src);
+                });
+            });
+            
+            // Check for phone numbers or leads
+            detectLeads(text);
+        }
+        
+        scrollToBottom();
+    }
+
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Lightbox modal for images
+    function openLightbox(src) {
+        let lightbox = document.getElementById('chatbot-lightbox');
+        if (!lightbox) {
+            lightbox = document.createElement('div');
+            lightbox.id = 'chatbot-lightbox';
+            lightbox.innerHTML = `
+                <div class="lightbox-content">
+                    <img src="" id="lightbox-img">
+                    <button class="lightbox-close">&times;</button>
+                </div>
+            `;
+            document.body.appendChild(lightbox);
+            lightbox.querySelector('.lightbox-close').onclick = () => lightbox.style.display = 'none';
+            lightbox.onclick = (e) => { if(e.target === lightbox) lightbox.style.display = 'none'; };
+        }
+        document.getElementById('lightbox-img').src = src;
+        lightbox.style.display = 'flex';
+    }
+
+    // CRM Integration (Google Sheets)
+    async function pushToCRM(data) {
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzR391uHa8ityRntWm3ooW0J6XprapwE3OE3x2dJ9sDFBTzW2neBQC5SB2jCEQQ9CgB7A/exec";
+        try {
+            await fetch(WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    timestamp: new Date().toISOString(),
+                    ...data
+                })
+            });
+        } catch (e) {
+            console.warn("CRM Sync failed", e);
+        }
+    }
+
+    // Simple lead detection
+    function detectLeads(text) {
+        const phoneRegex = /(0[3|5|7|8|9][0-9]{8})\b/g;
+        const phones = text.match(phoneRegex);
+        if (phones && phones.length > 0) {
+            pushToCRM({ type: 'lead_captured', phone: phones[0], full_text: text });
+        }
+    }
+
+    // Start Chat
+    loadKnowledgeBase().then(() => {
+        addMessage("bot", "Xin chào bạn! 👋 Tôi là AI Sơn trợ lý từ Lotus Paint. Em có thể tư vấn giúp gì cho công trình của mình ạ?");
     });
 })();
