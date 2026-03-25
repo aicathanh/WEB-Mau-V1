@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>LOTUS CONSULT | Architectural Coating Expertise</title>
+<title>SƠN LOTUS | Giải pháp sơn an toàn hệ nước</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@400;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -89,20 +89,24 @@
             font-family: 'Inter', sans-serif;
         }
     </style>
+    <!-- Chatbot Integration -->
+    <link rel="stylesheet" href="chatbot.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script src="chatbot.js" defer></script>
 </head>
 <body class="selection:bg-primary selection:text-on-primary">
 <!-- TopNavBar -->
 <nav class="fixed top-0 w-full z-50 rounded-none bg-[#131313]/70 backdrop-blur-md dark:bg-[#131313]/70 flex justify-between items-center px-8 py-6 max-w-full">
 <div class="text-xl font-black tracking-tighter text-white dark:text-white font-['Manrope']">Lotus Paint</div>
 <div class="hidden md:flex items-center space-x-8">
-<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-[#e9c349] border-b-2 border-[#e9c349] pb-1" href="#hero">Hero</a>
-<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#about">About</a>
-<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#services">Services</a>
-<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#portfolio">Portfolio</a>
-<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#contact">Contact</a>
+<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-[#e9c349] border-b-2 border-[#e9c349] pb-1" href="#hero">Trang Chủ</a>
+<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#about">Về Sơn Lotus</a>
+<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#services">Sản Phẩm</a>
+<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#portfolio">Dự Án</a>
+<a class="font-['Manrope'] font-bold tracking-tighter uppercase text-sm text-white/70 hover:text-white transition-colors" href="#contact">Liên Hệ</a>
 </div>
 <button class="bg-primary text-on-primary font-['Manrope'] font-bold uppercase text-xs tracking-widest px-8 py-3 hover:bg-primary-container transition-all duration-300 active:scale-95">
-            Consultation
+            Tư Vấn Ngay
         </button>
 </nav>
 <main>
@@ -110,31 +114,31 @@
 <section class="relative min-h-screen flex items-center pt-24 px-8 md:px-16 overflow-hidden" id="hero">
 <div class="absolute inset-0 z-0">
 <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent z-10"></div>
-<img alt="Architectural background" class="w-full h-full object-cover" data-alt="Modern architectural structure with sharp concrete angles and dramatic shadows under high-contrast sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCARz5fz5v9WDrW4rkGRQomfhTiRmMb7wdQGtNKEO3m5hUw3QzBMvWrtk9XLFTIATH6I8JCrUXrdak2XNcXVJV41CgCMA-G6Q0o8oD_hS_vAu-aWNHOzsbE1l9sjqobPZd-kArPQ1FXLxuLjXTxtpSZhsCgz1ChsIs_pXN1HXVopy7pXasNhey1CxZONv6ymzSq6l7foywy6CnAuJ2Z7tr3cKK_8HeR-1M7pAGHfA0mZaR0D3WRPMc0N5o-ZMwzLBiERScWAciz7OM"/>
+<img alt="Architectural background" class="w-full h-full object-cover" data-alt="Thi công dự án nhà máy bằng sơn hệ nước an toàn" src="https://w.ladicdn.com/s1440x724/5e3e73f71adefa2bf15bd42f/son-lotus-cho-nha-may-noi-that-212369-20240808050738-gk94z.jpg"/>
 </div>
 <div class="relative z-20 max-w-5xl grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
 <div class="md:col-span-7">
-<span class="font-label text-primary text-sm tracking-[0.3em] uppercase mb-4 block">Water-Based Coating Specialist</span>
+<span class="font-label text-primary text-sm tracking-[0.3em] uppercase mb-4 block">Giải Pháp Sơn An Toàn Hệ Nước</span>
 <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-white leading-[0.9] mb-8">
-                        TECTONIC<br/>
-<span class="text-outline-variant">REFINEMENT.</span>
+                        SƠN LOTUS<br/>
+<span class="text-outline-variant">GỐC NƯỚC.</span>
 </h1>
 <p class="font-body text-lg text-on-surface-variant max-w-md mb-10 leading-relaxed">
-                        Transforming industrial surfaces into architectural statements. Expert consultancy in high-end Lotus water-based coatings for wood, metal, and concrete.
+                        Định hướng an toàn với người tiêu dùng và đa năng trên mọi bề mặt nhựa PVC, kim loại, gỗ, kính, xi măng. Thay thế hoàn toàn sơn dung môi độc hại!
                     </p>
 <div class="flex flex-wrap gap-6">
 <a class="bg-primary text-on-primary px-10 py-5 font-label font-bold uppercase tracking-widest text-sm hover:translate-y-[-2px] transition-transform" href="#contact">
-                            Request Consultation
+                            Nhận Mẫu Miễn Phí
                         </a>
 <a class="border-b-2 border-primary text-primary px-2 py-5 font-label font-bold uppercase tracking-widest text-sm hover:text-white hover:border-white transition-colors" href="#portfolio">
-                            View Projects
+                            Xem Ứng Dụng
                         </a>
 </div>
 </div>
 <div class="md:col-span-5 relative group">
 <div class="absolute -inset-4 border border-primary/20 translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-500"></div>
 <div class="bg-surface-container-low p-2">
-<img alt="Consultant Avatar" class="w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Professional portrait of a male architectural consultant in dark attire, standing in a minimalist concrete studio with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLURkrhM-YuAgzuTJ_xjIP6E3V7tAxvve4TZJ82XgmOWudUqms_JZou3k-nwXmKqqy3wSKL2n3o8U8bLCTSvqpKusHfdbopT2awtwiixzKc4iZY0iBRfG3oos1tvw__9YV9MA1y5vzK8cwzrLH6TLCrJEpoHicTMBfyWLpXVKvyvtw0gUqT8B7cUH122Fe0TB_wYKUXXNgUmmdAZ5wwRG_VYFSILOSRlOVMO0kZQTGS5m25V1NSQaF0X-ywNBEGtllk1TPhrwC544"/>
+<img alt="Consultant Avatar" class="w-full aspect-[4/5] object-contain px-4 py-8 grayscale hover:grayscale-0 transition-all duration-700" data-alt="Logo Sơn Lotus" src="https://w.ladicdn.com/s450x350/5e3e73f71adefa2bf15bd42f/logo-lotus-bich-trang-20240712191035-cptgp.png"/>
 </div>
 </div>
 </div>
@@ -144,28 +148,28 @@
 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
 <div class="order-2 md:order-1 relative">
 <div class="aspect-square bg-surface-container-high relative overflow-hidden">
-<img alt="Material Texture" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="Macro close-up of premium brushed metal and oak wood textures meeting at a sharp geometric intersection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpOHwQH6zR33rUc74O3jAcjvYrXdBnJtBtM9Q_CsCzF-DMizGfczO5QYJVbBGhaZ93d2n5IbfBh5fBCtSNbs0kDuVybaDMIWY3mfl4CJKrDgi4sMh-cSVZLQeRghXW-rHnKn8UnibXUIaqT6Y2Q7vAkRT21nVGJlMrSmbChOkXs-F-ZKqFKF-Qz1eUYhhZLvLFhwXYAF93P7gvsPIbtZYIsrMEa6XsnG3cxhBsodXQkSkwAsI5xnxRum0cGh4Q0lDgbCWoa2pieNc"/>
+<img alt="Material Texture" class="w-full h-full object-cover opacity-60 mix-blend-luminosity" data-alt="Màu sắc Sơn Lotus" src="https://w.ladicdn.com/s1750x1000/5e3e73f71adefa2bf15bd42f/son-lotus-vn-20250607055339-eackx.jpeg"/>
 <div class="absolute inset-0 bg-primary/10"></div>
 </div>
 <div class="absolute -bottom-8 -right-8 bg-primary p-12 hidden md:block">
-<span class="font-headline text-on-primary text-6xl font-black">15+</span>
-<p class="font-label text-on-primary text-xs tracking-widest uppercase mt-2">Years of Mastery</p>
+<span class="font-headline text-on-primary text-6xl font-black">10+</span>
+<p class="font-label text-on-primary text-xs tracking-widest uppercase mt-2">Năm Kinh Nghiệm</p>
 </div>
 </div>
 <div class="order-1 md:order-2">
-<h2 class="font-headline text-4xl font-bold tracking-tight mb-8">MATERIAL INTEGRITY IS OUR BLUEPRINT</h2>
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-8">VẬT LIỆU XANH LÀ TƯƠNG LAI</h2>
 <div class="space-y-6 font-body text-on-surface-variant leading-loose">
-<p>With a background in structural engineering and architectural finishing, I specialize in the application of Lotus water-based coatings—the pinnacle of sustainable protection.</p>
-<p>I don't just specify colors; I engineer surfaces. My approach treats every project as a physical site, ensuring the chemistry of the coating respects the soul of the material beneath it.</p>
+<p>Kể từ năm 2015, Công ty Bích Trang tự hào là đơn vị tiên phong trong việc cung cấp các giải pháp SƠN HỆ NƯỚC an toàn và thân thiện tuyệt đối.</p>
+<p>Sơn Lotus giải quyết trọn vẹn bài toán thay thế hệ màng sơn PU dung môi độc hại, đem lại trải nghiệm sơn láng mịn, siêu bền, nhẹ mùi và không chứa VOCs trên mọi bề mặt vật liệu kiến trúc.</p>
 </div>
 <div class="mt-12 grid grid-cols-2 gap-8 border-t border-white/5 pt-12">
 <div>
-<p class="font-label text-primary text-xs tracking-widest uppercase mb-2">Philosophy</p>
-<p class="text-sm">Architectural Honesty</p>
+<p class="font-label text-primary text-xs tracking-widest uppercase mb-2">Triết Lý</p>
+<p class="text-sm">Bảo vệ sức khỏe Cộng đồng</p>
 </div>
 <div>
-<p class="font-label text-primary text-xs tracking-widest uppercase mb-2">Specialization</p>
-<p class="text-sm">Bio-Polymer Coatings</p>
+<p class="font-label text-primary text-xs tracking-widest uppercase mb-2">Chuyên Môn</p>
+<p class="text-sm">Sơn Gốc Nước Cao Cấp</p>
 </div>
 </div>
 </div>
@@ -176,8 +180,8 @@
 <div class="max-w-7xl mx-auto">
 <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
 <div class="max-w-xl">
-<span class="font-label text-primary text-sm tracking-[0.3em] uppercase mb-4 block">Our Expertise</span>
-<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight">SPECIALIZED COATING SOLUTIONS</h2>
+<span class="font-label text-primary text-sm tracking-[0.3em] uppercase mb-4 block">Chuyên Môn</span>
+<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight">HỆ SINH THÁI SƠN LOTUS</h2>
 </div>
 <div class="h-[1px] flex-grow bg-white/10 mx-12 hidden md:block mb-6"></div>
 </div>
@@ -185,42 +189,42 @@
 <!-- Service 1: Wood -->
 <div class="group bg-surface-container-low p-12 hover:bg-surface-container-high transition-colors duration-500 border-r border-white/5 last:border-r-0">
 <span class="material-symbols-outlined text-primary text-4xl mb-8">forest</span>
-<h3 class="font-headline text-xl font-bold mb-4">TIMBER PRESERVATION</h3>
-<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">Nano-molecular water-based stains that highlight the natural grain while providing industrial-grade UV protection.</p>
+<h3 class="font-headline text-xl font-bold mb-4">SƠN GỖ & GIẢ GỖ</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">Sơn phủ gốc nước ứng dụng siêu mượt măt trên bề mặt tấm Fiber Cement, Conwood đem lại vân gỗ tự nhiên hoàn hảo.</p>
 <ul class="space-y-3">
 <li class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface/60">
-<span class="w-1.5 h-1.5 bg-primary"></span> Deep Grain Penetration
+<span class="w-1.5 h-1.5 bg-primary"></span> Thẩm thấu sâu vào mạch gỗ
                             </li>
 <li class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface/60">
-<span class="w-1.5 h-1.5 bg-primary"></span> Breathable Sealants
+<span class="w-1.5 h-1.5 bg-primary"></span> Kháng tia UV tuyệt đỉnh
                             </li>
 </ul>
 </div>
 <!-- Service 2: Metal -->
 <div class="group bg-surface-container-low p-12 hover:bg-surface-container-high transition-colors duration-500 border-r border-white/5 last:border-r-0">
 <span class="material-symbols-outlined text-primary text-4xl mb-8">precision_manufacturing</span>
-<h3 class="font-headline text-xl font-bold mb-4">METAL REFINEMENT</h3>
-<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">High-performance anti-corrosive coatings that maintain a raw industrial aesthetic with zero VOC emissions.</p>
+<h3 class="font-headline text-xl font-bold mb-4">SƠN KIM LOẠI 2K</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">Sơn trực tiếp 2 in 1 không cần lót trên các bề mặt nhôm, sắt mạ kẽm. Khô nhanh, cực kỳ an toàn cho xưởng thi công.</p>
 <ul class="space-y-3">
 <li class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface/60">
-<span class="w-1.5 h-1.5 bg-primary"></span> Matte Steel Finishes
+<span class="w-1.5 h-1.5 bg-primary"></span> Không Cần Dung Môi
                             </li>
 <li class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface/60">
-<span class="w-1.5 h-1.5 bg-primary"></span> Oxidation Control
+<span class="w-1.5 h-1.5 bg-primary"></span> Kháng rỉ sét cao cấp
                             </li>
 </ul>
 </div>
 <!-- Service 3: Composite -->
 <div class="group bg-surface-container-low p-12 hover:bg-surface-container-high transition-colors duration-500 border-r border-white/5 last:border-r-0">
 <span class="material-symbols-outlined text-primary text-4xl mb-8">layers</span>
-<h3 class="font-headline text-xl font-bold mb-4">COMPOSITE ARMOR</h3>
-<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">Advanced architectural coatings for hybrid materials, concrete, and high-traffic structural surfaces.</p>
+<h3 class="font-headline text-xl font-bold mb-4">SƠN VẬT LIỆU MỚI</h3>
+<p class="font-body text-sm text-on-surface-variant leading-relaxed mb-8">Giải pháp bảo vệ đa năng dành cho các loại viền chỉ, phào chỉ nhựa PVC, tấm ốp Nano và nhựa Composite công nghệ mới.</p>
 <ul class="space-y-3">
 <li class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface/60">
-<span class="w-1.5 h-1.5 bg-primary"></span> Wear Resistance
+<span class="w-1.5 h-1.5 bg-primary"></span> Bám Dính Chuyên Biệt
                             </li>
 <li class="flex items-center gap-3 text-xs font-label uppercase tracking-widest text-on-surface/60">
-<span class="w-1.5 h-1.5 bg-primary"></span> Thermal Stability
+<span class="w-1.5 h-1.5 bg-primary"></span> Bền màu theo thời gian
                             </li>
 </ul>
 </div>
@@ -231,43 +235,43 @@
 <section class="py-32 px-8 md:px-16 bg-surface-dim" id="portfolio">
 <div class="max-w-7xl mx-auto">
 <div class="mb-20 text-center">
-<h2 class="font-headline text-4xl font-bold tracking-tight mb-4">PROJECT ARCHIVE</h2>
-<p class="font-label text-primary text-xs tracking-[0.5em] uppercase">Selection of Material Transformations</p>
+<h2 class="font-headline text-4xl font-bold tracking-tight mb-4">DỰ ÁN TIÊU BIỂU</h2>
+<p class="font-label text-primary text-xs tracking-[0.5em] uppercase">Khẳng định chất lượng công trình</p>
 </div>
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6 auto-rows-[300px]">
 <div class="md:col-span-8 relative group overflow-hidden">
-<img alt="Luxury Residence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Interior of a luxury modern villa featuring extensive dark wood paneling with a satin water-based finish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqvnw8Z2IDDc0_YUwrnbkiibwzSjl3nk6J1SowGzjCSmaiATO_dpX62sQ0-Gy_fTml8A6KpJhAbepCpsy5jT7mD8LfDr-6rRXaHftOw9kYI5tOrVEJHsUqA1w5XfNWlcWYeN2D6rwpEQbGbIUyJJAtIr33nmG1r7xG2wHn9ZvCOF-Ygmlz5sbnt36AKMAQTxTZ9aDSFb1HWzJKKwVKgp_S2JRgEAN0yjrN4Tr7RPkMaXUv64YuJdnhsdBbVW-XEOsIReygi6v4nck"/>
+<img alt="Luxury Residence" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Biệt thự Sanctuary Hồ Tràm dùng sơn Lotus" src="https://w.ladicdn.com/s1100x750/5e3e73f71adefa2bf15bd42f/bietthusanctuaryhotram05112020ty9pd1692243894909-20240712090148-d3pzw.jpg"/>
 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
 <div>
-<h4 class="font-headline text-xl font-bold text-white">THE GLASS HOUSE</h4>
-<p class="font-label text-primary text-xs uppercase mt-2">Smoked Oak Finishing</p>
+<h4 class="font-headline text-xl font-bold text-white">BIỆT THỰ SANCTUARY HỒ TRÀM</h4>
+<p class="font-label text-primary text-xs uppercase mt-2">Hệ sơn giả gỗ kiến trúc cao cấp</p>
 </div>
 </div>
 </div>
 <div class="md:col-span-4 relative group overflow-hidden">
-<img alt="Industrial Loft" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Modern staircase with brushed steel elements and matte black architectural coatings in a minimalist loft" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPzmuSsiqff0SGw7t7YtV8J4sIXQq3zCaDXIWAAP9Q81BMe5Eo3qi0ot0LhR_xeTFMyCsfxbQEoTpbJ4U3DB5TC7-RqGhq7XK5yVtOiv6vlxkJmo416u0JsbDblA7ju5oSz4XxhxtlANm5cwZdhb08lXQqh3ld7Q7ICaCl72sxwMuupO2O4yDy3_C_nuGmNEJlrnzY_Dd6BVYKS6WjmGxdmqGT32yPy6fYslIjOBNMqVjwYAOHlcGs5hkfw805ZtZR-DDc9yIurTE"/>
+<img alt="Industrial Loft" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Dự án The Grand Hà Nội về đêm" src="https://w.ladicdn.com/s1000x700/5e3e73f71adefa2bf15bd42f/the-grand-hanoi-dem-20240712091818-n1xs6.jpg"/>
 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
 <div>
-<h4 class="font-headline text-xl font-bold text-white">LOFT 41</h4>
-<p class="font-label text-primary text-xs uppercase mt-2">Steel Oxidation Guard</p>
+<h4 class="font-headline text-xl font-bold text-white">THE GRAND HANOI</h4>
+<p class="font-label text-primary text-xs uppercase mt-2">Giải pháp sơn bảo vệ toàn diện</p>
 </div>
 </div>
 </div>
 <div class="md:col-span-4 relative group overflow-hidden">
-<img alt="Corporate Headquarters" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Corporate lobby with concrete pillars and bespoke architectural finishes under recessed linear lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD87zSdLgs2rvrQBhCrBnEmZWZ4qEOOF58Iit1NzrfJq6WDtVbJKxDKnCGxv5cbMf2ADymF5yihrW5wH4nFFQnUTjTlQt6E8jdHlH1_p89b5-OyerZr1Sxl85sqG2koJwI61eCtB6cCSmIdxhTQpxxygwm5ZsCp3ARkxazZ-cE_ca5Z9RI1NEL-HiNKgzeF_UEzL1PXZ8XRZAXL4PSYmvwTsZ8zre5KDq_-gKvZiJwfLEdkaP3rFwSgaoaz3gF7m7jmMAbP0NPKujM"/>
+<img alt="Corporate Headquarters" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Dự án tòa nhà Lux5 Ba Son" src="https://w.ladicdn.com/s1050x750/5e3e73f71adefa2bf15bd42f/lux5-ba-son-20240725093910-redmr.jpg"/>
 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
 <div>
-<h4 class="font-headline text-xl font-bold text-white">NEXUS HQ</h4>
-<p class="font-label text-primary text-xs uppercase mt-2">Concrete Resurfacing</p>
+<h4 class="font-headline text-xl font-bold text-white">LUX 5 - BA SON</h4>
+<p class="font-label text-primary text-xs uppercase mt-2">Bền bỉ vượt giới hạn thời gian</p>
 </div>
 </div>
 </div>
 <div class="md:col-span-8 relative group overflow-hidden">
-<img alt="Office Interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Contemporary open-plan office with sustainable coating applications on all wooden work surfaces and partitions" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2KZon82ThArlrwsnW0eBgx2w6ZpkseiCEy9evZWpEZSfphq5yjb9vK46_xJ8VOWzQ5zEvE1UyMqefyMz3TBHFhGvq6tG1Fz2eg0zmCMkBq3QPjzenbGho-dRYusWyPI95y_V-vPnP3PEBPS_v87vO6NqhAJPYJHQytc0HK6wjpXB6xtXjN-sMz-FR4tf-0JmW5q4B6tbEu7PgwOm1BwisI0BfD6mQDAVNX-RoCQM9cNJ7hQD1EkKZkeA_eOOLzoMtnMTEnqp4eEc"/>
+<img alt="Office Interior" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Anantara Múi Né Resort" src="https://w.ladicdn.com/s1000x750/5e3e73f71adefa2bf15bd42f/anantara-mui-ne-resort-20240725095119-k3ltd.jpg"/>
 <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
 <div>
-<h4 class="font-headline text-xl font-bold text-white">ECO HUB</h4>
-<p class="font-label text-primary text-xs uppercase mt-2">Full Eco-Coat Integration</p>
+<h4 class="font-headline text-xl font-bold text-white">ANANTARA MŨI NÉ RESORT</h4>
+<p class="font-label text-primary text-xs uppercase mt-2">Lớp phủ nội và ngoại thất chịu tia UV</p>
 </div>
 </div>
 </div>
@@ -278,46 +282,57 @@
 <section class="py-32 px-8 md:px-16 bg-surface" id="contact">
 <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24">
 <div>
-<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-8">START THE CONVERSATION</h2>
-<p class="font-body text-on-surface-variant text-lg mb-12">Whether you are an architect, contractor, or homeowner, let's discuss how Lotus coatings can elevate your next project.</p>
+<h2 class="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-8">LIÊN HỆ MUA HÀNG</h2>
+<p class="font-body text-on-surface-variant text-lg mb-12">Cho dù bạn là kiến trúc sư, chủ xưởng gỗ hay khách hàng cá nhân, hãy liên hệ ngay với Lotus để nhận tư vấn và báo giá chiết khấu ưu đãi.</p>
 <div class="space-y-8">
 <div class="flex items-start gap-6">
 <span class="material-symbols-outlined text-primary">mail</span>
 <div>
-<p class="font-label text-xs uppercase tracking-widest text-on-surface/40 mb-1">Email</p>
-<p class="font-headline font-bold">consult@lotus-coatings.com</p>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface/40 mb-1">Cửa hàng Sonlotus.vn</p>
+<p class="font-headline font-bold">Email: sales@sonlotus.vn / SĐT: 0943 966 662</p>
 </div>
 </div>
 <div class="flex items-start gap-6">
 <span class="material-symbols-outlined text-primary">location_on</span>
 <div>
-<p class="font-label text-xs uppercase tracking-widest text-on-surface/40 mb-1">Studio</p>
-<p class="font-headline font-bold">Industrial District, Suite 402, London</p>
+<p class="font-label text-xs uppercase tracking-widest text-on-surface/40 mb-1">Giao hàng Toàn Quốc</p>
+<p class="font-headline font-bold">Freeship SG Nội Thành ĐH &gt; 5 Triệu</p>
 </div>
 </div>
 </div>
 </div>
 <div class="bg-surface-container-low p-12">
-<form action="#" class="space-y-8">
+<form action="https://formsubmit.co/sales@sonlotus.vn" method="POST" class="space-y-8">
+<input type="hidden" name="_subject" value="🔔 CÓ KHÁCH HÀNG YÊU CẦU TƯ VẤN SƠN LOTUS!"/>
+<input type="hidden" name="_captcha" value="false"/>
+<input type="hidden" name="_template" value="table"/>
+<input type="hidden" name="_next" value="https://web-mau-v1.vercel.app/cam-on.html"/>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 <div>
-<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Full Name</label>
-<input class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white transition-colors" placeholder="e.g. Julian Vane" type="text"/>
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Họ và Tên</label>
+<input name="Khach_Hang" class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white transition-colors" placeholder="Vd: Nguyễn Văn A" type="text" required/>
 </div>
 <div>
-<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Service Required</label>
-<select class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white/50 transition-colors">
-<option>Timber Preservation</option>
-<option>Metal Refinement</option>
-<option>Composite Armor</option>
-<option>Full Consultation</option>
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Số Điện Thoại</label>
+<input name="So_Dien_Thoai" class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white transition-colors" placeholder="Vd: 0909 123 456" type="tel" required/>
+</div>
+</div>
+<div>
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Sản Phâm Quan Tâm</label>
+<select name="San_Pham" class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white/50 transition-colors" required>
+<option>Sơn Lót Gỗ (Primer / Sanding Sealer)</option>
+<option>Sơn Kim Loại / Kẽm 2K</option>
+<option>Sơn Nhựa Composite, Nhựa PVC</option>
+<option>Sơn Giả Gỗ</option>
+<option>Chưa rõ, cần chuyên gia tư vấn</option>
 </select>
 </div>
 <div>
-<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Project Scope</label>
-<textarea class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white transition-colors resize-none" placeholder="Briefly describe your site requirements..." rows="4"></textarea>
+<label class="font-label text-[10px] uppercase tracking-[0.2em] text-primary mb-2 block">Lời nhắn / Yêu cầu chi tiết</label>
+<textarea name="Loi_Nhan" class="w-full bg-transparent border-b border-white/10 focus:border-primary outline-none py-3 font-body text-white transition-colors resize-none" placeholder="Hãy mô tả một chút về dự án của bạn..." rows="4"></textarea>
 </div>
 <button class="w-full bg-primary text-on-primary py-5 font-label font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-surface transition-colors" type="submit">
-                            Submit Inquiry
+                            Gửi Yêu Cầu
                         </button>
 </form>
 </div>
@@ -327,17 +342,17 @@
 <!-- Footer -->
 <footer class="w-full rounded-none border-t border-white/5 bg-[#131313] dark:bg-[#131313] grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-24">
 <div>
-<div class="text-lg font-bold text-white mb-6">LOTUS ARCHITECTURAL COATINGS</div>
+<div class="text-lg font-bold text-white mb-6">SƠN LOTUS CHÍNH HÃNG</div>
 <p class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 leading-relaxed">
-                Transforming industrial aesthetics through high-performance sustainable chemistry.
+                Nâng tầm kiến trúc bằng những hóa phẩm thân thiện, an toàn tuyệt đối từ Hệ Nước. Sức khỏe cho Thợ - Bình an cho Nhà.
             </p>
 </div>
 <div class="flex flex-col space-y-4">
-<span class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-[#e9c349] mb-2">Navigation</span>
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Privacy Policy</a>
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Terms of Service</a>
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Sustainability Report</a>
-<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Technical Specs</a>
+<span class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-[#e9c349] mb-2">Truy cập nhanh</span>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Chính sách Bảo Hành</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Thanh toán & Giao Hàng</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Chứng chỉ vật liệu xanh</a>
+<a class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40 hover:text-[#e9c349] transition-colors hover:translate-x-1 duration-300" href="#">Sonlotus.vn</a>
 </div>
 <div class="flex flex-col justify-between">
 <div class="flex gap-6 mb-8">
@@ -349,7 +364,7 @@
 </a>
 </div>
 <p class="font-['Space_Grotesk'] text-[10px] tracking-widest uppercase text-white/40">
-                © 2024 LOTUS ARCHITECTURAL COATINGS. ALL RIGHTS RESERVED.
+                © 2026 SƠN LOTUS. BẢN QUYỀN THUỘC VỀ CÔNG TY BÍCH TRANG.
             </p>
 </div>
 </footer>
