@@ -28,7 +28,7 @@ TẤT CẢ sản phẩm luôn có 3 kích cỡ:
 
 1. SƠN LAU GỖ (WOOD STAIN):
 * Hình ảnh: ![Bảng Màu Sơn Lau Gỗ](https://w.ladicdn.com/s750x600/5e3e73f71adefa2bf15bd42f/bang-mau-son-lau-go-wood-stain-20251117100611-kv5yl.png)
-* 特 điểm: Giữ vân gỗ tự nhiên (Óc chó, Cánh gián, Gỗ Sồi...).
+* Đặc điểm: Giữ vân gỗ tự nhiên (Óc chó, Cánh gián, Gỗ Sồi...).
 
 2. SƠN GIẢ GỖ (CẦN HỎI RÕ BỀ MẶT):
 * Trên Xi măng/Conwood/Cemboard: ![Bảng Màu Sơn Giả Gỗ trên Xi Măng](https://w.ladicdn.com/s1300x1600/5e3e73f71adefa2bf15bd42f/bang-mau-son-gia-go-lotus-2999-20251208134932-nwilo.png)
@@ -57,7 +57,8 @@ TẤT CẢ sản phẩm luôn có 3 kích cỡ:
 | GỖ & GIẢ GỖ | Lót Trắng (Wood Primer) | 145.800 | 648.000 | 2.447.280 |
 | GỖ & GIẢ GỖ | Sơn Lau Gỗ (Wood Stain) | 194.400 | 864.000 | 3.311.280 |
 | GỖ & GIẢ GỖ | Sơn Gỗ Ngoài Trời 2K (2K33) | 216.000 | 1.047.600 | 3.866.400 |
-| GỖ & GIẢ GỖ | Sơn Gỗ Ngoại Thất & Sàn (2K72) | 199.800 | 939.600 | 3.564.000 |
+| GỖ & GIẢ GỖ | Sơn Nội Thất (Finish Interior) | 199.800 | 939.600 | 3.564.000 |
+| GỖ & GIẢ GỖ | Sơn Ngoại Thất & Sàn (2K72) | 199.800 | 939.600 | 3.564.000 |
 | KIM LOẠI | Lót Kim Loại 2K (Primer 2K) | 178.200 | 808.920 | 3.051.000 |
 | KIM LOẠI | Phủ Màu Kim Loại 2K (Finish 2K) | 199.800 | 939.600 | 3.564.000 |
 | KIM LOẠI | Sơn Kim Loại 2 in 1 (Trực tiếp) | 210.600 | 988.200 | 3.753.000 |
@@ -85,6 +86,16 @@ TẤT CẢ sản phẩm luôn có 3 kích cỡ:
 * **Bước 1:** Sau khi xử lý mịn bề mặt, dùng **sơn lót trắng gỗ Lotus Wood Primer**. Sơn 1-2 lớp để làm mịn & phẳng bề mặt. (Lưu ý: Đối với gỗ tự nhiên nhiều nhựa, nên dùng loại lót chuyên dụng để khoá dầu tannin).
 * **Bước 2:** Dùng **sơn bệt Lotus Wood Paint IN** với 70+ màu có sẵn. Có thể pha màu theo yêu cầu. (Lưu ý: Có thể điều chỉnh độ bóng/mờ từ G5 - G90. Nếu dùng ngoài trời thì sử dụng mã sản phẩm dòng **Ex**).
 * **Bước 3 (Giai đoạn bảo vệ - Nếu cần thiết):** Sơn phủ bóng trong suốt để bảo vệ bề mặt bằng **Lotus Acrylic Lacquer indoor**. (Lưu ý: Đối với hạng mục ngoài trời nên dùng **Lotus Acrylic Lacquer outdoor**).
+
+6. QUY TRÌNH SƠN 2 TRONG 1 - TẠO MÀU & HOÀN THIỆN (DÙNG SÚNG PHUN):
+* **Sản phẩm chuyên dụng:** 
+  - Lotus Woodstain Finish – Interior (Trong nhà) - [Link chi tiết](https://jades.vn/son-tao-mau-va-hoan-thien-go-noi-that-lotus-woodstain-finish-interior-p100.html)
+  - Lotus Woodstain Finish Ngoại Thất & Sàn (Ngoài trời) - [Link chi tiết](https://jades.vn/son-tao-mau-va-hoan-thien-go-lotus-woodstain-finish-ngoai-that-san-p96.html)
+* **Cách sử dụng:** Đây là hệ sơn tiện lợi, kết hợp giữa tạo màu (stain) và bóng bảo vệ vào cùng 1 sản phẩm.
+* **Bước 1:** Xả nhám và làm mịn bề mặt gỗ.
+* **Bước 2:** Sử dụng súng phun để sơn trực tiếp 2 lớp sơn lên bề mặt (không cần lau bằng mút).
+* **Thời gian khô:** Mỗi lớp sơn cách nhau tối thiểu 2 giờ.
+* **Lưu ý:** Quy trình này cực kỳ nhanh chóng, phù hợp cho thợ thi công hoặc xưởng sản xuất đồ gỗ quy mô lớn.
 
 5. SƠN LAU GỖ (WOOD STAIN):
 * Bước 1: Lau Wood Stain bằng mút/vải. (Không xả nhám sau lau).
