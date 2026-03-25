@@ -125,6 +125,9 @@ Quy tắc giao tiếp bắt buộc:
             toggleBtn.style.transform = 'scale(0)';
             setTimeout(() => toggleBtn.style.display = 'none', 300);
             chatInput.focus();
+            
+            // Gửi thống kê "Có khách mở chat" về CRM
+            pushToCRM({ type: 'visit_chat', status: 'started' });
         }
     });
 
@@ -134,6 +137,31 @@ Quy tắc giao tiếp bắt buộc:
         toggleBtn.style.display = 'flex';
         setTimeout(() => toggleBtn.style.transform = 'scale(1)', 10);
     });
+
+    // CRM Integration Configuration
+    const sessionId = 'ses_' + Math.random().toString(36).substr(2, 9);
+    const CRM_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzR391uHa8ityRntWm3ooW0J6XprapwE3OE3x2dJ9sDFBTzW2neBQC5SB2jCEQQ9CgB7A/exec"; // Webhook link Google Sheets của bạn
+
+    async function pushToCRM(data) {
+        if (!CRM_WEBHOOK_URL) return;
+        try {
+            const payload = {
+                sessionId: sessionId,
+                timestamp: new Date().toLocaleString('vi-VN'),
+                source: window.location.href,
+                ...data
+            };
+            // Sử dụng fetch với mode no-cors để gửi dữ liệu về Google Sheets mà không bị chặn CORS bởi trình duyệt
+            await fetch(CRM_WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+        } catch (e) {
+            console.error("CRM Push Error:", e);
+        }
+    }
 
     // In lời chào lúc refresh
     function appendGreeting() {
@@ -306,14 +334,24 @@ Quy tắc giao tiếp bắt buộc:
                 messageHistory.push({ role: "assistant", content: botReply });
                 addMessageUI(botReply, 'bot', true);
 
-                // Tự động Gửi lịch sử chat vào email nếu khách để lại SĐT
+                // Tự động Gửi lịch sử chat vào email và Google Sheets nếu khách để lại SĐT
                 const phoneRegex = /(03|05|07|08|09)+([0-9]{8})\b/g;
-                if (phoneRegex.test(text)) {
+                const foundPhone = text.match(phoneRegex);
+                
+                if (foundPhone) {
                     let log = messageHistory
                         .filter(m => m.role !== 'system')
                         .map(m => (m.role === 'user' ? 'Khách hàng: ' : 'Chatbot: ') + m.content)
                         .join('\n\n---\n\n');
-                        
+                    
+                    // 1. Gửi về CRM Google Sheets
+                    pushToCRM({
+                        type: 'lead_captured',
+                        phone: foundPhone[0],
+                        chat_history: log
+                    });
+
+                    // 2. Gửi Email thông báo
                     fetch("https://formsubmit.co/ajax/sales@sonlotus.vn", {
                         method: "POST",
                         headers: { 
