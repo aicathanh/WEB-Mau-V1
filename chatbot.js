@@ -35,7 +35,7 @@
                     </button>
                 </div>
             </div>
-            <button id="chatbot-toggle" title="Chat với chúng tôi">
+            <button id="chatbot-toggle" title="Chat with chúng tôi">
                 <span class="material-symbols-outlined">chat</span>
             </button>
         </div>
@@ -70,6 +70,8 @@
     let knowledgeBase = '';
     let isChatOpen = false;
     let messageHistory = [];
+    let userMessageCount = 0; // Biến đếm số câu hỏi của khách
+    let isLeadCaptured = false; // Đánh dấu đã lưu SĐT chưa
     const DEFAULT_GREETING = "Xin chào bạn! 👋 Tôi là AI Sơn trợ lý của hãng sơn Lotus. Tôi có thể giúp gì cho bạn hôm nay?";
 
     // Cấu hình OpenRouter API / Custom Endpoint
@@ -298,6 +300,7 @@ Quy tắc giao tiếp bắt buộc:
 
         addMessageUI(text, 'user');
         messageHistory.push({ role: "user", content: text });
+        userMessageCount++; // Tăng biến đếm mỗi khi khách gửi tin nhắn
 
         showTypingIndicator();
 
@@ -338,13 +341,15 @@ Quy tắc giao tiếp bắt buộc:
                 const phoneRegex = /(03|05|07|08|09)+([0-9]{8})\b/g;
                 const foundPhone = text.match(phoneRegex);
                 
+                let log = messageHistory
+                    .filter(m => m.role !== 'system')
+                    .map(m => (m.role === 'user' ? 'Khách hàng: ' : 'Chatbot: ') + m.content)
+                    .join('\n\n---\n\n');
+
                 if (foundPhone) {
-                    let log = messageHistory
-                        .filter(m => m.role !== 'system')
-                        .map(m => (m.role === 'user' ? 'Khách hàng: ' : 'Chatbot: ') + m.content)
-                        .join('\n\n---\n\n');
+                    isLeadCaptured = true; // Đánh dấu đã có lead
                     
-                    // 1. Gửi về CRM Google Sheets
+                    // 1. Gửi về CRM Google Sheets (Type Lead)
                     pushToCRM({
                         type: 'lead_captured',
                         phone: foundPhone[0],
@@ -364,6 +369,13 @@ Quy tắc giao tiếp bắt buộc:
                             "Dữ_Liệu_Lịch_Sử_Chat": log
                         })
                     }).catch(e => console.error(e));
+                } else if (!isLeadCaptured && userMessageCount > 0 && userMessageCount % 5 === 0) {
+                    // Nếu chưa có SĐT và cứ sau mỗi 5 câu hỏi của khách, lưu log "Khách quan tâm"
+                    pushToCRM({
+                        type: 'potential_interest',
+                        phone: "Chưa có SĐT",
+                        chat_history: log
+                    });
                 }
             } else {
                 throw new Error("Dữ liệu phản hồi không đúng cấu trúc.");
