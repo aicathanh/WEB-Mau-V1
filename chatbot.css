@@ -191,8 +191,8 @@
     color: #e5e2e1;
     align-self: stretch !important;
     border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 14px; /* Bo góc phải cho đều */
-    overflow-x: auto;
+    border-bottom-right-radius: 14px;
+    overflow: visible; /* Không cho phép cuộn bên trong tin nhắn */
     margin-right: 0 !important;
     margin-left: 0 !important;
 }
@@ -371,13 +371,14 @@
 
 /* Markdown Table Styles */
 .chat-markdown table {
+    display: block; /* Cần thiết để overflow-x hoạt động */
     width: 100%;
     border-collapse: collapse;
     margin: 15px 0;
     font-size: 13px;
     background: rgba(255, 255, 255, 0.03);
     border-radius: 8px;
-    overflow: hidden;
+    overflow-x: auto; /* Chỉ cho bảng mới được cuộn ngang */
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
