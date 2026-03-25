@@ -173,7 +173,7 @@
 }
 
 .chatbot-message {
-    max-width: 85%;
+    max-width: 90%; /* Tăng nhẹ để tin nhắn người dùng vẫn gọn */
     padding: 12px 16px;
     border-radius: 14px;
     font-size: 14px;
@@ -183,11 +183,13 @@
 }
 
 .chatbot-message.bot {
+    max-width: 100%; /* Bot trả lời full chiều rộng */
+    width: 100%;
     background: rgba(255, 255, 255, 0.05);
     color: #e5e2e1;
-    align-self: flex-start;
+    align-self: stretch; /* Căn đều hai bên */
     border-bottom-left-radius: 4px;
-    overflow-x: auto; /* Hỗ trợ cuộn ngang nếu bảng quá rộng */
+    overflow-x: auto;
 }
 
 .chatbot-message.user {
