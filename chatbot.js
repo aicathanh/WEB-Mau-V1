@@ -47,7 +47,10 @@
     modal.className = 'chatbot-image-modal';
     modal.innerHTML = `
         <span class="close-modal">&times;</span>
-        <img src="" alt="Zoomed view">
+        <div class="modal-content-container">
+            <img id="modal-img" src="" alt="Zoomed view">
+            <div id="modal-table-container"></div>
+        </div>
     `;
     document.body.appendChild(modal);
 
@@ -199,10 +202,27 @@ Quy tắc giao tiếp bắt buộc:
         
         // Gắn sự kiện click nếu là ảnh để xem to
         const images = div.getElementsByTagName('img');
+        const modalImg = modal.querySelector('#modal-img');
+        const modalTable = modal.querySelector('#modal-table-container');
+
         for (let img of images) {
             img.addEventListener('click', () => {
-                const modalImg = modal.querySelector('img');
                 modalImg.src = img.src;
+                modalImg.style.display = 'block';
+                modalTable.style.display = 'none';
+                modal.classList.add('active');
+            });
+        }
+
+        // Gắn sự kiện click nếu là bảng báo giá để xem to
+        const tables = div.getElementsByTagName('table');
+        for (let table of tables) {
+            table.style.cursor = 'zoom-in';
+            table.title = "Click để xem bảng lớn hơn";
+            table.addEventListener('click', () => {
+                modalTable.innerHTML = table.outerHTML;
+                modalTable.style.display = 'block';
+                modalImg.style.display = 'none';
                 modal.classList.add('active');
             });
         }

@@ -409,13 +409,56 @@
     display: flex;
 }
 
+.chatbot-image-modal .modal-content-container {
+    width: 90%;
+    max-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
 .chatbot-image-modal img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 100%;
+    max-height: 100%;
     object-fit: contain;
     border-radius: 8px;
     box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease;
+}
+
+#modal-table-container {
+    display: none;
+    width: 100%;
+    max-width: 1000px;
+    background: #1c1b1b;
+    padding: 30px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+#modal-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #e5e2e1;
+    font-size: 15px; /* Tăng size chữ khi xem to */
+}
+
+#modal-table-container th, #modal-table-container td {
+    padding: 15px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+#modal-table-container th {
+    background: rgba(233, 195, 73, 0.2);
+    color: #e9c349;
+    font-weight: 600;
+}
+
+#modal-table-container tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .chatbot-image-modal .close-modal {
