@@ -1,4 +1,5 @@
 /* chatbot.css */
+* { box-sizing: border-box; }
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
 
 #chatbot-container {
@@ -149,13 +150,14 @@
 
 .chatbot-body {
     flex: 1;
-    padding: 20px;
+    padding: 15px 12px; /* Giảm padding một chút để không gian rộng hơn */
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
     scroll-behavior: smooth;
     color: #e5e2e1;
+    align-items: stretch; /* Đảm bảo các phần tử con có thể giãn tối đa */
 }
 
 /* Custom Scrollbar */
@@ -183,11 +185,11 @@
 }
 
 .chatbot-message.bot {
-    max-width: 100%; /* Bot trả lời full chiều rộng */
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
+    max-width: 100% !important; /* Ép tối đa */
+    width: 100% !important; /* Ép rộng 100% */
+    background: rgba(255, 255, 255, 0.08); /* Tăng độ sáng nền bot một chút cho dễ phân biệt */
     color: #e5e2e1;
-    align-self: stretch; /* Căn đều hai bên */
+    align-self: stretch; 
     border-bottom-left-radius: 4px;
     overflow-x: auto;
 }
