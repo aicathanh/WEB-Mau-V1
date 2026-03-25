@@ -357,3 +357,55 @@
     text-decoration: underline;
     text-underline-offset: 2px;
 }
+
+/* Lightbox Modal styles */
+.chatbot-image-modal {
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+.chatbot-image-modal.active {
+    display: flex;
+}
+
+.chatbot-image-modal img {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.chatbot-image-modal .close-modal {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Image in chat styling */
+.chat-markdown img {
+    cursor: zoom-in;
+    transition: opacity 0.2s;
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+
+.chat-markdown img:hover {
+    opacity: 0.8;
+}

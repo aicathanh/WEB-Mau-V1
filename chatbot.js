@@ -42,6 +42,19 @@
     `;
     document.body.appendChild(chatContainer);
 
+    // Lightbox Modal setup
+    const modal = document.createElement('div');
+    modal.className = 'chatbot-image-modal';
+    modal.innerHTML = `
+        <span class="close-modal">&times;</span>
+        <img src="" alt="Zoomed view">
+    `;
+    document.body.appendChild(modal);
+
+    modal.addEventListener('click', () => {
+        modal.classList.remove('active');
+    });
+
     const toggleBtn = document.getElementById('chatbot-toggle');
     const closeBtn = document.getElementById('chatbot-close');
     const refreshBtn = document.getElementById('chatbot-refresh');
@@ -183,6 +196,17 @@ Quy tắc giao tiếp bắt buộc:
             div.textContent = content;
         }
         messagesContainer.appendChild(div);
+        
+        // Gắn sự kiện click nếu là ảnh để xem to
+        const images = div.getElementsByTagName('img');
+        for (let img of images) {
+            img.addEventListener('click', () => {
+                const modalImg = modal.querySelector('img');
+                modalImg.src = img.src;
+                modal.classList.add('active');
+            });
+        }
+
         scrollToBottom();
     }
 
