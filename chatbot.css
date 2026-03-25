@@ -179,6 +179,7 @@
     font-size: 14px;
     line-height: 1.5;
     word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .chatbot-message.bot {
@@ -186,6 +187,7 @@
     color: #e5e2e1;
     align-self: flex-start;
     border-bottom-left-radius: 4px;
+    overflow-x: auto; /* Hỗ trợ cuộn ngang nếu bảng quá rộng */
 }
 
 .chatbot-message.user {
@@ -356,6 +358,35 @@
     color: #e9c349;
     text-decoration: underline;
     text-underline-offset: 2px;
+}
+
+/* Markdown Table Styles */
+.chat-markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-markdown th, .chat-markdown td {
+    padding: 10px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: left;
+}
+
+.chat-markdown th {
+    background: rgba(233, 195, 73, 0.2);
+    color: #e9c349;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.chat-markdown tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.02);
 }
 
 /* Lightbox Modal styles */
