@@ -72,7 +72,8 @@
     // Load Knowledge Base txt file
     async function loadKnowledgeBase() {
         try {
-            const response = await fetch('./chatbot_data.txt');
+            // Sử dụng URL tuyệt đối để chatbot có thể chạy được khi nhúng vào các trang web khác (như Ladipage)
+            const response = await fetch('https://web-mau-v1.vercel.app/chatbot_data.txt');
             if (response.ok) {
                 knowledgeBase = await response.text();
             } else {
