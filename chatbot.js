@@ -37,6 +37,7 @@
             </div>
             <button id="chatbot-toggle" title="Chat with chúng tôi">
                 <span class="material-symbols-outlined">chat</span>
+                <div class="chatbot-badge" id="chatbot-badge">1</div>
             </button>
         </div>
     `;
@@ -98,31 +99,111 @@
                 console.warn("Lỗi không tìm thấy file chatbot_data.txt. Sẽ sử dụng kiến thức mặc định.");
             }
         } catch (error) {
-            console.error("Error loading knowledge base:", error);
+            console.error("Lỗi khi tải bộ não kiến thức:", error);
+        }
+    }
+    loadKnowledgeBase();
+
+    function createMessageElement(content, isUser = false) {
+        const div = document.createElement('div');
+        div.className = `chatbot-message ${isUser ? 'user' : 'bot'}`;
+        if (isUser) {
+            div.textContent = content;
+        } else {
+            const markdownContainer = document.createElement('div');
+            markdownContainer.className = 'chat-markdown';
+            if (typeof marked !== 'undefined') {
+                markdownContainer.innerHTML = marked.parse(content);
+                // Gắn sự kiện zoom ảnh sau khi render markdown
+                markdownContainer.querySelectorAll('img').forEach(img => {
+                    img.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        showImageModal(img.src);
+                    });
+                });
+                // Chống cuộn toàn trang khi đang cuộn bảng
+                markdownContainer.querySelectorAll('table').forEach(table => {
+                    table.addEventListener('wheel', (e) => {
+                        const isAtLeft = table.scrollLeft <= 0;
+                        const isAtRight = table.scrollLeft + table.clientWidth >= table.scrollWidth;
+                        if (e.deltaX < 0 && isAtLeft) return;
+                        if (e.deltaX > 0 && isAtRight) return;
+                        e.stopPropagation();
+                    });
+                });
+            } else {
+                markdownContainer.textContent = content;
+            }
+            div.appendChild(markdownContainer);
+        }
+        return div;
+    }
+
+    function showImageModal(src) {
+        const modalImg = document.getElementById('modal-img');
+        const modalTableContainer = document.getElementById('modal-table-container');
+        modalTableContainer.innerHTML = ''; // Reset table inside modal
+        modalImg.src = src;
+        modalImg.style.display = 'block';
+        modal.classList.add('active');
+    }
+
+    function showTableModal(html) {
+        const modalImg = document.getElementById('modal-img');
+        const modalTableContainer = document.getElementById('modal-table-container');
+        modalImg.style.display = 'none';
+        modalTableContainer.innerHTML = html;
+        modal.classList.add('active');
+    }
+
+    function addMessage(content, isUser = false) {
+        const msgEl = createMessageElement(content, isUser);
+        messagesContainer.appendChild(msgEl);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        if (!isUser) {
+            messageHistory.push({ role: "assistant", content });
         }
     }
 
-    // Hàm tạo System Prompt
-    function getSystemPrompt() {
-        return `
-Bạn là Trợ Lý AI Sơn Lotus - chuyên gia tư vấn về các giải pháp sơn an toàn hệ nước cho gỗ, kim loại và vật liệu mới.
-Nhiệm vụ của bạn là hỗ trợ khách truy cập lịch sự, cung cấp thông tin chính xác về các sản phẩm, bảng giá, định mức và quy trình thi công.
-
-Dưới đây là cơ sở dữ liệu kiến thức (Knowledge Base) của bạn:
-${knowledgeBase}
-
-Quy tắc giao tiếp bắt buộc:
-1. Luôn chào hỏi thân thiện và kết thúc bằng cách mời họ đặt thêm câu hỏi.
-2. Bạn phải định dạng các câu trả lời của mình bằng Markdown đầy đủ (in đậm ý chính, dùng gạch đầu dòng).
-3. Tuyệt đối không tự ý bịa đặt các chương trình khuyến mãi (như giảm giá 30% hay mẫu thử miễn phí) nếu không có trong Knowledge Base.
-4. Nếu người dùng hỏi điều gì ngoài phạm vi dữ liệu trên, hãy hướng dẫn họ để lại Số điện thoại hoặc gọi Hotline 0943 966 662 để gặp kỹ thuật viên tư vấn trực tiếp.
+    function showTypingIndicator() {
+        const div = document.createElement('div');
+        div.className = 'chatbot-message bot typing';
+        div.id = 'typing-indicator';
+        div.innerHTML = `
+            <span>AI đang gõ</span>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
         `;
+        messagesContainer.appendChild(div);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
+
+    function removeTypingIndicator() {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) indicator.remove();
+    }
+
+    async function loadInitialMessages() {
+        if (messagesContainer.children.length === 0) {
+            addMessage(DEFAULT_GREETING);
+        }
+    }
+
+    const badge = document.getElementById('chatbot-badge');
+    
+    // Hiện thông báo sau 15 giây nếu khách chưa mở chat
+    setTimeout(() => {
+        if (!isChatOpen) {
+            badge.classList.add('show');
+        }
+    }, 15000);
 
     // Toggle logic Mở/Đóng Khung Chat
     toggleBtn.addEventListener('click', () => {
         isChatOpen = !isChatOpen;
         chatWindow.classList.toggle('open');
+        badge.classList.remove('show');
         if (isChatOpen) {
             toggleBtn.style.transform = 'scale(0)';
             setTimeout(() => toggleBtn.style.display = 'none', 300);
@@ -140,257 +221,132 @@ Quy tắc giao tiếp bắt buộc:
         setTimeout(() => toggleBtn.style.transform = 'scale(1)', 10);
     });
 
-    // CRM Integration Configuration
-    const sessionId = 'ses_' + Math.random().toString(36).substr(2, 9);
-    const CRM_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzR391uHa8ityRntWm3ooW0J6XprapwE3OE3x2dJ9sDFBTzW2neBQC5SB2jCEQQ9CgB7A/exec"; // Webhook link Google Sheets của bạn
+    refreshBtn.addEventListener('click', () => {
+        if (confirm("Làm mới cuộc trò chuyện? (Lịch sử chat hiện tại sẽ bị xóa)")) {
+            messagesContainer.innerHTML = '';
+            messageHistory = [];
+            userMessageCount = 0;
+            isLeadCaptured = false;
+            addMessage(DEFAULT_GREETING);
+        }
+    });
 
+    // CRM Integration (Google Sheets Webhook)
     async function pushToCRM(data) {
-        if (!CRM_WEBHOOK_URL) return;
+        const WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzR391uHa8ityRntWm3ooW0J6XprapwE3OE3x2dJ9sDFBTzW2neBQC5SB2jCEQQ9CgB7A/exec";
         try {
+            // Chuẩn hoá dữ liệu trước khi gửi
             const payload = {
-                sessionId: sessionId,
-                timestamp: new Date().toLocaleString('vi-VN'),
+                timestamp: new Date().toISOString(),
                 source: window.location.href,
                 ...data
             };
-            // Sử dụng fetch với mode no-cors để gửi dữ liệu về Google Sheets mà không bị chặn CORS bởi trình duyệt
-            await fetch(CRM_WEBHOOK_URL, {
+            
+            // Chế độ 'no-cors' để tránh lỗi CORS khi gọi Apps Script trực tiếp từ trình duyệt
+            await fetch(WEBHOOK_URL, {
                 method: 'POST',
                 mode: 'no-cors',
+                cache: 'no-cache',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
         } catch (e) {
-            console.error("CRM Push Error:", e);
+            console.warn("CRM Sync failed", e);
         }
     }
 
-    // In lời chào lúc refresh
-    function appendGreeting() {
-        let msgHtml = '';
-        if (typeof marked !== 'undefined') {
-             msgHtml = `<div class="chatbot-message bot chat-markdown">${marked.parse(DEFAULT_GREETING)}</div>`;
-        } else {
-             msgHtml = `<div class="chatbot-message bot chat-markdown">${DEFAULT_GREETING}</div>`;
-        }
-        messagesContainer.insertAdjacentHTML('beforeend', msgHtml);
-        messageHistory = [
-            { role: "system", content: getSystemPrompt() },
-            { role: "assistant", content: DEFAULT_GREETING }
-        ];
-    }
-
-    // Refresh Btn logic
-    refreshBtn.addEventListener('click', () => {
-        const icon = refreshBtn.querySelector('span');
-        icon.classList.add('spin'); // Thêm hiệu ứng xoay icon refresh
-        
-        // Xóa toàn bộ lịch sử chat bằng cách gán rỗng
-        messagesContainer.innerHTML = '';
-        
-        // In lại câu thiết lập chào mặc định ban đầu
-        appendGreeting();
-
-        // Gỡ hiệu ứng xoay của icon sau đúng 500ms
-        setTimeout(() => {
-            icon.classList.remove('spin');
-        }, 500);
-    });
-
-    // Cài Auto-resize cho user input textarea
-    chatInput.addEventListener('input', function() {
-        this.style.height = 'auto';
-        this.style.height = (this.scrollHeight) + 'px';
-        if (this.value.trim().length > 0) {
-            sendBtn.disabled = false;
-        } else {
-            sendBtn.disabled = true;
-        }
-    });
-
-    // Nhấn Enter để gửi (nếu muốn dấu Enter xuống dòng phải bấm Shift+Enter)
-    chatInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
-            e.preventDefault();
-            sendMessage();
-        }
-    });
-
-    sendBtn.addEventListener('click', sendMessage);
-
-    // Gắn tin nhắn vào màn UI
-    function addMessageUI(content, sender, isMarkdown = false) {
-        const div = document.createElement('div');
-        div.className = `chatbot-message ${sender}`;
-        if (isMarkdown && sender === 'bot' && typeof marked !== 'undefined') {
-            div.classList.add('chat-markdown');
-            div.innerHTML = marked.parse(content);
-        } else {
-            div.textContent = content;
-        }
-        messagesContainer.appendChild(div);
-        
-        // Gắn sự kiện click nếu là ảnh để xem to
-        const images = div.getElementsByTagName('img');
-        const modalImg = modal.querySelector('#modal-img');
-        const modalTable = modal.querySelector('#modal-table-container');
-
-        for (let img of images) {
-            img.addEventListener('click', () => {
-                modalImg.src = img.src;
-                modalImg.style.display = 'block';
-                modalTable.style.display = 'none';
-                modal.classList.add('active');
-            });
-        }
-
-        // Gắn sự kiện click nếu là bảng báo giá để xem to
-        const tables = div.getElementsByTagName('table');
-        for (let table of tables) {
-            table.style.cursor = 'zoom-in';
-            table.title = "Click để xem bảng lớn hơn";
-            table.addEventListener('click', () => {
-                modalTable.innerHTML = table.outerHTML;
-                modalTable.style.display = 'block';
-                modalImg.style.display = 'none';
-                modal.classList.add('active');
-            });
-        }
-
-        scrollToBottom();
-    }
-
-    // Hiệu ứng "Đang nhập..." chờ AI
-    function showTypingIndicator() {
-        const div = document.createElement('div');
-        div.className = 'typing-indicator';
-        div.id = 'typing-indicator';
-        div.innerHTML = `
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
-            <div class="typing-dot"></div>
-            <span class="typing-text">Đang nhập...</span>
-        `;
-        messagesContainer.appendChild(div);
-        scrollToBottom();
-    }
-
-    function hideTypingIndicator() {
-        const el = document.getElementById('typing-indicator');
-        if (el) el.remove();
-    }
-
-    // Scroll tự động xuống tin nhắn cuối
-    function scrollToBottom() {
-        messagesContainer.scrollTop = messagesContainer.scrollHeight;
-    }
-
-    let isSending = false;
-
-    // Lấy thông tin LLM
     async function sendMessage() {
-        if (isSending) return;
         const text = chatInput.value.trim();
         if (!text) return;
 
-        isSending = true;
+        addMessage(text, true);
         chatInput.value = '';
         chatInput.style.height = 'auto';
         sendBtn.disabled = true;
-
-        addMessageUI(text, 'user');
+        
+        userMessageCount++;
         messageHistory.push({ role: "user", content: text });
-        userMessageCount++; // Tăng biến đếm mỗi khi khách gửi tin nhắn
+
+        // Logic thu thập Lead (SĐT)
+        const phoneRegex = /(0[3|5|7|8|9])+([0-9]{8})\b/g;
+        const foundPhone = text.match(phoneRegex);
+        if (foundPhone && !isLeadCaptured) {
+            isLeadCaptured = true;
+            pushToCRM({ 
+                type: 'lead_capture', 
+                status: 'success', 
+                customer_phone: foundPhone[0],
+                last_message: text 
+            });
+        }
+
+        // Logic gửi báo cáo định kỳ (Tăng khả năng chốt sale ngay cả khi khách chưa để lại SĐT)
+        if (userMessageCount % 5 === 0 && !isLeadCaptured) {
+             pushToCRM({ 
+                type: 'potential_interest', 
+                status: 'engaged', 
+                message_count: userMessageCount,
+                last_activity: text
+            });
+        }
 
         showTypingIndicator();
 
         try {
-            // Nạp Knowledge Base vào system roles khi refresh chưa có data
-            if (messageHistory.length > 0 && messageHistory[0].role === "system") {
-                messageHistory[0].content = getSystemPrompt();
-            }
+            const systemPrompt = `Bạn là Trợ lý bán hàng chuyên nghiệp của Sơn Lotus. 
+Dưới đây là kiến thức của bạn: 
+${knowledgeBase}
+
+HƯỚNG DẪN TRẢ LỜI:
+1. Luôn lịch sự, niềm nở. Sử dụng Markdown để trình bày (đặc biệt là Bảng cho báo giá).
+2. Nếu khách hỏi giá, hãy trình bày bằng bảng (Quy cách, 1kg, 5kg, 20kg).
+3. Nếu khách hỏi quy trình, hãy nêu các bước rõ ràng và đính kèm Link ảnh nếu có trong dữ liệu.
+4. Ưu tiên hướng dẫn khách để lại SĐT để được tư vấn kỹ thuật/pha màu miễn phí.
+5. Luôn ưu tiên dùng kiến thức trong file đính kèm. Nếu không có, hãy trả lời dựa trên định vị thương hiệu là Sơn hệ nước an toàn.`;
 
             const response = await fetch(OPENROUTER_URL, {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
-                    "Content-Type": "application/json",
-                    "HTTP-Referer": window.location.href, // OpenRouter yêu cầu
-                    "X-Title": "Lotus Chatbot" // Định danh của AI Client
+                    "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     model: OPENROUTER_MODEL,
-                    messages: messageHistory,
-                    temperature: 0.7
+                    messages: [
+                        { role: "system", content: systemPrompt },
+                        ...messageHistory.slice(-10) // Gửi 10 tin nhắn gần nhất để giữ ngữ cảnh
+                    ]
                 })
             });
 
-            if (!response.ok) {
-                throw new Error("HTTP error " + response.status);
-            }
-
             const data = await response.json();
-            hideTypingIndicator(); // xóa dòng hiệu ứng dấu 3 chấm nhảy
-
-            if (data.choices && data.choices[0] && data.choices[0].message) {
+            removeTypingIndicator();
+            
+            if (data.choices && data.choices[0]) {
                 const botReply = data.choices[0].message.content;
-                messageHistory.push({ role: "assistant", content: botReply });
-                addMessageUI(botReply, 'bot', true);
-
-                // Tự động Gửi lịch sử chat vào email và Google Sheets nếu khách để lại SĐT
-                const phoneRegex = /(03|05|07|08|09)+([0-9]{8})\b/g;
-                const foundPhone = text.match(phoneRegex);
-                
-                let log = messageHistory
-                    .filter(m => m.role !== 'system')
-                    .map(m => (m.role === 'user' ? 'Khách hàng: ' : 'Chatbot: ') + m.content)
-                    .join('\n\n---\n\n');
-
-                if (foundPhone) {
-                    isLeadCaptured = true; // Đánh dấu đã có lead
-                    
-                    // 1. Gửi về CRM Google Sheets (Type Lead)
-                    pushToCRM({
-                        type: 'lead_captured',
-                        phone: foundPhone[0],
-                        chat_history: log
-                    });
-
-                    // 2. Gửi Email thông báo
-                    fetch("https://formsubmit.co/ajax/sales@sonlotus.vn", {
-                        method: "POST",
-                        headers: { 
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({
-                            _subject: "🛒 [CHATBOT] CÓ KHÁCH HÀNG ĐỂ LẠI SỐ ĐIỆN THOẠI!",
-                            _template: "box",
-                            "Dữ_Liệu_Lịch_Sử_Chat": log
-                        })
-                    }).catch(e => console.error(e));
-                } else if (!isLeadCaptured && userMessageCount > 0 && userMessageCount % 5 === 0) {
-                    // Nếu chưa có SĐT và cứ sau mỗi 5 câu hỏi của khách, lưu log "Khách quan tâm"
-                    pushToCRM({
-                        type: 'potential_interest',
-                        phone: "Chưa có SĐT",
-                        chat_history: log
-                    });
-                }
+                addMessage(botReply);
             } else {
-                throw new Error("Dữ liệu phản hồi không đúng cấu trúc.");
+                addMessage("Xin lỗi, tôi gặp chút trục trặc khi kết nối. Bạn có thể thử lại sau giây lát!");
             }
         } catch (error) {
-            console.error(error);
-            hideTypingIndicator();
-            addMessageUI("Xin lỗi, tôi đang gặp sự cố khi kết nối đền máy chủ AI. Vui lòng thử lại sau.", "bot");
-        } finally {
-            isSending = false;
+            removeTypingIndicator();
+            console.error("Chat Error:", error);
+            addMessage("Rất tiếc, hệ thống đang bận. Bạn vui lòng nhắn lại sau nhé!");
         }
     }
 
-    // Mở trang với load content
-    loadKnowledgeBase().then(() => {
-        appendGreeting();
+    // Event Listeners
+    sendBtn.addEventListener('click', sendMessage);
+    chatInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+
+    chatInput.addEventListener('input', () => {
+        chatInput.style.height = 'auto';
+        chatInput.style.height = (chatInput.scrollHeight) + 'px';
+        sendBtn.disabled = chatInput.value.trim() === '';
     });
 })();
