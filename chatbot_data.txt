@@ -28,7 +28,7 @@ TẤT CẢ sản phẩm luôn có 3 kích cỡ:
 
 1. SƠN LAU GỖ (WOOD STAIN):
 * Hình ảnh: ![Bảng Màu Sơn Lau Gỗ](https://w.ladicdn.com/s750x600/5e3e73f71adefa2bf15bd42f/bang-mau-son-lau-go-wood-stain-20251117100611-kv5yl.png)
-* Đặc điểm: Giữ vân gỗ tự nhiên (Óc chó, Cánh gián, Gỗ Sồi...).
+* 特 điểm: Giữ vân gỗ tự nhiên (Óc chó, Cánh gián, Gỗ Sồi...).
 
 2. SƠN GIẢ GỖ (CẦN HỎI RÕ BỀ MẶT):
 * Trên Xi măng/Conwood/Cemboard: ![Bảng Màu Sơn Giả Gỗ trên Xi Măng](https://w.ladicdn.com/s1300x1600/5e3e73f71adefa2bf15bd42f/bang-mau-son-gia-go-lotus-2999-20251208134932-nwilo.png)
@@ -80,7 +80,13 @@ TẤT CẢ sản phẩm luôn có 3 kích cỡ:
 * Bước 2: Quét cọ tạo vân (2 lớp).
 * Bước 3: Phủ bóng Lotus Shield (hoặc Hard Shield cho nền sàn).
 
-4. SƠN LAU GỖ (WOOD STAIN):
+4. QUY TRÌNH SƠN BỆT 1K (TIỆN LỢI, NHANH CHÓNG):
+* **Hình ảnh quy trình:** ![Quy trình Sơn Bệt 1K](https://w.ladicdn.com/s1300x1200/5e3e73f71adefa2bf15bd42f/quy-trinh-son-bet-lotus-1k-20251227210356-6m94l.jpg)
+* **Bước 1:** Sau khi xử lý mịn bề mặt, dùng **sơn lót trắng gỗ Lotus Wood Primer**. Sơn 1-2 lớp để làm mịn & phẳng bề mặt. (Lưu ý: Đối với gỗ tự nhiên nhiều nhựa, nên dùng loại lót chuyên dụng để khoá dầu tannin).
+* **Bước 2:** Dùng **sơn bệt Lotus Wood Paint IN** với 70+ màu có sẵn. Có thể pha màu theo yêu cầu. (Lưu ý: Có thể điều chỉnh độ bóng/mờ từ G5 - G90. Nếu dùng ngoài trời thì sử dụng mã sản phẩm dòng **Ex**).
+* **Bước 3 (Giai đoạn bảo vệ - Nếu cần thiết):** Sơn phủ bóng trong suốt để bảo vệ bề mặt bằng **Lotus Acrylic Lacquer indoor**. (Lưu ý: Đối với hạng mục ngoài trời nên dùng **Lotus Acrylic Lacquer outdoor**).
+
+5. SƠN LAU GỖ (WOOD STAIN):
 * Bước 1: Lau Wood Stain bằng mút/vải. (Không xả nhám sau lau).
 * Bước 2: Phun lót Sanding Sealer. Khô 1-2h rồi xả nhám mịn.
 * Bước 3: Phủ bóng/mờ Acrylic Lacquer.
