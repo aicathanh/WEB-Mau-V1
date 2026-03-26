@@ -26,6 +26,10 @@
     position: relative;
 }
 
+#chatbot-toggle span {
+    font-size: 32px;
+}
+
 .chatbot-badge {
     position: absolute;
     top: -5px;
