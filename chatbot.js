@@ -80,6 +80,22 @@
         marked.setOptions({ breaks: true, gfm: true });
     }
 
+    // CRM & Lead Capture Configuration
+    const sessionId = 'ses_' + Math.random().toString(36).substr(2, 9);
+    const CRM_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbzR391uHa8ityRntWm3ooW0J6XprapwE3OE3x2dJ9sDFBTzW2neBQC5SB2jCEQQ9CgB7A/exec";
+
+    async function pushToCRM(data) {
+        if (!CRM_WEBHOOK_URL) return;
+        try {
+            await fetch(CRM_WEBHOOK_URL, {
+                method: "POST",
+                mode: 'no-cors', // Google Apps Script yêu cầu no-cors khi gửi POST trực tiếp từ client
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...data, sessionId })
+            });
+        } catch (e) { console.error("CRM Error:", e); }
+    }
+
     async function loadKnowledgeBase() {
         try {
             const response = await fetch('https://web-mau-v1.vercel.app/chatbot_data.txt');
@@ -193,6 +209,33 @@ Kiến thức: ${knowledgeBase}.`;
                 const reply = data.choices[0].message.content;
                 messageHistory.push({ role: "assistant", content: reply });
                 addMessageUI(reply, 'bot', true);
+
+                // Lead Capture: Tự động gửi Email và Google Sheets khi có SĐT
+                if (isLeadCaptured) {
+                    const chatLog = messageHistory
+                        .filter(m => m.role !== 'system')
+                        .map(m => (m.role === 'user' ? 'Khách: ' : 'Sol: ') + m.content)
+                        .join('\n\n');
+                    
+                    // 1. Gửi về Google Sheets
+                    pushToCRM({
+                        phone: text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/)?.[0] || 'N/A',
+                        chat_history: chatLog,
+                        source: window.location.hostname
+                    });
+
+                    // 2. Gửi Email thông báo
+                    fetch("https://formsubmit.co/ajax/sales@sonlotus.vn", {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            _subject: "🔔 [CHATBOT] CÓ KHÁCH HÀNG ĐỂ LẠI SỐ ĐIỆN THOẠI!",
+                            _template: "table",
+                            "SĐT_Khách": text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/)?.[0],
+                            "Lịch_Sử_Chat": chatLog
+                        })
+                    }).catch(e => console.error("Email Error:", e));
+                }
             }
         } catch (error) {
             hideTyping();
