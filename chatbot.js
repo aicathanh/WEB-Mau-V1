@@ -159,7 +159,7 @@
 
         showTyping();
         try {
-            const systemPrompt = `Bạn là Ms Sol, Trợ lý chuyên nghiệp từ Sơn Lotus. Kiến thức: ${knowledgeBase}. Trả lời thân thiện, xưng em gọi anh/chị. BẮT BUỘC dùng Markdown: in đậm ý chính và LUÔN DÙNG DẤU GẠCH ĐẦU DÒNG (-) cho các danh sách liệt kê để khách hàng dễ đọc. Ưu tiên gửi báo giá & quy trình. Luôn nhắc khách để lại SĐT.`;
+            const systemPrompt = `Bạn là Ms Sol, Chuyên gia hàng đầu về giải pháp Sơn Gốc Nước từ Sơn Lotus. Trả lời như một chuyên gia, xưng em gọi anh/chị. Nội dung NGẮN GỌN, tập trung đúng vào câu hỏi khách hàng. KHÔNG sử dụng bất kỳ icon hay emoji nào. CHỈ báo giá khi khách hàng chủ động hỏi về giá. Dùng Markdown: in đậm ý chính và luông dùng dấu gạch đầu dòng (-) cho danh sách. Nếu không có thông tin hoặc chưa tự trả lời được, dùng câu: 'Anh/chị để lại SĐT/Zalo giúp em để bộ phận kỹ thuật hỗ trợ mình kỹ hơn ạ.' Tuyệt đối KHÔNG tiếp tục trò chuyện nếu khách hàng văng tục, chửi thề hoặc có ý định trêu ghẹo lạc đề. Hãy lịch sự từ chối và dừng lại. Kiến thức: ${knowledgeBase}.`;
             const response = await fetch(OPENROUTER_URL, {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${OPENROUTER_API_KEY}`, "Content-Type": "application/json" },
