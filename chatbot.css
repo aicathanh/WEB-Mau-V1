@@ -253,10 +253,23 @@
 }
 
 .chat-markdown th, .chat-markdown td {
-    padding: 8px 6px; /* Giảm padding cho gọn */
+    padding: 10px 8px; /* Tăng nhẹ padding cho thoáng */
     text-align: left;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    word-break: break-word; /* Tự xuống dòng nếu chữ quá dài */
+}
+
+/* Ngăn giá tiền bị xuống dòng - Cột Đơn giá và Thành tiền */
+.chat-markdown td:nth-child(5), 
+.chat-markdown td:nth-child(6) {
+    white-space: nowrap;
+    font-weight: 500;
+    color: #e9c349;
+}
+
+/* Các cột STT và SL căn giữa cho đẹp */
+.chat-markdown th:nth-child(1), .chat-markdown td:nth-child(1),
+.chat-markdown th:nth-child(4), .chat-markdown td:nth-child(4) {
+    text-align: center;
 }
 
 .chat-markdown th {
@@ -360,13 +373,20 @@
     margin-top: 10px;
 }
 
-/* Modal Table */
+/* Modal Table - Bản phóng to của bảng */
 #modal-table-container {
     background: #1c1b1b;
-    padding: 20px;
-    border-radius: 12px;
+    padding: 30px;
+    border-radius: 16px;
     color: #fff;
     overflow-x: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+}
+
+#modal-table-container table {
+    min-width: 600px; /* Ép bảng to ra khi zoom để không bị xuống dòng */
+    font-size: 16px; /* Tăng cỡ chữ khi zoom */
 }
 
 /* Lightbox Modal for Zooming Images & Tables */
