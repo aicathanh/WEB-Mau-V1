@@ -237,33 +237,34 @@
     font-size: 1.1em;
 }
 
-/* Table Styles - Định dạng bảng báo giá */
+/* Table Styles - Định dạng bảng báo giá giống Excel */
 .chat-markdown table {
     width: 100% !important;
     max-width: 100% !important;
     border-collapse: collapse;
     margin: 12px 0;
-    font-size: 13px; /* Giảm nhẹ font size bảng cho vừa khung */
-    background: rgba(45, 45, 45, 0.95);
-    border-radius: 8px;
+    font-size: 13px;
+    background: #ffffff; /* Đổi về nền trắng như Excel */
+    color: #333; /* Chữ tối màu */
+    border-radius: 4px;
     overflow: hidden;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #000000;
     table-layout: auto;
-    cursor: zoom-in; /* Báo hiệu có thể click vào để phóng to */
+    cursor: zoom-in;
 }
 
 .chat-markdown th, .chat-markdown td {
-    padding: 10px 8px; /* Tăng nhẹ padding cho thoáng */
+    padding: 10px 8px;
     text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid #000000; /* Viền bao quanh từng ô */
 }
 
-/* Ngăn giá tiền bị xuống dòng - Cột Đơn giá và Thành tiền */
+/* Các cột giá tiền vẫn căn vàng cho chuyên nghiệp */
 .chat-markdown td:nth-child(5), 
-.chat-markdown td:nth-child(6) {
+.chat-markdown td:nth-child(7) {
     white-space: nowrap;
-    font-weight: 500;
-    color: #e9c349;
+    font-weight: bold;
+    color: #d32f2f; /* Màu đỏ cho giá để khách dễ thấy */
 }
 
 /* Các cột STT và SL căn giữa cho đẹp */
