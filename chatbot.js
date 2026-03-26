@@ -156,6 +156,8 @@
         addMessageUI(text, 'user');
         messageHistory.push({ role: "user", content: text });
         userMessageCount++;
+        const phoneRegex = /(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/;
+        if (phoneRegex.test(text)) { isLeadCaptured = true; }
 
         showTyping();
         try {
@@ -174,8 +176,8 @@ QUY TẮC HIỂN THỊ HÌNH ẢNH (BẢNG MÀU/QUY TRÌNH):
 QUY TẮC GIÁ CẢ & KHÁC:
 - Tuyệt đối KHÔNG liệt kê bảng giá/đơn giá trừ khi khách hỏi giá cụ thể.
 - Dùng Markdown: in đậm ý chính và dấu gạch đầu dòng (-).
-- Nếu không biết rõ: 'Anh/chị để lại SĐT/Zalo giúp em để bộ phận kỹ thuật hỗ trợ mình kỹ hơn ạ.'
-- Nhắc khách để lại SĐT khi cần báo giá sâu.
+${isLeadCaptured ? "- KHÁCH ĐÃ CUNG CẤP SĐT RỒI. Tuyệt đối KHÔNG hỏi lại SĐT hay Zalo nữa. Nếu gặp vấn đề chưa rõ, hãy nói: 'Dạ em đã nhận thông tin, bộ phận kỹ thuật sẽ sớm liên hệ mình ạ.'" : "- Nếu khách chưa cung cấp SĐT, hãy chủ động nhắc khách để lại SĐT/Zalo khi cần tư vấn sâu, báo giá cụ thể hoặc khi bạn chưa tự trả lời được (câu: 'Anh/chị để lại SĐT/Zalo giúp em để bộ phận kỹ thuật hỗ trợ mình kỹ hơn ạ.')."}
+- Nhắc khách để lại SĐT khi cần báo giá sâu (nếu chưa có).
 Kiến thức: ${knowledgeBase}.`;
             const response = await fetch(OPENROUTER_URL, {
                 method: "POST",
