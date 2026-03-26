@@ -236,6 +236,41 @@
     font-size: 1.1em;
 }
 
+/* Table Styles - Định dạng bảng báo giá */
+.chat-markdown table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-markdown th, .chat-markdown td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chat-markdown th {
+    background: rgba(233, 195, 73, 0.2);
+    color: #e9c349;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.chat-markdown tr:last-child td {
+    border-bottom: none;
+}
+
+.chat-markdown tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
 .chatbot-footer {
     padding: 15px;
     background: rgba(0,0,0,0.1);
