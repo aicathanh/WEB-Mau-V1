@@ -91,14 +91,6 @@
         const messageWrapper = document.createElement('div');
         messageWrapper.className = `chatbot-message-wrapper ${sender}`;
         
-        // Add Avatar for Bot
-        if (sender === 'bot') {
-            const avatar = document.createElement('div');
-            avatar.className = 'bot-avatar-small';
-            avatar.innerHTML = 'S'; // 'S' for Sol
-            messageWrapper.appendChild(avatar);
-        }
-
         const div = document.createElement('div');
         div.className = `chatbot-message ${sender}`;
         if (isMarkdown && sender === 'bot' && typeof marked !== 'undefined') {
@@ -167,7 +159,7 @@
 
         showTyping();
         try {
-            const systemPrompt = `Bạn là Ms Sol, Trợ lý chuyên nghiệp từ Sơn Lotus. Kiến thức: ${knowledgeBase}. Trả lời thân thiện, xưng em gọi anh/chị. Dùng Markdown. Ưu tiên gửi báo giá & quy trình. Luôn nhắc khách để lại SĐT.`;
+            const systemPrompt = `Bạn là Ms Sol, Trợ lý chuyên nghiệp từ Sơn Lotus. Kiến thức: ${knowledgeBase}. Trả lời thân thiện, xưng em gọi anh/chị. BẮT BUỘC dùng Markdown: in đậm ý chính và LUÔN DÙNG DẤU GẠCH ĐẦU DÒNG (-) cho các danh sách liệt kê để khách hàng dễ đọc. Ưu tiên gửi báo giá & quy trình. Luôn nhắc khách để lại SĐT.`;
             const response = await fetch(OPENROUTER_URL, {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${OPENROUTER_API_KEY}`, "Content-Type": "application/json" },
