@@ -386,8 +386,25 @@
 }
 
 #modal-table-container table {
-    min-width: 600px; /* Ép bảng to ra khi zoom để không bị xuống dòng */
-    font-size: 16px; /* Tăng cỡ chữ khi zoom */
+    width: 100% !important;
+    min-width: 800px; /* Ép bảng to ra khi zoom để hiển thị chuyên nghiệp như Excel */
+    font-size: 16px;
+    background: #ffffff;
+    color: #333;
+    border-collapse: collapse;
+    border: 1px solid #000000;
+}
+
+#modal-table-container th, #modal-table-container td {
+    padding: 12px 15px;
+    border: 1px solid #000000;
+    text-align: left;
+}
+
+#modal-table-container th {
+    background: #b6d7a8;
+    color: #000 !important;
+    font-weight: bold;
 }
 
 /* Lightbox Modal for Zooming Images & Tables */
