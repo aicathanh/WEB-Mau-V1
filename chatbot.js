@@ -88,6 +88,17 @@
     }
 
     function addMessageUI(content, sender, isMarkdown = false) {
+        const messageWrapper = document.createElement('div');
+        messageWrapper.className = `chatbot-message-wrapper ${sender}`;
+        
+        // Add Avatar for Bot
+        if (sender === 'bot') {
+            const avatar = document.createElement('div');
+            avatar.className = 'bot-avatar-small';
+            avatar.innerHTML = 'S'; // 'S' for Sol
+            messageWrapper.appendChild(avatar);
+        }
+
         const div = document.createElement('div');
         div.className = `chatbot-message ${sender}`;
         if (isMarkdown && sender === 'bot' && typeof marked !== 'undefined') {
@@ -96,7 +107,9 @@
         } else {
             div.textContent = content;
         }
-        messagesContainer.appendChild(div);
+        
+        messageWrapper.appendChild(div);
+        messagesContainer.appendChild(messageWrapper);
         
         // Image zoom & Table zoom logic
         div.querySelectorAll('img').forEach(img => {
@@ -213,7 +226,7 @@
     });
 
     chatInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+        if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); sendMessage(); }
     });
 
     sendBtn.addEventListener('click', sendMessage);
