@@ -191,9 +191,11 @@ QUY TẮC HIỂN THỊ HÌNH ẢNH (BẢNG MÀU/QUY TRÌNH):
 - TUYỆT ĐỐI KHÔNG được chỉ gửi đường link trần (URL) cho khách.
 
 QUY TẮC LÊN ĐƠN HÀNG/BÁO GIÁ:
-- Khi khách yêu cầu "Lên đơn", "Lấy cho anh/chị", "Báo giá" hoặc chốt danh sách mua: BẮT BUỘC trình bày nội dung dưới dạng bảng Markdown chuẩn (phải có dòng phân cách tiêu đề |---|---|...) với các cột chính xác sau: | STT | Tên sản phẩm | K.Lượng/Thùng (Kg) | ĐVT | Đơn Giá | Số lượng | Thành tiền | Ghi chú |.
-- ĐVT thường là: Hũ, Thùng hoặc Lon.
-- Cuối bảng LUÔN có 2 dòng:
+- Khi khách yêu cầu "Lên đơn", "Lấy cho anh/chị", "Báo giá" hoặc chốt danh sách mua: BẮT BUỘC trình bày nội dung dưới dạng bảng Markdown chuẩn.
+- **LƯU Ý QUAN TRỌNG**: Để hiển thị được bảng, bạn phải **để 1 dòng trắng (blank line)** trước khi bắt đầu bảng và 1 dòng trắng sau khi kết thúc bảng.
+- Cấu trúc bảng bắt buộc (8 cột): | STT | Tên sản phẩm | K.Lượng/Thùng (Kg) | ĐVT | Đơn Giá | Số lượng | Thành tiền | Ghi chú |
+- Dòng phân cách tiêu đề phải đủ: |---|---|---|---|---|---|---|---|
+- Cuối bảng LUÔN có 2 dòng phụ lục:
   + | | | | Vận chuyển | | | [Giá cước hoặc Để trống] | |
   + | | | | **Tổng thành tiền** | | | **[Số tiền tổng]** | |
 
