@@ -70,6 +70,7 @@
     // State
     let knowledgeBase = '';
     let isChatOpen = false;
+    let isSending = false;
     let messageHistory = [];
     let userMessageCount = 0;
     let isLeadCaptured = false;
@@ -205,8 +206,11 @@
     }
 
     async function sendMessage() {
+        if (isSending) return;
         const text = chatInput.value.trim();
         if (!text) return;
+        
+        isSending = true;
         chatInput.value = '';
         chatInput.style.height = 'auto';
         sendBtn.disabled = true;
@@ -323,6 +327,9 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
         } catch (error) {
             hideTyping();
             addMessageUI("Xin lỗi, Sol đang bận một chút, bạn thử lại sau nhé!", "bot");
+        } finally {
+            isSending = false;
+            sendBtn.disabled = !chatInput.value.trim();
         }
     }
 
@@ -361,7 +368,7 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
     });
 
     chatInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' && !e.shiftKey) {
+        if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) {
             e.preventDefault();
             if (chatInput.value.trim()) sendMessage();
         }
