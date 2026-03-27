@@ -118,7 +118,7 @@
                 let foundHeader = false;
                 fixedContent = lines.map(line => {
                     const trimmed = line.trim();
-                    if (trimmed.startsWith("STT") || trimmed.match(/^\d+\s+/)) {
+                    if (trimmed.startsWith("STT") || trimmed.match(/^\d+[.\/\s-]/)) {
                         foundHeader = true;
                         // Tách cột bằng ít nhất 2 dấu cách hoặc tab
                         const cols = trimmed.split(/\s{2,}/);

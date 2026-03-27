@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Table Fixer</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .chat-markdown table { border-collapse: collapse; width: 100%; border: 1px solid black; }
+        .chat-markdown th, .chat-markdown td { border: 1px solid black; padding: 5px; }
+        .chat-markdown th { background-color: #b6d7a8; }
+    </style>
+</head>
+<body>
+    <div id="test-output"></div>
+    <script>
+        function testFixer(content) {
+            let fixedContent = content;
+            if (fixedContent.includes("STT") && fixedContent.includes("Tên sản phẩm") && !fixedContent.includes("|")) {
+                const lines = fixedContent.split('\n');
+                let foundHeader = false;
+                fixedContent = lines.map(line => {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith("STT") || trimmed.match(/^\d+\s+/)) {
+                        foundHeader = true;
+                        const cols = trimmed.split(/\s{2,}/);
+                        return '| ' + cols.join(' | ') + ' |';
+                    }
+                    if (foundHeader && trimmed === "") { foundHeader = false; }
+                    return line;
+                }).join('\n');
+                if (fixedContent.includes("| STT |") && !fixedContent.includes("|---|")) {
+                    fixedContent = fixedContent.replace(/\| STT \|.*\|/g, "$&\n|---|---|---|---|---|---|---|---|");
+                }
+            }
+            document.getElementById('test-output').innerHTML = marked.parse(fixedContent);
+        }
+
+        const badContent = "Dưới đây là báo giá:\nSTT   Tên sản phẩm   ĐVT   Đơn Giá\n1   Sơn lót   Hũ   145.800đ\n2   Sơn phủ   Thùng   939.600đ";
+        testFixer(badContent);
+    </script>
+</body>
+</html>
