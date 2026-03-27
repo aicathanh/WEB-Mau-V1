@@ -309,3 +309,24 @@ Khi khách muốn sơn giả gỗ trên kim loại, hãy tư vấn theo Gói Com
     A: Độ ẩm gỗ phải đạt mức 8–12%. Nếu gỗ còn ẩm (gỗ mới, gỗ ngoài trời vừa qua mùa mưa), cần phơi hoặc sấy khô đạt mức này. Sơn lên gỗ ẩm là nguyên nhân hàng đầu gây bong tróc sau 1–3 tháng sử dụng.
   - **Q: Thời tiết như thế nào thì không nên thi công Wood Primer?**
     A: Tránh thi công khi: Trời mưa (độ ẩm >85%), Nhiệt độ dưới 15°C (khô chậm, dễ trắng đục màng sơn), Nắng gắt chiếu trực tiếp (khô không đều) hoặc có Gió mạnh (gây dính bụi). Tốt nhất là thi công nơi thông thoáng, nhiệt độ 20–35°C.
+
+---
+
+### KIẾN THỨC CHUYÊN SÂU (TDS): LOTUS WOODSTAIN FINISH (NGOẠI THẤT & SÀN)
+* **Sản phẩm:** Lotus Woodstain Finish (Sơn hoàn thiện màu + bảo vệ 2-trong-1).
+* **Loại:** Gốc nước, 1 thành phần.
+* **Công nghệ đặc biệt:** **Hybrid Polyurethane gốc nước** (Bền hơn và bám dính tốt hơn Polyurethane thông thường).
+* **Chứng nhận uy tín:** SGS, Quatest 3.
+* **Thông số kỹ thuật cực kỳ quan trọng:**
+  - **Tỷ trọng:** 1.15 ± 0.05 g/ml.
+  - **Màu sắc:** Theo bảng màu (Màu sắc trong suốt, giữ vân gỗ).
+  - **Độ nhớt (25°C):** 50–100 mPa.s (Độ nhớt thấp, loãng hơn Wood Primer, rất dễ thi công bằng **súng phun hoặc quét**).
+  - **Độ phủ thực tế:** **12–13 m²/lít/lớp** (Độ phủ rất cao, cực kỳ tiết kiệm sơn).
+  - **Số lớp thi công:** 1–2 lớp. Nếu khách muốn màu đậm hơn và bảo vệ tốt hơn, có thể sơn 3 lớp.
+  - **Thời gian khô chạm tay (23°C):** 1–2 giờ.
+  - **Thời gian phủ lớp kế tiếp (23°C):** 2–4 giờ.
+  - **Thời gian khô cứng đóng gói (23°C):** 12–24 giờ.
+  - **Hàm lượng rắn:** Tối thiểu 25%.
+  - **Pha loãng:** Nước sạch, tối đa 5%.
+  - **Đóng gói:** 1kg / 5kg / 15kg.
+  - **Hạn sử dụng:** 12 tháng (Chưa mở nắp).
