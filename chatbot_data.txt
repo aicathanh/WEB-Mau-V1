@@ -282,3 +282,16 @@ Khi khách muốn sơn giả gỗ trên kim loại, hãy tư vấn theo Gói Com
   - **Tăng cường bám dính**: Tạo lớp nền vững chắc cho các lớp sơn màu và sơn phủ bên trên.
   - **Tiết kiệm sơn màu**: Giúp sơn phủ lên màu nhanh hơn, đều hơn và không bị tiêu tốn quá nhiều sơn màu do thấm vào gỗ.
   - **Bảo vệ gỗ**: Ngăn chặn sự xâm nhập của độ ẩm và tác hại môi trường trong khi chờ sơn phủ.
+* **Bộ câu hỏi Q&A chuyên sâu (Wood Primer):**
+  - **Q: Lotus Wood Primer dùng để làm gì?**
+    A: Lotus Wood Primer là sơn lót trắng gốc nước, dùng để lót nền cho gỗ trước khi sơn màu. Chức năng chính là lấp đầy lỗ chân kim, tạo bề mặt phẳng mịn và tăng bám dính cho lớp sơn màu phía trên. Nhờ đó lớp sơn màu lên đều hơn, sắc nét hơn và tiết kiệm lượng sơn màu đáng kể.
+  - **Q: Wood Primer dùng cho loại gỗ nào?**
+    A: Dùng được cho cả gỗ tự nhiên (nội và ngoại thất) và gỗ công nghiệp (MDF, HDF). Lưu ý: Đối với gỗ công nghiệp (MDF/HDF) bề mặt thường nhám và xốp hơn, bạn nên thi công 2 lớp lót để đảm bảo bề mặt phẳng mịn nhất.
+  - **Q: Có cần pha thêm gì vào Wood Primer không?**
+    A: Không cần pha gì thêm, chỉ cần khuấy đều là dùng được ngay. Nếu muốn loãng hơn cho dễ thi công, có thể pha tối đa 5–7% nước sạch. Tránh pha nhiều hơn vì sẽ làm giảm độ phủ và ảnh hưởng đến chất lượng màng sơn.
+  - **Q: Wood Primer bao lâu thì khô?**
+    A: Ở điều kiện bình thường (23°C), sơn khô chạm tay sau 30–60 phút và có thể phủ lớp kế tiếp sau 1 giờ. Thời gian khô sẽ lâu hơn nếu trời lạnh, độ ẩm cao hoặc không gian thiếu thông thoáng.
+  - **Q: Một lớp Wood Primer phủ được bao nhiêu m²?**
+    A: Độ phủ thực tế trung bình khoảng 8–10 m²/lít/lớp. Riêng với gỗ công nghiệp do bề mặt hút sơn nhiều hơn nên độ phủ sẽ thấp hơn, khoảng 6–8 m²/lít/lớp.
+  - **Q: Wood Primer có mùi không? Có an toàn không?**
+    A: Vì là sơn hệ nước nên mùi rất nhẹ, không nồng như sơn dung môi. Sản phẩm không chứa chì, thủy ngân và có hàm lượng VOC thấp, tuyệt đối an toàn cho sức khỏe thợ sơn và các gia đình có trẻ nhỏ.
