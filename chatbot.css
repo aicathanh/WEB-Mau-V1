@@ -512,4 +512,29 @@
         bottom: 70px;
         height: 70vh;
     }
+    
+    /* Optimize Lightbox for Mobile */
+    .modal-content-container {
+        max-width: 100%;
+        max-height: 95%;
+        padding: 0 10px;
+    }
+    
+    #modal-table-container {
+        padding: 10px;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Cuộn mượt trên iOS */
+    }
+    
+    #modal-table-container table {
+        min-width: 800px !important; /* Vẫn giữ bảng rộng để dễ đọc nhưng cuộn trong container */
+        font-size: 13px;
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 10px;
+        background: rgba(0, 0, 0, 0.5);
+    }
 }
