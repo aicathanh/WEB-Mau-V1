@@ -341,3 +341,25 @@ Khi khách muốn sơn giả gỗ trên kim loại, hãy tư vấn theo Gói Com
   - Sàn gỗ ngoài trời, cầu thang ngoài trời (Khu vực có mật độ đi lại và mài mòn cao).
   - **Khu vực ven biển**: Chống chịu cực tốt với tia UV gay gắt, muối biển và độ ẩm cao.
   - Các dự án cần bảo trì nhanh, rút gọn bước thi công mà vẫn đảm bảo thẩm mỹ và độ bền.
+
+---
+
+### BẢNG SO SÁNH NỘI BỘ (TƯ VẤN SẢN PHẨM NGOẠI THẤT)
+| Tiêu chí | Woodstain Finish | Polyurethane (PU) | Acrylic Lacquer |
+|---|---|---|---|
+| **Môi trường** | Ngoài trời ✓ | Ngoài trời ✓ | Ngoài trời ✓ |
+| **Tạo màu giữ vân** | ✓ (Sẵn trong sơn) | ✗ (Cần sơn lót màu) | ✗ (Cần sơn lót màu) |
+| **Lớp phủ bóng riêng** | **Không cần** | Cần | Cần |
+| **Công nghệ** | **Hybrid PU** | PU gốc nước | Acrylic |
+| **Chống tia UV** | **✓✓✓ (Tốt nhất)** | ✓✓ | ✓✓ |
+| **Self-Cleaning** | **✓ (Lá sen)** | ✗ | ✗ |
+| **Màng sơn dẻo** | **✓✓✓** | ✓✓ | ✓ |
+| **Phù hợp cho Sàn** | **✓** | ✗ | ✗ |
+| **Bám dính sơn cũ** | **✓ (Sau xử lý)** | Hạn chế | Hạn chế |
+| **Số bước thi công** | **Ít nhất** | Nhiều hơn | Nhiều hơn |
+
+### QUY TẮC TƯ VẤN NHANH:
+1. **NHU CẦU: Giữ vân gỗ + Ngoài trời + Thi công nhanh (ít bước):** Tư vấn **Lotus Woodstain Finish Exterior**.
+2. **NHU CẦU: Thêm lớp bảo vệ cực bền phủ lên trên Woodstain:** Tư vấn **Lotus Polyurethane Exterior**.
+3. **NHU CẦU: Sơn bệt (Che phủ hoàn toàn vân gỗ):** Tư vấn dùng hệ **Wood Paint Exterior** + phủ thêm **Lacquer/Polyurethane**.
+4. **NHU CẦU: Sàn gỗ ngoài trời:** Ưu tiên số 1 là **Woodstain Finish Exterior**.
