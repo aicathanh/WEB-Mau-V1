@@ -12,7 +12,7 @@
                 <div class="chatbot-header">
                     <div class="chatbot-info">
                         <div class="chatbot-avatar-container">
-                            <img src="ms-sol-avatar.png?v=1.0" alt="Ms Sol Avatar" class="chatbot-header-avatar">
+                            <img src="ms-sol-avatar.jpg?v=1.1" alt="Ms Sol Avatar" class="chatbot-header-avatar">
                             <div class="chatbot-status-indicator"></div>
                         </div>
                         <div class="chatbot-title">
@@ -38,7 +38,7 @@
                 </div>
             </div>
             <button id="chatbot-toggle" title="Chat với chúng tôi">
-                <img src="ms-sol-avatar.png?v=1.0" alt="Ms Sol" class="chatbot-toggle-avatar">
+                <img src="ms-sol-avatar.jpg?v=1.1" alt="Ms Sol" class="chatbot-toggle-avatar">
                 <div class="chatbot-badge" id="chatbot-badge">1</div>
             </button>
         </div>
