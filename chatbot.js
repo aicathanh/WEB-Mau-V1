@@ -11,7 +11,10 @@
             <div id="chatbot-window">
                 <div class="chatbot-header">
                     <div class="chatbot-info">
-                        <div class="chatbot-status-indicator"></div>
+                        <div class="chatbot-avatar-container">
+                            <img src="ms-sol-avatar.png" alt="Ms Sol Avatar" class="chatbot-header-avatar">
+                            <div class="chatbot-status-indicator"></div>
+                        </div>
                         <div class="chatbot-title">
                             Ms Sol - trợ lý sơn Lotus
                             <span class="chatbot-subtitle">Online</span>
@@ -34,8 +37,9 @@
                     </button>
                 </div>
             </div>
+            <div id="chatbot-tooltip">Dạ chào anh/chị, em là Sol đây ạ! 👋</div>
             <button id="chatbot-toggle" title="Chat với chúng tôi">
-                <span class="material-symbols-outlined">chat</span>
+                <img src="ms-sol-avatar.png" alt="Ms Sol" class="chatbot-toggle-avatar">
                 <div class="chatbot-badge" id="chatbot-badge">1</div>
             </button>
         </div>
@@ -63,6 +67,23 @@
     const chatInput = document.getElementById('chat-input');
     const sendBtn = document.getElementById('send-btn');
     const badge = document.getElementById('chatbot-badge');
+    const tooltip = document.getElementById('chatbot-tooltip');
+
+    // Auto-show tooltip after 3 seconds for attention
+    setTimeout(() => {
+        if (!isChatOpen && tooltip) {
+            tooltip.style.opacity = '1';
+            tooltip.style.transform = 'translateX(0)';
+            
+            // Hide after 7 seconds
+            setTimeout(() => {
+                if (!isChatOpen && tooltip) {
+                    tooltip.style.opacity = '0';
+                    tooltip.style.transform = 'translateX(20px)';
+                }
+            }, 7000);
+        }
+    }, 3000);
 
     // State
     let knowledgeBase = '';
@@ -331,6 +352,10 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
         chatWindow.classList.toggle('open');
         badge.classList.remove('show');
         if (isChatOpen) {
+            if (tooltip) {
+                tooltip.style.opacity = '0';
+                tooltip.style.transform = 'translateX(20px)';
+            }
             toggleBtn.style.transform = 'scale(0)';
             setTimeout(() => toggleBtn.style.display = 'none', 300);
             if (messagesContainer.children.length === 0) addMessageUI(DEFAULT_GREETING, 'bot', true);
