@@ -63,6 +63,8 @@
     const refreshBtn = document.getElementById('chatbot-refresh');
     const chatWindow = document.getElementById('chatbot-window');
     const messagesContainer = document.getElementById('chatbot-messages');
+    const chatInput = document.getElementById('chat-input');
+    const sendBtn = document.getElementById('send-btn');
     const badge = document.getElementById('chatbot-badge');
 
     // State
