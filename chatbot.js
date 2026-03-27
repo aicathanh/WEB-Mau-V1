@@ -132,7 +132,7 @@
                     fixedContent = fixedContent.replace(/\| STT \|.*\|/g, "$&\n|---|---|---|---|---|---|---|---|");
                 }
             }
-            div.innerHTML = marked.parse(fixedContent);
+            div.innerHTML = marked.parse(fixedContent.replace(/\[THÔNG TIN KHÁCH HÀNG:.*?\]/g, ""));
         } else {
             div.textContent = content;
         }
@@ -160,7 +160,24 @@
                 e.stopPropagation();
                 const modalImg = modal.querySelector('#modal-img');
                 const modalTable = modal.querySelector('#modal-table-container');
-                modalTable.innerHTML = table.outerHTML;
+                
+                // Giải pháp: Tìm thông tin khách hàng từ tin nhắn để chèn vào Header bản Zoom
+                let customerHeader = "";
+                const customerTagMatch = content.match(/\[THÔNG TIN KHÁCH HÀNG: (.*?)\]/);
+                if (customerTagMatch) {
+                    const info = customerTagMatch[1].split('|');
+                    customerHeader = `
+                        <div style="background: #f8f9fa; color: #333; padding: 20px; border: 1px solid #000; border-bottom: none; border-radius: 16px 16px 0 0; font-family: sans-serif;">
+                            <h3 style="margin: 0 0 10px 0; color: #b6d7a8; -webkit-text-stroke: 0.5px #000;">THÔNG TIN ĐƠN HÀNG / BÁO GIÁ</h3>
+                            <p style="margin: 3px 0;"><strong>Khách hàng:</strong> ${info[0] || '...'}</p>
+                            <p style="margin: 3px 0;"><strong>Số điện thoại:</strong> ${info[1] || '...'}</p>
+                            <p style="margin: 3px 0;"><strong>Địa chỉ:</strong> ${info[2] || '...'}</p>
+                            <p style="margin: 3px 0;"><strong>Ngày lập:</strong> ${new Date().toLocaleDateString('vi-VN')}</p>
+                        </div>
+                    `;
+                }
+
+                modalTable.innerHTML = customerHeader + table.outerHTML;
                 modalTable.style.display = 'block';
                 modalImg.style.display = 'none';
                 modal.classList.add('active');
@@ -219,6 +236,7 @@ QUY TẮC LÊN ĐƠN HÀNG/BÁO GIÁ:
 - Cuối bảng LUÔN có 2 dòng phụ lục:
   + | | | | Vận chuyển | | | [Giá cước hoặc Để trống] | |
   + | | | | **Tổng thành tiền** | | | **[Số tiền tổng]** | |
+- **THÔNG TIN KHÁCH HÀNG**: Nếu khách đã cung cấp Tên, SĐT, hoặc Địa chỉ, hãy LUÔN chèn thẻ ẩn sau ngay trước bảng (không hiển thị dấu ngoặc cho khách thấy): [THÔNG TIN KHÁCH HÀNG: Tên khách|Số điện thoại|Địa chỉ]
 
 QUY TẮC GIÁ CẢ & KHÁC:
 - Tuyệt đối KHÔNG liệt kê bảng giá tổng quát ở đầu câu chuyện. CHỈ liệt kê đơn giá khi khách hỏi giá cụ thể hoặc trong quá trình lên đơn hàng/báo giá ở trên.
