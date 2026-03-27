@@ -295,3 +295,17 @@ Khi khách muốn sơn giả gỗ trên kim loại, hãy tư vấn theo Gói Com
     A: Độ phủ thực tế trung bình khoảng 8–10 m²/lít/lớp. Riêng với gỗ công nghiệp do bề mặt hút sơn nhiều hơn nên độ phủ sẽ thấp hơn, khoảng 6–8 m²/lít/lớp.
   - **Q: Wood Primer có mùi không? Có an toàn không?**
     A: Vì là sơn hệ nước nên mùi rất nhẹ, không nồng như sơn dung môi. Sản phẩm không chứa chì, thủy ngân và có hàm lượng VOC thấp, tuyệt đối an toàn cho sức khỏe thợ sơn và các gia đình có trẻ nhỏ.
+  - **Q: Có bắt buộc dùng Wood Primer không? Bỏ qua lớp lót được không?**
+    A: Về mặt kỹ thuật có thể bỏ qua — nhưng TUYỆT ĐỐI KHÔNG NÊN, vì: 1. Bề mặt gỗ sẽ không đủ phẳng, lộ thớ gỗ và lỗ chân kim làm sơn màu lên không đều. 2. Tốn nhiều lớp sơn màu hơn mới đủ độ phủ. 3. Bám dính kém hơn, dễ bong tróc lâu dài. Đặc biệt với MDF/HDF, lớp lót là bắt buộc vì bề mặt hút sơn rất mạnh và không đều.
+  - **Q: Sơn mấy lớp Wood Primer là đủ?**
+    A: Thông thường 1–2 lớp. Gỗ tự nhiên đã chà nhám mịn thì 1 lớp là đủ; Gỗ công nghiệp MDF/HDF hoặc gỗ có nhiều lỗ, vết nứt nhỏ nên sơn 2 lớp để đảm bảo bề mặt phẳng hoàn toàn. Lưu ý: Sau mỗi lớp cần chà nhám nhẹ bằng giấy nhám 400–600 trước khi phủ lớp tiếp theo.
+  - **Q: Sau khi sơn Wood Primer bao lâu thì sơn màu lên?**
+    A: Cần chờ ít nhất 12 giờ sau lớp lót cuối cùng để màng sơn lót khô hoàn toàn và đạt độ cứng cần thiết trước khi phủ sơn màu hoàn thiện. Sơn màu quá sớm có thể gây lồi lõm và giảm độ bám dính.
+  - **Q: Giữa các lớp Wood Primer có cần chà nhám không?**
+    A: CÓ — đây là bước cực kỳ quan trọng. Hãy dùng giấy nhám 400–600 chà nhẹ theo chiều vân gỗ sau mỗi lớp để loại bỏ sợi gỗ dựng lên, làm phẳng bề mặt và tạo nhám vi mô cho lớp sơn kế tiếp bám chắc hơn. Nhớ lau sạch bụi trước khi sơn lớp mới.
+  - **Q: Thi công Wood Primer bằng dụng cụ gì thì tốt nhất?**
+    A: Bạn có thể chọn 1 trong 3 cách: Cọ/chổi quét (cho chi tiết nhỏ), Súng phun (cho bề mặt rộng, phẳng đều) hoặc Cọ lăn (tốc độ nhanh). Dụng cụ phải sạch và cần vệ sinh bằng nước ngay sau khi dùng.
+  - **Q: Độ ẩm gỗ bao nhiêu thì được sơn Wood Primer?**
+    A: Độ ẩm gỗ phải đạt mức 8–12%. Nếu gỗ còn ẩm (gỗ mới, gỗ ngoài trời vừa qua mùa mưa), cần phơi hoặc sấy khô đạt mức này. Sơn lên gỗ ẩm là nguyên nhân hàng đầu gây bong tróc sau 1–3 tháng sử dụng.
+  - **Q: Thời tiết như thế nào thì không nên thi công Wood Primer?**
+    A: Tránh thi công khi: Trời mưa (độ ẩm >85%), Nhiệt độ dưới 15°C (khô chậm, dễ trắng đục màng sơn), Nắng gắt chiếu trực tiếp (khô không đều) hoặc có Gió mạnh (gây dính bụi). Tốt nhất là thi công nơi thông thoáng, nhiệt độ 20–35°C.
