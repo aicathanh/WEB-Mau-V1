@@ -237,27 +237,42 @@
     font-size: 1.1em;
 }
 
-/* Table Styles - Định dạng bảng báo giá giống Excel */
+/* Table Styles - Định dạng bảng báo giá giống Excel (Tối ưu Full màn hình không cuộn) */
 .chat-markdown table {
     width: 100% !important;
     max-width: 100% !important;
     border-collapse: collapse;
     margin: 12px 0;
-    font-size: 13px;
-    background: #ffffff; /* Đổi về nền trắng như Excel */
-    color: #333; /* Chữ tối màu */
+    font-size: 9px; /* Giảm cỡ chữ tối thiểu để hiện đủ 8 cột trên Mobile */
+    background: #ffffff;
+    color: #333;
     border-radius: 4px;
     overflow: hidden;
     border: 1px solid #000000;
-    table-layout: auto;
+    table-layout: fixed; /* Ép bảng không được giãn rộng ra ngoài */
     cursor: zoom-in;
 }
 
 .chat-markdown th, .chat-markdown td {
-    padding: 10px 8px;
-    text-align: left;
-    border: 1px solid #000000; /* Viền bao quanh từng ô */
+    padding: 4px 2px; /* Giảm tối đa khoảng cách giữa các ô */
+    text-align: center;
+    border: 1px solid #000000;
+    word-break: break-word; /* Tự động xuống dòng khi nội dung dài */
 }
+
+/* Ưu tiên cột Tên sản phẩm rộng hơn một chút */
+.chat-markdown th:nth-child(2), .chat-markdown td:nth-child(2) {
+    width: 35%; 
+    text-align: left;
+}
+/* Các cột số liệu hẹp lại */
+.chat-markdown th:nth-child(1), .chat-markdown td:nth-child(1) { width: 7%; }
+.chat-markdown th:nth-child(3), .chat-markdown td:nth-child(3) { width: 10%; }
+.chat-markdown th:nth-child(4), .chat-markdown td:nth-child(4) { width: 8%; }
+.chat-markdown th:nth-child(5), .chat-markdown td:nth-child(5) { width: 13%; }
+.chat-markdown th:nth-child(6), .chat-markdown td:nth-child(6) { width: 8%; }
+.chat-markdown th:nth-child(7), .chat-markdown td:nth-child(7) { width: 14%; }
+.chat-markdown th:nth-child(8), .chat-markdown td:nth-child(8) { width: 5%; }
 
 /* Các cột giá tiền vẫn căn vàng cho chuyên nghiệp */
 .chat-markdown td:nth-child(5), 
@@ -387,18 +402,20 @@
 
 #modal-table-container table {
     width: 100% !important;
-    min-width: 800px; /* Ép bảng to ra khi zoom để hiển thị chuyên nghiệp như Excel */
-    font-size: 16px;
+    min-width: unset !important; /* Bỏ min-width để bản zoom cũng vừa màn hình điện thoại */
+    font-size: 11px; /* Tăng nhẹ cỡ chữ ở bản zoom cho dễ đọc hơn khung chat */
     background: #ffffff;
     color: #333;
     border-collapse: collapse;
     border: 1px solid #000000;
+    table-layout: fixed;
 }
 
 #modal-table-container th, #modal-table-container td {
-    padding: 12px 15px;
+    padding: 6px 3px;
     border: 1px solid #000000;
-    text-align: left;
+    text-align: center;
+    word-break: break-word;
 }
 
 #modal-table-container th {
