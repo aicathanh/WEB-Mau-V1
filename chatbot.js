@@ -111,7 +111,28 @@
         div.className = `chatbot-message ${sender}`;
         if (isMarkdown && sender === 'bot' && typeof marked !== 'undefined') {
             div.classList.add('chat-markdown');
-            div.innerHTML = marked.parse(content);
+            // GIẢI PHÁP SỬA LỖI: Tự động phát hiện và sửa lỗi bảng không có dấu |
+            let fixedContent = content;
+            if (fixedContent.includes("STT") && fixedContent.includes("Tên sản phẩm") && !fixedContent.includes("|")) {
+                const lines = fixedContent.split('\n');
+                let foundHeader = false;
+                fixedContent = lines.map(line => {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith("STT") || trimmed.match(/^\d+\s+/)) {
+                        foundHeader = true;
+                        // Tách cột bằng ít nhất 2 dấu cách hoặc tab
+                        const cols = trimmed.split(/\s{2,}/);
+                        return '| ' + cols.join(' | ') + ' |';
+                    }
+                    if (foundHeader && trimmed === "") { foundHeader = false; }
+                    return line;
+                }).join('\n');
+                // Chèn thêm dòng phân cách tiêu đề nếu thiếu
+                if (fixedContent.includes("| STT |") && !fixedContent.includes("|---|")) {
+                    fixedContent = fixedContent.replace(/\| STT \|.*\|/g, "$&\n|---|---|---|---|---|---|---|---|");
+                }
+            }
+            div.innerHTML = marked.parse(fixedContent);
         } else {
             div.textContent = content;
         }
