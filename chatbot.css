@@ -237,42 +237,36 @@
     font-size: 1.1em;
 }
 
-/* Table Styles - Định dạng bảng báo giá giống Excel (Tối ưu Full màn hình không cuộn) */
+/* Table Styles - Định dạng bảng TRONG KHUNG CHAT (Kiểu cũ Dark Mode) */
 .chat-markdown table {
     width: 100% !important;
     max-width: 100% !important;
     border-collapse: collapse;
     margin: 12px 0;
-    font-size: 9px; /* Giảm cỡ chữ tối thiểu để hiện đủ 8 cột trên Mobile */
-    background: #ffffff;
-    color: #333;
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid #000000;
-    table-layout: fixed; /* Ép bảng không được giãn rộng ra ngoài */
+    font-size: 13px;
+    background: rgba(45, 45, 45, 0.9); /* Quay về nền tối kiểu cũ */
+    color: #ffffff;
+    border-radius: 8px;
+    overflow-x: auto;
+    display: block; /* Hỗ trợ cuộn ngang nếu bảng 8 cột quá rộng */
+    border: 1px solid rgba(255, 255, 255, 0.1);
     cursor: zoom-in;
 }
 
 .chat-markdown th, .chat-markdown td {
-    padding: 4px 2px; /* Giảm tối đa khoảng cách giữa các ô */
-    text-align: center;
-    border: 1px solid #000000;
-    word-break: break-word; /* Tự động xuống dòng khi nội dung dài */
+    padding: 10px 8px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Ưu tiên cột Tên sản phẩm rộng hơn một chút */
-.chat-markdown th:nth-child(2), .chat-markdown td:nth-child(2) {
-    width: 35%; 
-    text-align: left;
+.chat-markdown th {
+    background: rgba(233, 195, 73, 0.2);
+    color: #e9c349;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0.5px;
 }
-/* Các cột số liệu hẹp lại */
-.chat-markdown th:nth-child(1), .chat-markdown td:nth-child(1) { width: 7%; }
-.chat-markdown th:nth-child(3), .chat-markdown td:nth-child(3) { width: 10%; }
-.chat-markdown th:nth-child(4), .chat-markdown td:nth-child(4) { width: 8%; }
-.chat-markdown th:nth-child(5), .chat-markdown td:nth-child(5) { width: 13%; }
-.chat-markdown th:nth-child(6), .chat-markdown td:nth-child(6) { width: 8%; }
-.chat-markdown th:nth-child(7), .chat-markdown td:nth-child(7) { width: 14%; }
-.chat-markdown th:nth-child(8), .chat-markdown td:nth-child(8) { width: 5%; }
 
 /* Các cột giá tiền vẫn căn vàng cho chuyên nghiệp */
 .chat-markdown td:nth-child(5), 
@@ -402,20 +396,26 @@
 
 #modal-table-container table {
     width: 100% !important;
-    min-width: unset !important; /* Bỏ min-width để bản zoom cũng vừa màn hình điện thoại */
-    font-size: 11px; /* Tăng nhẹ cỡ chữ ở bản zoom cho dễ đọc hơn khung chat */
-    background: #ffffff;
+    min-width: 900px !important; /* Luôn giữ bảng to rộng khi Zoom */
+    font-size: 15px;
+    background: #ffffff; /* Nền trắng kiểu Excel chuyên nghiệp */
     color: #333;
     border-collapse: collapse;
     border: 1px solid #000000;
-    table-layout: fixed;
+    table-layout: auto;
 }
 
 #modal-table-container th, #modal-table-container td {
-    padding: 6px 3px;
-    border: 1px solid #000000;
-    text-align: center;
-    word-break: break-word;
+    padding: 12px 10px;
+    border: 1px solid #000000; /* Viền đen đúng form Excel */
+    text-align: left;
+    word-break: keep-all;
+}
+
+#modal-table-container th {
+    background: #b6d7a8; /* Màu xanh pistachio */
+    color: #000 !important;
+    font-weight: bold;
 }
 
 #modal-table-container th {
