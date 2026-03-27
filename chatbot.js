@@ -12,7 +12,7 @@
                 <div class="chatbot-header">
                     <div class="chatbot-info">
                         <div class="chatbot-avatar-container">
-                            <img src="ms-sol-avatar.png" alt="Ms Sol Avatar" class="chatbot-header-avatar">
+                            <img src="ms-sol-avatar.png?v=1.0" alt="Ms Sol Avatar" class="chatbot-header-avatar">
                             <div class="chatbot-status-indicator"></div>
                         </div>
                         <div class="chatbot-title">
@@ -37,9 +37,8 @@
                     </button>
                 </div>
             </div>
-            <div id="chatbot-tooltip">Dạ chào anh/chị, em là Sol đây ạ! 👋</div>
             <button id="chatbot-toggle" title="Chat với chúng tôi">
-                <img src="ms-sol-avatar.png" alt="Ms Sol" class="chatbot-toggle-avatar">
+                <img src="ms-sol-avatar.png?v=1.0" alt="Ms Sol" class="chatbot-toggle-avatar">
                 <div class="chatbot-badge" id="chatbot-badge">1</div>
             </button>
         </div>
@@ -64,26 +63,7 @@
     const refreshBtn = document.getElementById('chatbot-refresh');
     const chatWindow = document.getElementById('chatbot-window');
     const messagesContainer = document.getElementById('chatbot-messages');
-    const chatInput = document.getElementById('chat-input');
-    const sendBtn = document.getElementById('send-btn');
     const badge = document.getElementById('chatbot-badge');
-    const tooltip = document.getElementById('chatbot-tooltip');
-
-    // Auto-show tooltip after 3 seconds for attention
-    setTimeout(() => {
-        if (!isChatOpen && tooltip) {
-            tooltip.style.opacity = '1';
-            tooltip.style.transform = 'translateX(0)';
-            
-            // Hide after 7 seconds
-            setTimeout(() => {
-                if (!isChatOpen && tooltip) {
-                    tooltip.style.opacity = '0';
-                    tooltip.style.transform = 'translateX(20px)';
-                }
-            }, 7000);
-        }
-    }, 3000);
 
     // State
     let knowledgeBase = '';
@@ -349,17 +329,11 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
 
     toggleBtn.addEventListener('click', () => {
         isChatOpen = !isChatOpen;
-        chatWindow.classList.toggle('open');
-        badge.classList.remove('show');
+        chatWindow.classList.toggle('open', isChatOpen);
         if (isChatOpen) {
-            if (tooltip) {
-                tooltip.style.opacity = '0';
-                tooltip.style.transform = 'translateX(20px)';
-            }
-            toggleBtn.style.transform = 'scale(0)';
-            setTimeout(() => toggleBtn.style.display = 'none', 300);
-            if (messagesContainer.children.length === 0) addMessageUI(DEFAULT_GREETING, 'bot', true);
             chatInput.focus();
+            badge.classList.remove('show');
+            if (messagesContainer.children.length === 0) addMessageUI(DEFAULT_GREETING, 'bot', true);
         }
     });
 
