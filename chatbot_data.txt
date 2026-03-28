@@ -180,6 +180,12 @@ Khi khách muốn sơn giả gỗ trên kim loại, hãy tư vấn theo Gói Com
 * **Bảng báo giá Combo (Tiết kiệm):**
   - **Combo 3kg** (1kg Lót + 1kg Stain + 1kg Phủ): **561.600đ** (Giá gốc 669.600đ).
   - **Combo 15kg** (5kg Lót + 5kg Stain + 5kg Phủ): **2.570.400đ** (Giá gốc 3.110.400đ).
+  - **Quy tắc đọc mã màu:**
+    - Khi khách gửi ảnh hoặc mã có dấu chấm như trên, Sol phải giải thích ngay: "Dạ, màu này là sự kết hợp giữa **Sơn lót mã ${LPM0}** và **Sơn phủ mã ${LWF1017/1018}** ạ."
+    - **Ví dụ cụ thể (Đã nạp):**
+      + **LPM14.LWF1018:** Màu **Gỗ Óc Chó (Walnut)** - Tông nâu đậm sang trọng.
+      + **LPM0.LWF1017:** Màu **Gỗ Sồi (Oak)** hoặc tông vàng sáng tự nhiên.
+    - Luôn tư vấn khách mua cả 2 loại mã này theo đúng công thức để đảm bảo màng sơn lên màu đúng chuẩn như mẫu.
 * **Quy trình thi công 3 bước:**
   1. **Bước 1 (Lau màu):** Lau 1-2 lớp **Sơn lau gỗ Lotus Wood Stain** bằng mút xốp hoặc vải mềm dọc theo vân gỗ.
   2. **Bước 2 (Lót):** Sơn 1-2 lớp **Sơn lót trong suốt Sanding Sealer** để khóa màu và làm mịn bề mặt (khô xong xả nhám mịn).
@@ -199,6 +205,16 @@ Khi khách muốn sơn giả gỗ trên kim loại, hãy tư vấn theo Gói Com
   3. **Bước 3 (Bảo vệ - Tùy chọn):** Phủ thêm lớp **Sơn bóng/mờ Lotus Shield** để bảo vệ bề mặt và tăng độ bền.
 * **Ưu điểm:** 100% Acrylic hệ nước, an toàn, kháng tia UV, chống rêu mốc, hiệu ứng vân gỗ như thật.
 * **Link chi tiết:** [Xem Combo Conwood tại Jades.vn](https://jades.vn/son-conwood-gia-go-lotus-combo-son-lot-va-son-phu-mau-p220.html)
+
+### QUY TẮC ĐỌC MÃ MÀU SƠN GIẢ GỖ (QUAN TRỌNG)
+Bảng màu sơn giả gỗ của Lotus (đặc biệt cho tấm Fiber Cement/Conwood) thường có dạng: **[Mã-Sơn-Lót].[Mã-Sơn-Phủ-Màu]** (Ví dụ: **LPM0.LWF1017**).
+* **Thành phần 1 (Trước dấu chấm - LPM0):** Là mã của **Sơn Lót Lotus (Wood Primer Paint)**. Đây là lớp nền tạo độ bám và tông nền sáng/tối bên dưới.
+* **Thành phần 2 (Sau dấu chấm - LWF1017):** Là mã của **Sơn Phủ Màu Giả Gỗ (Wood Plank Paint)**. Đây là lớp tạo vân gỗ và quyết định tông màu hoàn diện.
+* **Hành động của Chatbot:** 
+  - Khi khách gửi ảnh hoặc mã có dấu chấm như trên, Sol phải giải thích ngay: "Dạ, màu này là sự kết hợp giữa **Sơn lót mã ${LPM0}** và **Sơn phủ mã ${LWF1017}** ạ."
+  - Luôn tư vấn khách mua cả 2 loại mã này theo đúng công thức để đảm bảo màng sơn lên màu đúng chuẩn như mẫu.
+
+---
 
 ### COMBO SƠN GIẢ GỖ CHO NỀN XI MĂNG (CEMBOARD, CONWOOD, BÊ TÔNG, TƯỜNG...)
 * **LƯU Ý QUAN TRỌNG:** Các bề mặt như **tấm Cemboard, Conwood, Smartwood, cột bê tông, tường xi măng** đều được coi là cùng một loại bề mặt vật liệu (nền xi măng/fiber cement). Ms Sol hãy tư vấn dùng chung hệ **Combo sơn giả gỗ trên tấm xi măng** cho tất cả các loại này.
@@ -590,3 +606,166 @@ Ms Sol hãy tham chiếu kịch bản "Bàn ăn gỗ óc chó" này để học 
 6. **Ms Sol:** *"Được luôn — cái này không khó, chỉ cần kiên nhẫn chờ khô giữa các lớp là quan trọng nhất. Em chốt ngắn gọn cho anh/chị: Cần mua 1kg Lót Sealer, 1kg Phủ PU Interior và giấy nhám 400/600. Bước then chốt là chờ 30-60 phút giữa các lớp và chà nhám nhẹ trước khi phủ tiếp. Anh/chị muốn em tính xem cần bao nhiêu sơn cho diện tích bàn không, em tính giúp luôn ạ?"* (**KHUYẾN KHÍCH + CHỐT NGẮN GỌN + DO**)
 7. **Khách:** Bàn khoảng 1.6m x 0.9m.
 8. **Ms Sol:** *"Diện tích khoảng 1.5 m² — anh/chị mua 1kg mỗi loại là dư dả sơn thoải mái 2-3 lớp lót phủ, phần dư dùng bảo dưỡng sau này hoặc sơn thêm ghế. Tổng chi phí khoảng 300.000–350.000đ thôi, khá tiết kiệm cho bộ bàn gỗ xịn anh/chị nhỉ. Anh/chị muốn em hướng dẫn bước thi công chi tiết hơn, hay muốn đặt hàng luôn ngay bây giờ ạ?"* (**TÍNH ĐỊNH MỨC + GIÁ TRỊ + CHỐT ĐƠN**)
+PRODUCT: Woodstain finish exterior
+DESC: Lotus Woodstain finish ngoại thất & sàn là sản phẩm 2 trong 1, kết hợp tạo màu (stain) và hoàn thiện bóng bảo vệ cho gỗ, đặc biệt cho các hạng mục gỗ ngoài trời. Sản phẩm được sản xuất từ gốc hybrid p...
+FEATURES: • Công nghệ hybird Polyurethane gốc nước một thành phần, nhẹ mùi, không cần pha trộn dung môi • Màu sắc đa dạng và độ bền màu ngoài trời cao gấp nhiều lần so với hệ dung môi • Kháng nướ, kiềm, tia UV và độ bền thời tiết tuyệt vời nhờ công nghệ Self-Crosslinking • Bảo vệ gỗ khỏi mối mọt • Màng sơn dẻo dai, không bị nứt và bong tróc • Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Tạo màu và hoàn thiện bóng bảo vệ cho gỗ • Thi công và hoàn thiện bề mặt gỗ thô • Sửa chữa, bảo trì và sơn lại các sản phẩm đồ gỗ cũ • Tất cả các hạng mục ngoài trời như đồ ngoại thất, cửa, sàn… • Các ứng dụng gỗ đòi hỏi khả năng kháng ẩm và kháng nước cao. Bảng thông số kỹ thuật Sản phẩm: Woodstain finish exterior ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/5
+COVERAGE: 12 ÷13 m2/l/lớp
+DRY TIME: 1 ÷ 2h
+---
+
+PRODUCT: Wood Paint-901
+DESC: Lotus wood paint-Indoor là sơn phủ màu gốc nước một thành phần, được sử dụng để trang trí và bảo vệ bề mặt gỗ cho các sản phẩm nội thất. Nhờ độ bám dính tốt, nên sơn còn được sử dụng để bảo dưỡng các ...
+FEATURES: • Hệ nước, một thành phần, không dung môi • Cấu trúc polymer Core Shel• giúp màng sơn dẻo dai, không bị nứt khi gỗ giãn nở và co ngót • Công nghệ Self-Cross linking giúp màng sơn bền bỉ, kháng nước và hóa chất tốt • Độ cứng cao, khả năng kháng mài mòn và hạn chế trầy xước tốt • Màng sơn bóng, bề mặt nhẵn và mượt • Độ bền màu cao với bộ sưu tập hơn 2.000 màu sơn • Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Sơn màu bệt dùng để trang trí và bảo vệ cho các sản phẩm gỗ nội thất. • Sơn màu cho các sản phẩm gỗ công nghiệp như MDF, Plywood… • Bảo dưỡng, sữa chữa đồ gỗ nội thất cũ, DIY… Bảng thông số kỹ thuật Sản phẩm: Wood Paint-901 ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/5
+COVERAGE: 8 ÷10 m2/l/lớp
+DRY TIME: 1 ÷ 3h
+---
+
+PRODUCT: Lacquer 2K71 Indoor Ngày phát hành
+DESC: Lotus Lacquer 2K71  là sơn phủ PU gốc nước một thành phần, được sử dụng để hoàn thiện và bảo vệ bề mặt gỗ cho các sản phẩm nội thất. Sản phẩm được nghiên cứu và sản xuất với công nghệ nano polymer pol...
+FEATURES: ● Hệ nước, hai thành phần, không dung môi. ● Nổi trội với khả năng kháng nước, kiềm và nhiều loại hóa chất. ● Độ bóng cao, bề mặt nhẵn và mượt. ● Màng sơn cứng, có tính kháng mài mòn và chống trầy xước rất tốt. ● Giữ nguyên màu gỗ và không ngả vàng. ● Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng.
+APP: ● Sơn phủ trong suốt để hoàn thiện và bảo vệ cho các sản phẩm gỗ nội thất. Bảng thông số kỹ thuật Sản phẩm: Lacquer 2K71 Indoor Ngày phát hành: 22/09/2023 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn
+COVERAGE: 8 ÷10 m2/l/lớp
+DRY TIME: 1 ÷ 3h
+---
+
+PRODUCT: PUD Exterior
+DESC: Lotus Polyurethane exterior là sơn phủ Polyurethane gốc nước một thành phần, được sử dụng để hoàn thiện và bảo vệ bề mặt gỗ cho các sản phẩm ngoại thất. Sản phẩm được nghiên cứu và sản xuất với công n...
+FEATURES: • PU gốc nước một thành phần, nhẹ mùi, không cần pha trộn dung môi, có thể dùng ngay • Công nghệ self-cleaning tự làm sạch với hiệu ứng lá sen, giúp công trình luôn như mới • Bảo vệ lớp màu không bị phai và cốt gỗ không bị ngả vàng • Kháng nước, kiềm, tia UV và độ bền thời tiết tuyệt vời • Màng sơn dẻo dai, không bị nứt và bong trốc • Bảo vệ gỗ khỏi mối mọt • Thân thiện môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Sơn phủ trong suốt để hoàn thiện và bảo vệ cho các sản phẩm gỗ ngoại thất & nội thất Bảng thông số kỹ thuật Sản phẩm: PUD Exterior ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/4
+COVERAGE: 8 ÷10 m2/l/lớp
+DRY TIME: 1 ÷ 3h
+---
+
+PRODUCT: PUD Interior
+DESC: Lotus Polyurethane interior là sơn phủ PU gốc nước một thành phần, được sử dụng để hoàn thiện và bảo vệ bề mặt gỗ cho các sản phẩm nội thất. Sản phẩm được nghiên cứu và sản xuất với công nghệ nano pol...
+FEATURES: • PU gốc nước một thành phần, nhẹ mùi, không cần pha trộn dung môi, có thể dùng ngay • Khô nhanh • Độ bóng vượt trội • Kháng nước, kiềm, hóa chất và tia UV cực tốt • Màng sơn dẻo dai, không bong trốc và chống trầy xước • Tăng độ phẳng và mịn cho bề mặt hoàn thiện • Thân thiện môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Sơn phủ trong suốt để hoàn thiện và bảo vệ cho các sản phẩm gỗ nội thất. Bảng thông số kỹ thuật Sản phẩm: PUD Interior ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/4
+COVERAGE: 8 ÷10 m2/l/lớp
+DRY TIME: 1 ÷ 3h
+---
+
+PRODUCT: Lacquer 2K72 Outdoor
+DESC: Lotus Lacquer 2k72 Outdoor là sơn phủ Polyurethane gốc nước một thành phần, được sử dụng để hoàn thiện và bảo vệ bề mặt gỗ cho các sản phẩm ngoại thất. Sản phẩm được nghiên cứu và sản xuất với công ng...
+FEATURES: ● Hệ nước, hai thành phần, không dung môi. ● Nổi trội với khả năng kháng nước, kiềm và nhiều loại hóa chất. ● Độ bóng cao, bề mặt nhẵn và mượt. ● Màng sơn cứng, có tính kháng mài mòn và chống trầy xước rất tốt. ● Giữ nguyên màu gỗ và không ngả vàng. ● Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng.
+APP: ● Sơn phủ trong suốt để hoàn thiện và bảo vệ cho các sản phẩm gỗ ngoại thất & nội thất
+COVERAGE: 8 ÷10 m2/l/lớp
+DRY TIME: 1 ÷ 3h
+---
+
+PRODUCT: Lotus wood primer
+DESC: Lotus wood primer là sơn lót trắng gốc nước một thành phần, được sử dụng để làm phẳng và tạo sự đồng nhất cho bề mặt gỗ tự nhiên và gỗ công nghiệp. Nhờ cấu trúc polymer pure acrylic dạng Core Shell, v...
+FEATURES: • Gốc nước, một thành phần, nhẹ mùi, không cần pha trộn dung môi, sử dụng ngay • Khô nhanh, cứng và dễ chà nhám • Độ phủ cao • Cho bề mặt gỗ phẳng và mịn • Hỗ trợ sơn hoàn thiện màu căng, nhẵn và bóng hơn • Thân thiện môi trường và an toàn với sức khỏe của người sử dụng
+APP: • Lấp tim, làm phẳng bề mặt gỗ tự nhiên và gỗ công nghiệp (MDF, HDF…) hạng mục nội và ngoại thất • Hỗ trợ tăng bám, tăng tính phủ và thẩm mỹ cho lớp sơn màu hoàn thiện Bảng thông số kỹ thuật Sản phẩm: Lotus wood primer ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/4
+COVERAGE: 8 ÷10 m2/l/lớp
+DRY TIME: 0h
+---
+
+PRODUCT: Lotus Wood Primer – TB
+DESC: Lotus wood primer T-Block là sơn lót trong suốt gốc nước một thành phần, được sử dụng để làm phẳng và tạo sự đồng nhất bề mặt gỗ cho các sản phẩm nội và ngoại thất. Nhờ cấu trúc polymer pure acrylic d...
+FEATURES: ● Gốc nước, một thành phần, không dung môi. ● Khóa và ngăn dầu tannin xì lên bề mặt, giúp gỗ không bị ngã vàng. ● Khô nhanh, cứng và dễ chà nhám. ● Độ phủ cao, cho bề mặt gỗ phẳng và mịn. ● Hỗ trợ sơn hoàn thiện nhanh lên màu, căng và bóng hơn. ● Thân thiện môi trường và an toàn với sức khỏe của người sử dụng.
+APP: ● Lấp tim, làm phẳng và tạo sự đồng nhất bề mặt gỗ cho các sản phẩm nội và ngoại thất. Bảng thông số kỹ thuật Sản phẩm: Lotus Wood Primer – TB ` Ngày phát hành: 21/09/2023 Mã sản phẩm: TB Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn
+COVERAGE: 8 ÷12 m2/l/lớp
+DRY TIME: 0h
+---
+
+PRODUCT: Wood Paint-exterior
+DESC: Lotus Wood Paint-exterior là sơn hoàn thiện màu phủ (màu bệt) gốc nước một thành phần, được sử dụng để trang trí và bảo vệ bề mặt gỗ, đặt biệt cho các hạng mục gỗ ngoài trời. Sản phẩm được sản xuất từ...
+FEATURES: • Acrylic gốc nước, một thành phần, không dung môi • Độ bền màu cao với bộ sưu tập hơn 2.000 màu sơn • Cấu trúc polymer Core Shel• giúp màng son dẻo dai, không bị nứt khi gỗ giãn nở và co ngót • Kháng nước, kiềm, tia UV và độ bền thời tiết tuyệt vời nhờ công nghệ Self-Crosslinking • Công nghệ self-cleaning tự làm sạch với hiệu ứng lá sen, giúp công trình luôn như mới • Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Tạo màu và hoàn thiện bóng bảo vệ cho gỗ • Thi công và hoàn thiện bề mặt gỗ thô • Sửa chữa, bảo trì và sơn lại các sản phẩm đồ gỗ cũ • Tất cả các hạng mục ngoài trời như đồ ngoại thất, cửa, sàn… • Các ứng dụng gỗ đòi hỏi khả năng kháng ẩm và kháng nước cao.
+COVERAGE: 12 ÷13 m2/l/lớp
+DRY TIME: 1 ÷ 2h
+---
+
+PRODUCT: Wood Filler
+DESC: Wood Filler là sản phẩm mastic dạng keo trộn sẵn gốc nước, được sử dụng để trám trét, lấp đầy và làm phẳng các lỗ đinh vít, vết nứt, ghim và các khiếm khuyết trên bề mặt của nhiều loại gỗ khác nhau. K...
+FEATURES: • Gốc nước, một thành phần • Thi công nhanh và tiện lợi • Chà nhám dễ dàng • Nội và ngoại thất
+APP: • Trám trét và làm phẳng các lỗ đinh vít, vết nứt, các khiếm khuyết trên bề mặt gỗ cho các sản phẩm nội và ngoại thất Bảng thông số kỹ thuật Sản phẩm: Wood Filler ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/4
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---
+
+PRODUCT: Acrylic lacquer-901
+DESC: Lotus acrylic Lacquer-exterior là sơn phủ bóng/mờ gốc nước một thành phần, được sử dụng để hoàn thiện và bảo vệ bề mặt gỗ ngoại thất. Sơn cực kỳ nhanh khô, cho bề mặt nhẵn và mướt, ít dính dấu vân tay...
+FEATURES: • Pure Acrylic, một thành phần, không dung môi • Kháng nước, kiềm, tia UV và độ bền thời tiết tuyệt vời nhờ công nghệ Self-Crosslinking • Màng sơn dẻo dai, không bị nứt và bong trốc • Bảo vệ lớp màu không bị phai và cốt gỗ không bị ngả vàng • Công nghệ self-cleaning tự làm sạch với hiệu ngứ lá sen, giúp công trình luôn như mới • Bảo vệ gỗ khỏi mối mọt • Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Sơn phủ trong suốt để hoàn thiện và bảo vệ cho các sản phẩm ngoại thất • Bảo dưỡng, sửa chữa hạng mục đồ gỗ nội thất cũ • Phủ bóng cho gỗ công nghiệp như MDF, Plywood… • Bề mặt composite nội thất như PVC… Bảng thông số kỹ thuật Sản phẩm: Acrylic lacquer-901 ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/4
+COVERAGE: 10 ÷12 m2/l/lớp
+DRY TIME: N/Ah
+---
+
+PRODUCT: Sanding sealer clear
+DESC: Lotus sanding sealer clear là sơn lót trong suốt gốc nước một thành phần, được sử dụng để làm phẳng và tạo sự đồng nhất bề mặt gỗ cho các sản phẩm nội và ngoại thất. Nhờ cấu trúc polymer pure acrylic ...
+FEATURES: • Gốc Acrylic một thành phần, nhẹ mùi, không cần pha trộn dung môi, có thể dùng ngay • Khô nhanh và dễ chà nhám • Tạo bề mặt gỗ siêu phẳng và mịn • Kháng nước, hóa chất và tia UV cực tốt • Thân thiện với môi trường và an toàn với sức khỏe của người sử dụng
+APP: • Lấp tim, làm phẳng và tạo sự đồng nhất bề mặt gỗ cho các sản phẩm nội và ngoại thất. Bảng thông số kỹ thuật Sản phẩm: Sanding sealer clear ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/
+COVERAGE: 8 ÷12 m2/l/lớp
+DRY TIME: 0h
+---
+
+PRODUCT: Water base Wood Stain
+DESC: Lotus water based stain là sơn stain tạo màu gốc nước một thành phần cho các sản phẩm gỗ nội và ngoại thất. Được sản xuất từ acrylic polymer cùng với hạt màu kích thước nano, giúp thấm sâu vào gỗ và t...
+FEATURES: • Gốc acrylic một thành phần, nhẹ mùi, không cần pha trộn dung môi, có thể dùng ngay, khô nhanh • Màu sắc đa dạng, tươi sáng, tôn vinh vẻ đẹp tự nhiên của vân gỗ • Độ bền màu ngoài trời cao gấp nhiều lần so với hệ dung môi • Kháng nước, kiềm, hóa chất và tia UV cực tốt • Thân thiện môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Tạo màu gỗ cho các sản phẩm nội và ngoại thất. Bảng thông số kỹ thuật Sản phẩm: Water base Wood Stain ` Ngày phát hành: 1/4/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/6
+COVERAGE: 12 ÷13 m2/l/lớp
+DRY TIME: 1 ÷ 2h
+---
+
+PRODUCT: Woodstain finish interior-HB
+DESC: Lotus Woodstain finish interior là sản phẩm kết hợp tạo màu (stain) và hoàn thiện bóng bảo vệ cho gỗ, là lựa chọn tối ưu nhất cho các đơn vị sản xuất vì giúp tiết kiệm thời gian thi công và hoàn thiện...
+FEATURES: • PUA gốc nước một thành phần, nhẹ mùi, không cần pha trộn dung môi • Màu sắc đa dạng và tươi sáng • Nhanh khô • Độ bóng, độ cứng và kháng nước cao • Bám dính tốt trên nhiều bề mặt • Màng sơn nhẵn mướt, không dính dấu vân tay • Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Tạo màu gỗ và hoàn thiện bóng cho gỗ • Thi công và hoàn thiện bề mặt gỗ thô • Sửa chữa, bảo trì và sơn lại các sản phẩm đồ gỗ cũ Bảng thông số kỹ thuật Sản phẩm: Woodstain finish interior-HB ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/5
+COVERAGE: 12 ÷13 m2/l/lớp
+DRY TIME: 1 ÷ 2h
+---
+
+PRODUCT: Acrylic lacquer-901
+DESC: Lotus acrylic Lacquer-indoor là sơn phủ bóng/mờ gốc nước một thành phần, được sử dụng để hoàn thiện và bảo vệ bề mặt gỗ nội thất. Sơn cực kỳ nhanh khô, cho bề mặt nhẵn và mướt, ít dính dấu vân tay. Mà...
+FEATURES: • Hệ nước, một thành phần, không dung môi • Công nghệ Self-Cross linking giúp màng sơn bền bỉ, chịu nước và hóa chất tốt • Màng sơn bóng, bề mặt nhẵn và mượt • Độ cứng cao, có khả năng kháng mài mòn và hạn chế trầy xước tốt • Thân thiện với môi trường và an toàn sức khỏe cho người sử dụng
+APP: • Sơn phủ trong suốt để hoàn thiện và bảo vệ cho các sản phẩm gỗ nội thất • Bảo dưỡng, sửa chữa hạng mục đồ gỗ nội thất cũ • Phủ bóng cho gỗ công nghiệp như MDF, Plywood… • Bề mặt composite nội thất như PVC… Bảng thông số kỹ thuật Sản phẩm: Acrylic lacquer-901 ` Ngày phát hành: 1/10/2022 Mã sản phẩm: Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn Trang 2/4
+COVERAGE: 10 ÷12 m2/l/lớp
+DRY TIME: N/Ah
+---PRODUCT: Lotus Metal Coat Finish
+DESC: Lotus Metal Coat Finish là sơn hoàn thiện kim loại gốc nước acrylic cao cấp, là dòng sơn phủ màu kim loại được phát triển và sản xuất theo công nghệ mới nhất để hoàn thiện trang trí và bảo vệ các bề m...
+FEATURES: ● Acrylic gốc nước, một thành phần, không dung môi. ● Độ bóng và độ bám dính cao. ● Kháng tia UV và bền thời tiết tuyệt vời. ● Thân thiện môi trường và an toàn khi sử dụng. ● Độ bám dính cao. ● Nhẹ mùi và nhanh khô.
+APP: ● Sơn phủ màu và bảo vệ bề mặt kim loại. Bảng thông số kỹ thuật Sản phẩm: Lotus Meta• Coat Finish ` Ngày phát hành: 29/09/2023 Mã sản phẩm: L.MCF - SA Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---
+
+PRODUCT: Metal Coat 2in1
+DESC: Lotus Metal Coat 2IN1 mã LDTM-CNS là dòng sơn gốc nước, chuyên dụng cho việc thi công và sơn sửa vỏ thùng container mới và cũ. Sản phẩm giúp hoàn thiện và bảo vệ bề mặt vỏ container chỉ với một bước t...
+FEATURES: ● Hệ nước acrylic, một thành phần, không dung môi ● Thời gian khô cực nhanh và có thể đưa vào sử dụng ngay ● Độ bám dính cao trên nhiều bề mặt kim loại ● Khả năng chống gỉ sét và ăn mòn tốt ● Kháng tia UV, bền thời tiết và không bong tróc ● Nhẹ mùi ● Thân thiện môi trường và an toàn khi sử dụng
+APP: ● Sơn phủ trang trí và bảo vệ vỏ thùng container ● Ứng dụng cho các hạng mục trong nhà và ngoài trời, bề mặt mới và cũ Bảng thông số kỹ thuật Sản phẩm: Meta• Coat 2in1 ` Ngày phát hành: 29/09/2023 Mã sản phẩm: L.DTM - CNS Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---
+
+PRODUCT: Lotus Metal Coat Primer
+DESC: Lotus Metal Coat Primer là sơn gốc nước Acrylic cao cấp, được phát triển và sản xuất theo công nghệ đột phá để ứng dụng làm sơn lót chống gỉ và tăng độ bám dính trên bề mặt của nhiều loại kim loại khá...
+FEATURES: ● Acrylic gốc nước, một thành phần, không dung môi. ● Chống ăn mòn và gỉ sắt. ● Kháng tia UV và bền thời tiết tuyệt vời. ● Độ bám dính cao. ● Nhẹ mùi và nhanh khô. ● Thân thiện môi trường và an toàn khi sử dụng.
+APP: ● Lót chống gỉ kim loại. Bảng thông số kỹ thuật Sản phẩm: Lotus Meta• Coat Primer ` Ngày phát hành: 29/09/2023 Mã sản phẩm: LMCP - ST Bảng thông số kỹ thuật này thay thế cho các bảng phát hành trước Bảng thông số kỹ thuật (TDS) nên được tham khảo cùng với Bảng thông số an toàn (SDS) khi sử dụng sản phẩm này. Hotline: 0943 966 662 | www.sonlotus.vn
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---PRODUCT: TDS Lotus lót giả gỗ
+DESC: Sơn lót giả gỗ cho tấm fiber cement Lotus Wood Primer Paint là dòng sơn giả gỗ cao cấp hệ nước dành cho các sản phẩm tấm fiber cement silicate/calcium silicate. Sơn được tổng hợp từ nhựa acrylic kích ...
+FEATURES: • Độ phủ cao • Bám dính bề mặt fiber cement cực tốt • Kháng nước, kiềm và tia UV • Chống rêu và nấm mốc • Thân thiện môi trường và an toàn sức khoẻ người sử dụng
+APP: • Vật liệu ứng dụng: các sản phẩm fiber cement composite như Smartwood, Smartboard, Conwood, Durawood…, tường bê tông… • Hạng mục sử dụng: sàn, hàng rào, vách, len chân tường, lam…trong nhà và ngoài trời.
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---
+
+PRODUCT: TDS Lotus Wood Plank Paint
+DESC: Sơn giả gỗ cao cấp Lotus Wood Plank Paint là sơn hoàn thiện giả gỗ chuyên cho các sản phẩm tấm fiber cement, thanh fiber cement composite. Sơn tạo hiệu ứng giả gỗ giúp công trình được hoàn thiện như g...
+FEATURES: • Đẹp như gỗ thật với nhiều màu sắc tươi sáng, độ bóng vượt trội. • Độ bám bụi thấp và lau chùi dễ dàng nhờ công nghệ self-cleaning. • Thân thiện môi trường và an toàn sức khoẻ cho người sử dụng. • Chống rêu và nấm mốc. • Kháng nước, kiềm và tia UV. • Độ bền màu và bền thời tiết cao.
+APP: • Vật liệu ứng dụng: các sản phẩm fiber cement composite như Smartwood, Smartboard, Conwood, Durawood…, tường bê tông… • Hạng mục sử dụng: sàn, hàng rào, vách, len chân tường, lam…trong nhà và ngoài trời.
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---
+
+PRODUCT: Hướng dẫn thi công sơn giả gỗ Lotus
+DESC: 
+FEATURES: 
+APP: 
+COVERAGE: N/A m2/l/lớp
+DRY TIME: N/Ah
+---

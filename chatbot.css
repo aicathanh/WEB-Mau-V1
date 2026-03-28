@@ -345,7 +345,7 @@
     font-size: 16px; /* Đồng bộ kích thước chữ */
 }
 
-#send-btn {
+#send-btn, #upload-btn {
     background: #e9c349;
     border: none;
     border-radius: 50%;
@@ -356,9 +356,15 @@
     align-items: center;
     justify-content: center;
     transition: transform 0.2s;
+    flex-shrink: 0;
 }
 
-#send-btn:hover:not(:disabled) {
+#upload-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e9c349;
+}
+
+#send-btn:hover:not(:disabled), #upload-btn:hover {
     transform: scale(1.1);
 }
 

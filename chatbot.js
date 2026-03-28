@@ -31,7 +31,11 @@
                 </div>
                 <div class="chatbot-body" id="chatbot-messages"></div>
                 <div class="chatbot-footer">
-                    <textarea id="chat-input" placeholder="Nhập câu hỏi của bạn..." rows="1" autocomplete="off"></textarea>
+                    <input type="file" id="image-upload" accept="image/*" style="display: none;">
+                    <button id="upload-btn" title="Gửi ảnh mẫu">
+                        <span class="material-symbols-outlined">add_photo_alternate</span>
+                    </button>
+                    <textarea id="chat-input" placeholder="Nhập câu hỏi..." rows="1" autocomplete="off"></textarea>
                     <button id="send-btn" disabled>
                         <span class="material-symbols-outlined">send</span>
                     </button>
@@ -68,7 +72,21 @@
     const badge = document.getElementById('chatbot-badge');
 
     // State
-    let knowledgeBase = '';
+    let knowledgeBase = `### THÔNG SỐ KỸ THUẬT CHI TIẾT (KNOWLEDGE BASE V3.6)
+1. Woodstain finish exterior: Sơn 2 trong 1 (màu + bóng) cho gỗ ngoài trời & sàn. Hybrid PU, kháng UV, tự làm sạch. Định mức: 12-13 m2/l/lớp. Khô: 1-2h.
+2. Wood Paint-901 Indoor: Sơn bệt nội thất (70+ màu). Core Shell polymer, dẻo dai, bám dính tốt trên MDF/Plywood. Độ phủ: 8-10 m2/l/lớp. Khô: 1-3h.
+3. Lacquer 2K71 Indoor: Sơn phủ PU 2 thành phần (Nano Polymer). Kháng nước/hóa chất, siêu bóng, không ngả vàng. Độ phủ: 8-10 m2/l/lớp. Khô: 1-3h.
+4. PUD Exterior: Sơn phủ PU 1 thành phần ngoại thất. Hiệu ứng lá sen, chống mối mọt, kháng UV tuyệt vời. Độ phủ: 8-10 m2/l/lớp. Khô: 1-3h.
+5. Lotus wood primer: Sơn lót trắng (1K). Làm phẳng bề mặt MDF/HDF, dễ chà nhám. Độ phủ: 8-10 m2/l/lớp.
+6. Lotus Wood Primer – TB: Lót kháng dầu tannin (ngăn xì nhựa gỗ). Giúp gỗ không bị ngả vàng. Độ phủ: 8-12 m2/l/lớp.
+7. Wood Paint-exterior: Sơn bệt ngoại thất. Tự làm sạch, kháng UV cao. Độ phủ: 12-13 m2/l/lớp.
+8. Sanding sealer clear: Lót lấp tim trong suốt. Tạo bề mặt siêu phẳng cho gỗ tự nhiên. Độ phủ: 8-12 m2/l/lớp.
+9. Woodstain finish interior: Sơn 2 trong 1 nội thất (UA gốc nước). Nhanh khô, không dính dấu vân tay. Định mức: 12-13 m2/l/lớp.
+10. Lotus Metal Coat Finish: Sơn phủ màu kim loại (1K) cao cấp. Kháng UV, bền màu, nhẹ mùi.
+11. Metal Coat 2in1: Sơn trực tiếp trên kim loại/container (DTM). Chống rỉ sét, khô cực nhanh.
+12. Lotus Metal Coat Primer: Sơn lót chống rỉ hệ nước. Tăng bám dính tuyệt vời trên sắt mạ kẽm/nhôm.
+13. Lotus Wood Primer (Giả gỗ): Lót chuyên dụng cho tấm Fiber Cement (Conwood/Smartwood).
+14. Lotus Wood Plank Paint: Sơn phủ tạo hiệu ứng giả gỗ cao cấp. Tự làm sạch, kháng UV.`;
     let isChatOpen = false;
     let isSending = false;
     let messageHistory = [];
@@ -129,11 +147,11 @@
         
         const div = document.createElement('div');
         div.className = `chatbot-message ${sender}`;
-        if (isMarkdown && sender === 'bot' && typeof marked !== 'undefined') {
+        if (isMarkdown && typeof marked !== 'undefined') {
             div.classList.add('chat-markdown');
-            // GIẢI PHÁP SỬA LỖI: Tự động phát hiện và sửa lỗi bảng không có dấu |
+            // GIẢI PHÁP SỬA LỖI: Tự động phát hiện và sửa lỗi bảng không có dấu | (chỉ áp dụng cho bot)
             let fixedContent = content;
-            if (fixedContent.includes("STT") && fixedContent.includes("Tên sản phẩm") && !fixedContent.includes("|")) {
+            if (sender === 'bot' && fixedContent.includes("STT") && fixedContent.includes("Tên sản phẩm") && !fixedContent.includes("|")) {
                 const lines = fixedContent.split('\n');
                 let foundHeader = false;
                 fixedContent = lines.map(line => {
@@ -221,6 +239,59 @@
         if (el) el.remove();
     }
 
+    async function handleImageUpload(file) {
+        if (isSending) return;
+        
+        const reader = new FileReader();
+        reader.onload = async (e) => {
+            const base64Image = e.target.result;
+            addMessageUI(`![Đang tải ảnh...](${base64Image})`, 'user');
+            
+            isSending = true;
+            showTyping();
+            
+            try {
+                // Thêm vào history dưới dạng Vision format (nếu model hỗ trợ)
+                messageHistory.push({
+                    role: "user",
+                    content: [
+                        { type: "text", text: "Khách gửi ảnh mẫu màu gỗ này:" },
+                        { type: "image_url", image_url: { url: base64Image } }
+                    ]
+                });
+
+                // Gọi API với context ảnh
+                const systemPrompt = `Bạn là Sol — nhân viên kỹ thuật tư vấn của Sơn Lotus (3 năm kinh nghiệm thực chiến).
+Dữ liệu kiến thức: ${knowledgeBase}.
+QUY TẮC: Khi thấy ảnh mã màu mẫu, hãy quan sát mã trên ảnh (thường ở góc trái trên, VD: LPM14.LWF1018) để tư vấn bộ đôi Lót + Phủ tương ứng.`;
+
+                const response = await fetch(OPENROUTER_URL, {
+                    method: "POST",
+                    headers: { "Authorization": `Bearer ${OPENROUTER_API_KEY}`, "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        model: OPENROUTER_MODEL,
+                        messages: [{ role: "system", content: systemPrompt }, ...messageHistory.slice(-5)]
+                    })
+                });
+                
+                const data = await response.json();
+                hideTyping();
+                if (data.choices && data.choices[0]) {
+                    const reply = data.choices[0].message.content;
+                    messageHistory.push({ role: "assistant", content: reply });
+                    addMessageUI(reply, 'bot', true);
+                }
+            } catch (err) {
+                console.error(err);
+                hideTyping();
+            } finally {
+                isSending = false;
+                document.getElementById('image-upload').value = '';
+            }
+        };
+        reader.readAsDataURL(file);
+    }
+
     async function sendMessage() {
         if (isSending) return;
         const text = chatInput.value.trim();
@@ -239,6 +310,9 @@
         showTyping();
         try {
             const systemPrompt = `Bạn là Sol — nhân viên kỹ thuật tư vấn của Sơn Lotus (3 năm kinh nghiệm thực chiến), KHÔNG phải chatbot.
+
+3. CHỐT ĐƠN PHẢI ĐỦ CẶP: Với hệ giả gỗ, khi khách chọn mã màu dạng "LPMx.LWFx", Sol phải tư vấn mua cả Sơn Lót (Primer) và Sơn Phủ (Plank Paint) tương ứng. Tuyệt đối không để khách chỉ mua 1 loại vì sẽ không lên đúng màu.
+4. ĐỊNH MỨC THỰC TẾ: Nếu khách hỏi định mức, hãy dùng số: 1kg phủ được 5-6 m2 (phun) hoặc 8-10 m2 (lau/quét).
 
 TÔN CHỈ: "NHẮN TIN NHƯ NGƯỜI THẬT TRÊN ZALO - ĐI THẲNG TRỌNG TÂM".
 
@@ -343,10 +417,20 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
         }
     });
 
+    const uploadBtn = document.getElementById('upload-btn');
+    const imageUpload = document.getElementById('image-upload');
+    
+    // Handle Auto-Expand Input
     chatInput.addEventListener('input', function() {
         this.style.height = 'auto';
-        this.style.height = this.scrollHeight + 'px';
+        this.style.height = (this.scrollHeight) + 'px';
         sendBtn.disabled = !this.value.trim();
+    });
+
+    uploadBtn.addEventListener('click', () => imageUpload.click());
+    imageUpload.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleImageUpload(file);
     });
 
     chatInput.addEventListener('keydown', (e) => {
