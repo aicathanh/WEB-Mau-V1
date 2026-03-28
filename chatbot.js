@@ -141,9 +141,12 @@
         } catch (error) { console.error("Error loading knowledge:", error); }
     }
 
-    function addMessageUI(content, sender, isMarkdown = false) {
+    function addMessageUI(content, sender, isMarkdownInput = false) {
         const messageWrapper = document.createElement('div');
         messageWrapper.className = `chatbot-message-wrapper ${sender}`;
+        
+        // Tự động nhận diện markdown nếu chứa cú pháp ảnh hoặc bảng
+        const isMarkdown = isMarkdownInput || content.includes('![') || content.includes('|');
         
         const div = document.createElement('div');
         div.className = `chatbot-message ${sender}`;
@@ -245,7 +248,7 @@
         const reader = new FileReader();
         reader.onload = async (e) => {
             const base64Image = e.target.result;
-            addMessageUI(`![Đang tải ảnh...](${base64Image})`, 'user');
+            addMessageUI(`![Mẫu màu gỗ](${base64Image})`, 'user', true);
             
             isSending = true;
             showTyping();
