@@ -100,6 +100,23 @@
         } catch (e) { console.error("CRM Error:", e); }
     }
 
+    // Telegram Bot Notification Configuration
+    // ⚠️ THAY THẾ 2 GIÁ TRỊ NÀY BẰNG TOKEN VÀ CHAT ID THẬT CỦA BẠN
+    const TELEGRAM_BOT_TOKEN = "CHƯA_CÀI_ĐẶT";
+    const TELEGRAM_CHAT_ID = "CHƯA_CÀI_ĐẶT";
+
+    async function pushToTelegram(phone, chatLog) {
+        if (TELEGRAM_BOT_TOKEN === "CHƯA_CÀI_ĐẶT") return;
+        const message = `🔔 KHÁCH HÀNG MỚI TỪ CHATBOT\n\n📱 SĐT: ${phone}\n🌐 Nguồn: ${window.location.hostname}\n📅 ${new Date().toLocaleString('vi-VN')}\n\n💬 Tóm tắt:\n${chatLog.slice(-500)}`;
+        try {
+            await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message })
+            });
+        } catch (e) { console.error("Telegram Error:", e); }
+    }
+
     async function loadKnowledgeBase() {
         try {
             const response = await fetch('https://web-mau-v1.vercel.app/chatbot_data.txt');
@@ -292,6 +309,10 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
                             "Lịch_Sử_Chat": chatLog
                         })
                     }).catch(e => console.error("Email Error:", e));
+
+                    // 3. Gửi Telegram thông báo real-time
+                    const phone = text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/)?.[0] || 'N/A';
+                    pushToTelegram(phone, chatLog);
                 }
             }
         } catch (error) {
