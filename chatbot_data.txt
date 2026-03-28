@@ -769,3 +769,11 @@ APP:
 COVERAGE: N/A m2/l/lớp
 DRY TIME: N/Ah
 ---
+
+### CHỨNG NHẬN AN TOÀN QUỐC TẾ - SƠN LOTUS
+1. Chứng nhận EN71-3: 2019 + A1:2021: An Toàn Cho Đồ Chơi Trẻ Em của Châu Âu.
+2. Chứng nhận ASTM F963-17: Tiêu Chuẩn An Toàn Đồ Chơi Trẻ Em của Mỹ.
+3. Chứng nhận FDA 21 CFR 178.3800: An Toàn Cho Sản Phẩm Tiếp Xúc Thực Phẩm (Cục Quản lý Thực phẩm và Dược phẩm Mỹ).
+4. Chứng nhận RoHS: Giới Hạn Các Chất Độc Hại trong sản phẩm tại Châu Âu.
+5. Sơn an toàn không có Formaldehyde và hàm lượng chất hữu cơ bay hơi VOCs thấp theo tiêu chuẩn quốc tế. Phù hợp tuyệt đối cho nội thất xuất khẩu.
+---
