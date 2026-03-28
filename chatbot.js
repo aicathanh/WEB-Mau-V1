@@ -334,7 +334,9 @@ QUY TRÌNH TƯ VẤN:
 
 QUY TẮC HIỂN THỊ: Ảnh: ![tên](url). Bảng: 8 cột. Thẻ ẩn khách: [THÔNG TIN KHÁCH HÀNG: Tên|SĐT|Địa chỉ].
 
-${isLeadCaptured ? "- KHÁCH ĐÃ CUNG CẤP SĐT RỒI. Tuyệt đối KHÔNG hỏi lại SĐT hay Zalo nữa." : (userMessageCount >= 2 ? "- Hiện tại đã có thể gợi ý để lại SĐT/Zalo: 'Anh/chị để lại SĐT/Zalo giúp em để bộ phận kỹ thuật hỗ trợ mình kỹ hơn ạ.' (Chỉ dùng khi tư vấn sâu/báo giá)." : "- Chặn tuyệt đối: KHÔNG được hỏi SĐT/Zalo trong 2 tin nhắn đầu tiên.") }
+6. NHẬN DIỆN LEAD FULL: Nếu khách đã nhắn đầy đủ "Tên + SĐT + Địa chỉ", Sol phải xác nhận lại toàn bộ thông tin và cảm ơn, tuyệt đối CẤM hỏi lại tên hay bất kỳ thông tin nào đã có.
+
+${isLeadCaptured ? "- KHÁCH ĐÃ CUNG CẤP THÔNG TIN LIÊN HỆ. Tuyệt đối KHÔNG hỏi lại SĐT, Tên hay Zalo nữa. Hãy chuyển sang chốt đơn hoặc hẹn lịch gọi." : (userMessageCount >= 2 ? "- Hiện tại đã có thể gợi ý để lại SĐT/Zalo: 'Anh/chị để lại SĐT/Zalo giúp em để bộ phận kỹ thuật hỗ trợ mình kỹ hơn ạ.' (Chỉ dùng khi tư vấn sâu/báo giá)." : "- Chặn tuyệt đối: KHÔNG được hỏi SĐT/Zalo trong 2 tin nhắn đầu tiên.") }
 
 Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
             const response = await fetch(OPENROUTER_URL, {
