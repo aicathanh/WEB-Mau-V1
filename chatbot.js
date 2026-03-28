@@ -101,9 +101,8 @@
     }
 
     // Telegram Bot Notification Configuration
-    // ⚠️ THAY THẾ 2 GIÁ TRỊ NÀY BẰNG TOKEN VÀ CHAT ID THẬT CỦA BẠN
-    const TELEGRAM_BOT_TOKEN = "CHƯA_CÀI_ĐẶT";
-    const TELEGRAM_CHAT_ID = "CHƯA_CÀI_ĐẶT";
+    const TELEGRAM_BOT_TOKEN = "8620660507:AAEvTNn4hdaEv5gFdmpSsDbOAe22QWz3I3A";
+    const TELEGRAM_CHAT_ID = "8568257944";
 
     async function pushToTelegram(phone, chatLog) {
         if (TELEGRAM_BOT_TOKEN === "CHƯA_CÀI_ĐẶT") return;
