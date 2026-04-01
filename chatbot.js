@@ -5,19 +5,34 @@
     
     // UI Elements
     const chatContainer = document.createElement('div');
+    // Configuration based on Domain
+    const isJades = window.location.hostname.includes('jades.vn');
+    const BOT_NAME = isJades ? 'Mr Ben - tư vấn sơn Lotus' : 'Ms Sol - trợ lý sơn Lotus';
+    const BOT_AVATAR = isJades ? 'https://web-mau-v1.vercel.app/mr-ben-avatar.png' : 'https://web-mau-v1.vercel.app/ms-sol-avatar.jpg?v=1.1';
+    const BOT_THEME_COLOR = isJades ? '#3c9b7e' : '#e9c349'; 
+    const BOT_SUBTITLE = 'Online';
+    const DEFAULT_GREETING = isJades ? "Chào anh chị! Em là Ben - chuyên gia kỹ thuật Sơn Lotus. Rất vui được hỗ trợ anh chị ạ." : "Em chào anh chị! Em là Sol tư vấn sơn Lotus. Em ở đây để sẵn sàng hỗ trợ anh chị ạ.";
+    const TYPING_TEXT = isJades ? 'Ben đang nhập...' : 'Sol đang nhập...';
+
     chatContainer.id = 'chatbot-wrapper';
     chatContainer.innerHTML = `
         <div id="chatbot-container">
             <div id="chatbot-window">
+                <style>
+                    #send-btn { background: ${BOT_THEME_COLOR} !important; }
+                    .chatbot-status-indicator { background-color: ${isJades ? '#22c55e' : '#10b981'} !important; }
+                    #upload-btn { color: ${BOT_THEME_COLOR} !important; }
+                    .chatbot-message.user { background: ${BOT_THEME_COLOR} !important; }
+                </style>
                 <div class="chatbot-header">
                     <div class="chatbot-info">
                         <div class="chatbot-avatar-container">
-                            <img src="https://web-mau-v1.vercel.app/ms-sol-avatar.jpg?v=1.1" alt="Ms Sol Avatar" class="chatbot-header-avatar">
+                            <img src="${BOT_AVATAR}" alt="${BOT_NAME}" class="chatbot-header-avatar" style="border: 2px solid ${BOT_THEME_COLOR} !important;">
                             <div class="chatbot-status-indicator"></div>
                         </div>
                         <div class="chatbot-title">
-                            Ms Sol - trợ lý sơn Lotus
-                            <span class="chatbot-subtitle">Online</span>
+                            ${BOT_NAME}
+                            <span class="chatbot-subtitle">${BOT_SUBTITLE}</span>
                         </div>
                     </div>
                     <div class="chatbot-controls">
@@ -41,8 +56,8 @@
                     </button>
                 </div>
             </div>
-            <button id="chatbot-toggle" title="Chat với chúng tôi">
-                <img src="https://web-mau-v1.vercel.app/ms-sol-avatar.jpg?v=1.1" alt="Ms Sol" class="chatbot-toggle-avatar">
+            <button id="chatbot-toggle" title="Chat với chúng tôi" style="border: 3px solid ${BOT_THEME_COLOR} !important;">
+                <img src="${BOT_AVATAR}" alt="${BOT_NAME}" class="chatbot-toggle-avatar">
                 <div class="chatbot-badge" id="chatbot-badge">1</div>
             </button>
         </div>
@@ -72,27 +87,31 @@
     const badge = document.getElementById('chatbot-badge');
 
     // State
-    let knowledgeBase = `### THÔNG SỐ KỸ THUẬT CHI TIẾT (KNOWLEDGE BASE V3.6)
-1. Woodstain finish exterior: Sơn 2 trong 1 (màu + bóng) cho gỗ ngoài trời & sàn. Hybrid PU, kháng UV, tự làm sạch. Định mức: 12-13 m2/l/lớp. Khô: 1-2h.
-2. Wood Paint-901 Indoor: Sơn bệt nội thất (70+ màu). Core Shell polymer, dẻo dai, bám dính tốt trên MDF/Plywood. Độ phủ: 8-10 m2/l/lớp. Khô: 1-3h.
-3. Lacquer 2K71 Indoor: Sơn phủ PU 2 thành phần (Nano Polymer). Kháng nước/hóa chất, siêu bóng, không ngả vàng. Độ phủ: 8-10 m2/l/lớp. Khô: 1-3h.
-4. PUD Exterior: Sơn phủ PU 1 thành phần ngoại thất. Hiệu ứng lá sen, chống mối mọt, kháng UV tuyệt vời. Độ phủ: 8-10 m2/l/lớp. Khô: 1-3h.
-5. Lotus wood primer: Sơn lót trắng (1K). Làm phẳng bề mặt MDF/HDF, dễ chà nhám. Độ phủ: 8-10 m2/l/lớp.
-6. Lotus Wood Primer – TB: Lót kháng dầu tannin (ngăn xì nhựa gỗ). Giúp gỗ không bị ngả vàng. Độ phủ: 8-12 m2/l/lớp.
-7. Wood Paint-exterior: Sơn bệt ngoại thất. Tự làm sạch, kháng UV cao. Độ phủ: 12-13 m2/l/lớp.
-8. Sanding sealer clear: Lót lấp tim trong suốt. Tạo bề mặt siêu phẳng cho gỗ tự nhiên. Độ phủ: 8-12 m2/l/lớp.
-9. Woodstain finish interior: Sơn 2 trong 1 nội thất (UA gốc nước). Nhanh khô, không dính dấu vân tay. Định mức: 12-13 m2/l/lớp.
-10. Lotus Metal Coat Finish: Sơn phủ màu kim loại (1K) cao cấp. Kháng UV, bền màu, nhẹ mùi.
-11. Metal Coat 2in1: Sơn trực tiếp trên kim loại/container (DTM). Chống rỉ sét, khô cực nhanh.
-12. Lotus Metal Coat Primer: Sơn lót chống rỉ hệ nước. Tăng bám dính tuyệt vời trên sắt mạ kẽm/nhôm.
-13. Lotus Wood Primer (Giả gỗ): Lót chuyên dụng cho tấm Fiber Cement (Conwood/Smartwood).
-14. Lotus Wood Plank Paint: Sơn phủ tạo hiệu ứng giả gỗ cao cấp. Tự làm sạch, kháng UV.`;
+    let knowledgeBase = `### THÔNG SỐ KỸ THUẬT & BẢNG GIÁ (KNOWLEDGE BASE V3.7)
+1. Lacquer 2K71 Indoor: Sơn phủ PU 2 thành phần. Giá: 185.000đ/kg. Tỷ lệ đóng rắn: 15%.
+2. Chất Đóng Rắn (Hardener): Giá 740.000đ (1kg), 390.000đ (0.5kg), 85.000đ (0.1kg).
+3. Sơn Gỗ Ngoài Trời 2K (2K33): Giá 216.000đ/kg. Tỷ lệ đóng rắn: 15%.
+
+BẢNG GIÁ ĐƯỢC CẬP NHẬT TỪ chatbot_data.txt (NẾU LOAD THÀNH CÔNG):
+| NHÓM SẢN PHẨM | TÊN SẢN PHẨM | GIÁ 1KG | GIÁ 5KG | GIÁ 20KG |
+| --- | --- | --- | --- | --- |
+| GỖ & GIẢ GỖ | Lót Trong Suốt (Sanding Sealer) | 145.800 | 648.000 | 2.447.280 |
+| GỖ & GIẢ GỖ | Lót Trắng (Wood Primer) | 145.800 | 648.000 | 2.447.280 |
+| GỖ & GIẢ GỖ | Sơn Lau Gỗ (Wood Stain) | 194.400 | 864.000 | 3.311.280 |
+| GỖ & GIẢ GỖ | Sơn Gỗ Ngoài Trời 2K (2K33) | 216.000 | 1.047.600 | 3.866.400 |
+| GỖ & GIẢ GỖ | Sơn Nội Thất (Finish Interior) | 199.800 | 939.600 | 3.564.000 |
+| GỖ & GIẢ GỖ | Sơn Ngoại Thất & Sàn (2K72) | 199.800 | 939.600 | 3.564.000 |
+| PHỤ TRỢ | Chất Đóng Rắn (Hardener) | 740.000 (1kg) | 390.000 (0.5kg) | 85.000 (0.1kg) |
+| GỖ NGOÀI TRỜI | Sơn Màu Bệt Ngoài Trời (Wood Paint Exterior) | 291.600 | 1.404.000 | 5.248.800 |
+`;
     let isChatOpen = false;
     let isSending = false;
     let messageHistory = [];
     let userMessageCount = 0;
-    let isLeadCaptured = false;
-    const DEFAULT_GREETING = "Em chào anh chị! Em là Sol tư vấn sơn Lotus. Em ở đây để sẵn sàng hỗ trợ anh chị ạ.";
+    let isLeadCaptured = localStorage.getItem('chatbot_lead_captured') === 'true';
+    let capturedPhone = localStorage.getItem('chatbot_phone') || '';
+    let hasSentGreetingLog = false;
+    let hasSent3InteractionsLog = false;
 
     const OPENROUTER_API_KEY = "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f";
     const OPENROUTER_MODEL = "ces-chatbot-gpt-5.4";
@@ -136,7 +155,7 @@
 
     async function loadKnowledgeBase() {
         try {
-            const response = await fetch('https://web-mau-v1.vercel.app/chatbot_data.txt');
+            const response = await fetch('chatbot_data.txt');
             if (response.ok) knowledgeBase = await response.text();
         } catch (error) { console.error("Error loading knowledge:", error); }
     }
@@ -232,7 +251,7 @@
         const div = document.createElement('div');
         div.className = 'typing-indicator';
         div.id = 'typing-indicator';
-        div.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div><span class="typing-text">Sol đang nhập...</span>';
+        div.innerHTML = `<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div><span class="typing-text">${TYPING_TEXT}</span>`;
         messagesContainer.appendChild(div);
         messagesContainer.scrollTop = messagesContainer.scrollHeight;
     }
@@ -307,15 +326,28 @@ QUY TẮC: Khi thấy ảnh mã màu mẫu, hãy quan sát mã trên ảnh (thư
         addMessageUI(text, 'user');
         messageHistory.push({ role: "user", content: text });
         userMessageCount++;
-        const phoneRegex = /(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/;
-        if (phoneRegex.test(text)) { isLeadCaptured = true; }
+        const phoneMatch = text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/);
+        if (phoneMatch) { 
+            isLeadCaptured = true; 
+            capturedPhone = phoneMatch[0];
+            localStorage.setItem('chatbot_lead_captured', 'true');
+            localStorage.setItem('chatbot_phone', capturedPhone);
+        }
+
+        // Track interaction reach 3 questions
+        if (userMessageCount >= 3 && !hasSent3InteractionsLog) {
+            pushToCRM({ event: 'interaction_reached_3', count: userMessageCount, source: window.location.hostname });
+            hasSent3InteractionsLog = true;
+        }
 
         showTyping();
         try {
             const systemPrompt = `Bạn là Sol — nhân viên kỹ thuật tư vấn của Sơn Lotus (3 năm kinh nghiệm thực chiến), KHÔNG phải chatbot.
 
 3. CHỐT ĐƠN PHẢI ĐỦ CẶP: Với hệ giả gỗ, khi khách chọn mã màu dạng "LPMx.LWFx", Sol phải tư vấn mua cả Sơn Lót (Primer) và Sơn Phủ (Plank Paint) tương ứng. Tuyệt đối không để khách chỉ mua 1 loại vì sẽ không lên đúng màu.
-4. ĐỊNH MỨC THỰC TẾ: Nếu khách hỏi định mức, hãy dùng số: 1kg phủ được 5-6 m2 (phun) hoặc 8-10 m2 (lau/quét).
+4. CÔNG THỨC 2K TRỌN BỘ (QUAN TRỌNG): Khi báo giá sơn 2K, tỷ lệ % (7% hoặc 15%) là tỷ lệ KHỐI LƯỢNG đóng rắn cần pha. Giá đóng rắn = [Khối lượng] x 740.000đ/kg. Tuyệt đối KHÔNG lấy % giá tiền sơn để tính giá đóng rắn.
+   - Ví dụ bộ 1kg Phủ 2K (15%): Giá sơn + 111.000đ (đóng rắn).
+   - Ví dụ bộ 1kg Lót 2K (7%): Giá sơn + 51.800đ (đóng rắn).
 
 TÔN CHỈ: "NHẮN TIN NHƯ NGƯỜI THẬT TRÊN ZALO - ĐI THẲNG TRỌNG TÂM".
 
@@ -327,7 +359,7 @@ QUY TẮC PHẢN HỒI (BẮT BUỘC):
 3. TUYỆT ĐỐI KHÔNG DÙNG **BOLD** (IN ĐẬM): Chat Zalo không dùng định dạng này. Muốn nhấn mạnh hãy dùng CHỮ HOA hoặc ngắt dòng.
 4. HỎI NGƯỢC & NHẮC LẠI: Luôn hỏi để hiểu nhu cầu (súng phun, mã màu, giai đoạn dự án). Nhắc lại dữ kiện khách đã nói.
 5. ĐIỀU CẤM: KHÔNG chào máy móc. KHÔNG dùng ngôn ngữ quảng cáo sáo rỗng. KHÔNG hứa hẹn khi chưa có dữ liệu.
-330: 6. TƯ VẤN AN TOÀN/XUẤT KHẨU: Nếu khách hỏi về độ an toàn hoặc dùng cho đồ gỗ xuất khẩu, Sol phải chủ động giới thiệu các chứng chỉ quốc tế (EN71-3, ASTM F963, FDA, RoHS, Low VOCs) để tăng uy tín.
+6. TƯ VẤN AN TOÀN/XUẤT KHẨU: Nếu khách hỏi về độ an toàn hoặc dùng cho đồ gỗ xuất khẩu, Sol phải chủ động giới thiệu các chứng chỉ quốc tế (EN71-3, ASTM F963, FDA, RoHS, Low VOCs) để tăng uy tín.
 
 QUY TRÌNH TƯ VẤN:
 - Bước 1 (Bề mặt): 
@@ -366,7 +398,8 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
                     
                     // 1. Gửi về Google Sheets
                     pushToCRM({
-                        phone: text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/)?.[0] || 'N/A',
+                        event: 'lead_captured',
+                        phone: capturedPhone || 'N/A',
                         chat_history: chatLog,
                         source: window.location.hostname
                     });
@@ -378,14 +411,13 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
                         body: JSON.stringify({
                             _subject: "🔔 [CHATBOT] CÓ KHÁCH HÀNG ĐỂ LẠI SỐ ĐIỆN THOẠI!",
                             _template: "table",
-                            "SĐT_Khách": text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/)?.[0],
+                            "SĐT_Khách": capturedPhone || 'N/A',
                             "Lịch_Sử_Chat": chatLog
                         })
                     }).catch(e => console.error("Email Error:", e));
 
                     // 3. Gửi Telegram thông báo real-time
-                    const phone = text.match(/(0[3|5|7|8|9][0-9]{8})|([0-9]{10,11})/)?.[0] || 'N/A';
-                    pushToTelegram(phone, chatLog);
+                    pushToTelegram(capturedPhone || 'N/A', chatLog);
                 }
             }
         } catch (error) {
@@ -406,7 +438,13 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
         if (isChatOpen) {
             chatInput.focus();
             badge.classList.remove('show');
-            if (messagesContainer.children.length === 0) addMessageUI(DEFAULT_GREETING, 'bot', true);
+            if (messagesContainer.children.length === 0) {
+                addMessageUI(DEFAULT_GREETING, 'bot', true);
+                if (!hasSentGreetingLog) {
+                    pushToCRM({ event: 'greeting_read', source: window.location.hostname });
+                    hasSentGreetingLog = true;
+                }
+            }
         }
     });
 
