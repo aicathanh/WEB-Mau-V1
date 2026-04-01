@@ -302,6 +302,23 @@ QUY TẮC: Khi thấy ảnh mã màu mẫu, hãy quan sát mã trên ảnh (thư
                     const reply = data.choices[0].message.content;
                     messageHistory.push({ role: "assistant", content: reply });
                     addMessageUI(reply, 'bot', true);
+
+                    // THÊM: Gửi báo cáo Telegram/CRM khi khách gửi ảnh và đã có Lead
+                    if (isLeadCaptured) {
+                        const chatLog = messageHistory
+                            .filter(m => m.role !== 'system' && !m.content?.[0]?.image_url) // Loại bỏ ảnh to trong log
+                            .map(m => (m.role === 'user' ? 'Khách: ' : 'Sol: ') + (typeof m.content === 'string' ? m.content : '[Gửi ảnh mẫu]'))
+                            .join('\n\n');
+                        
+                        pushToCRM({
+                            event: 'lead_image_captured',
+                            phone: capturedPhone || 'N/A',
+                            chat_history: chatLog,
+                            source: window.location.hostname
+                        });
+
+                        pushToTelegram(capturedPhone || 'N/A', chatLog);
+                    }
                 }
             } catch (err) {
                 console.error(err);
