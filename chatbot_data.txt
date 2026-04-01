@@ -922,17 +922,17 @@ DRY TIME: N/Ah
 ---PRODUCT: TDS Lotus lót giả gỗ
 DESC: Sơn lót giả gỗ cho tấm fiber cement Lotus Wood Primer Paint là dòng sơn giả gỗ cao cấp hệ nước dành cho các sản phẩm tấm fiber cement silicate/calcium silicate. Sơn được tổng hợp từ nhựa acrylic kích ...
 FEATURES: • Độ phủ cao • Bám dính bề mặt fiber cement cực tốt • Kháng nước, kiềm và tia UV • Chống rêu và nấm mốc • Thân thiện môi trường và an toàn sức khoẻ người sử dụng
-APP: • Vật liệu ứng dụng: các sản phẩm fiber cement composite như Smartwood, Smartboard, Conwood, Durawood…, tường bê tông… • Hạng mục sử dụng: sàn, hàng rào, vách, len chân tường, lam…trong nhà và ngoài trời.
-COVERAGE: N/A m2/l/lớp
-DRY TIME: N/Ah
+APP: • Vật liệu ứng dụng: tấm fiber cement (Smartwood, Conwood...), sắt hộp mạ kẽm (sắt hộp), tường bê tông… • Hàng mục dùng: sàn, hàng rào, vách, bông gió sắt, lan can...
+COVERAGE: 8-10 m2/l/lớp
+DRY TIME: 1-2h
 ---
 
 PRODUCT: TDS Lotus Wood Plank Paint
 DESC: Sơn giả gỗ cao cấp Lotus Wood Plank Paint là sơn hoàn thiện giả gỗ chuyên cho các sản phẩm tấm fiber cement, thanh fiber cement composite. Sơn tạo hiệu ứng giả gỗ giúp công trình được hoàn thiện như g...
 FEATURES: • Đẹp như gỗ thật với nhiều màu sắc tươi sáng, độ bóng vượt trội. • Độ bám bụi thấp và lau chùi dễ dàng nhờ công nghệ self-cleaning. • Thân thiện môi trường và an toàn sức khoẻ cho người sử dụng. • Chống rêu và nấm mốc. • Kháng nước, kiềm và tia UV. • Độ bền màu và bền thời tiết cao.
-APP: • Vật liệu ứng dụng: các sản phẩm fiber cement composite như Smartwood, Smartboard, Conwood, Durawood…, tường bê tông… • Hạng mục sử dụng: sàn, hàng rào, vách, len chân tường, lam…trong nhà và ngoài trời.
-COVERAGE: N/A m2/l/lớp
-DRY TIME: N/Ah
+APP: • Vật liệu ứng dụng: tấm fiber cement (Smartwood, Conwood...), sắt hộp mạ kẽm (sắt hộp), tường bê tông… • Hàng mục dùng: sàn, hàng rào, vách, bông gió sắt, lan can...
+COVERAGE: 12-13 m2/l/lớp
+DRY TIME: 1-2h
 ---
 
 ### CHỨNG NHẬN AN TOÀN QUỐC TẾ - SƠN LOTUS
