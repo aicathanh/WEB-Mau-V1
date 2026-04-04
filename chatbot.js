@@ -141,9 +141,9 @@ BẢNG GIÁ ĐƯỢC CẬP NHẬT TỪ chatbot_data.txt (NẾU LOAD THÀNH CÔNG
     const TELEGRAM_BOT_TOKEN = "8620660507:AAEvTNn4hdaEv5gFdmpSsDbOAe22QWz3I3A";
     const TELEGRAM_CHAT_ID = "8568257944";
 
-    async function pushToTelegram(phone, chatLog) {
+    async function pushToTelegram(phone, chatLog, interest = 'N/A', intentLevel = 'N/A') {
         if (TELEGRAM_BOT_TOKEN === "CHƯA_CÀI_ĐẶT") return;
-        const message = `🔔 KHÁCH HÀNG MỚI TỪ CHATBOT\n\n📱 SĐT: ${phone}\n🌐 Nguồn: ${window.location.hostname}\n📅 ${new Date().toLocaleString('vi-VN')}\n\n💬 Tóm tắt:\n${chatLog.slice(-500)}`;
+        const message = `🔔 KHÁCH HÀNG MỚI TỪ CHATBOT\n\n📱 SĐT: ${phone}\n📦 Quan tâm: ${interest}\n🔥 Mức độ: ${intentLevel}\n🌐 Nguồn: ${window.location.hostname}\n📅 ${new Date().toLocaleString('vi-VN')}\n\n💬 Tóm tắt:\n${chatLog.slice(-500)}`;
         try {
             await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
                 method: "POST",
@@ -285,7 +285,9 @@ BẢNG GIÁ ĐƯỢC CẬP NHẬT TỪ chatbot_data.txt (NẾU LOAD THÀNH CÔNG
                 // Gọi API với context ảnh
                 const systemPrompt = `Bạn là Sol — nhân viên kỹ thuật tư vấn của Sơn Lotus (3 năm kinh nghiệm thực chiến).
 Dữ liệu kiến thức: ${knowledgeBase}.
-QUY TẮC: Khi thấy ảnh mã màu mẫu, hãy quan sát mã trên ảnh (thường ở góc trái trên, VD: LPM14.LWF1018) để tư vấn bộ đôi Lót + Phủ tương ứng.`;
+QUY TRÌNH GIẢ GỖ: Luôn tư vấn quy trình 3 lớp: 1 lót nền + 2 LỚP PHỦ VÂN GỖ (Bắt buộc 2 lớp để vân sâu và đẹp). Nếu làm ngoài trời, phải tư vấn thêm lớp Phủ bóng bảo vệ.
+QUY TẮC: Khi thấy ảnh mã màu mẫu, hãy quan sát mã trên ảnh (thường ở góc trái trên, VD: LPM14.LWF1018) để tư vấn bộ đôi Lót + Phủ tương ứng.
+TRÍCH XUẤT DỮ LIỆU: Luôn tự suy luận và kèm theo thẻ ẩn ở cuối tin nhắn nếu có thông tin: [THÔNG TIN KHÁCH HÀNG: Tên|SĐT|Email|Sản phẩm quan tâm|Mức độ (Hot/Warm/Cold)]`;
 
                 const response = await fetch(OPENROUTER_URL, {
                     method: "POST",
@@ -397,11 +399,16 @@ QUY TRÌNH TƯ VẤN:
   + Nếu khách hỏi "SƠN LAU GỖ" (Wood Stain): MẶC ĐỊNH là gỗ tự nhiên. Sol phải GỬI NGAY bảng màu ![Bảng màu sơn lau gỗ](https://w.ladicdn.com/s750x600/5e3e73f71adefa2bf15bd42f/bang-mau-son-lau-go-wood-stain-20251117100611-kv5yl.png) và nhắn chuẩn câu: "Dạ em gửi anh bảng màu lau bên em. Anh chọn màu nào rồi nhắn em ạ". TUYỆT ĐỐI KHÔNG hỏi lại bề mặt, KHÔNG liệt kê các hướng chọn 1-2-3 rườm rà, KHÔNG hỏi lau tay hay phun súng ở tin nhắn này.
   + Nếu hỏi "Sơn gỗ": Hỏi "Dạ, anh/chị dùng cho gỗ tự nhiên hay gỗ công nghiệp ạ?".
   + Nếu hỏi "Sơn MDF": Tuyệt đối KHÔNG hỏi "thường hay chống ẩm". Hỏi ngay: "Dạ có anh, anh cần sơn màu trơn (trắng/xám...) hay sơn giả gỗ ạ?".
-  + Nếu hỏi "Sơn giả gỗ": CHỈ HỎI đúng 1 câu duy nhất: "Dạ, anh/chị dùng cho tấm xi măng (Conwood/Cemboard) hay trên sắt kẽm ạ?". TUYỆT ĐỐI KHÔNG liệt kê 3 hướng giải pháp ở đây.
-  + Quy trình GIẢ GỖ TRÊN SẮT: Khi khách đã xác nhận là sắt/kẽm, Sol tư vấn hệ 2 BƯỚC: 1. Sơn lót nền giả gỗ (LPM) trực tiếp lên sắt (Không cần lót kẽm) và 2. Phủ vân gỗ (LWF).
+  + Quy trình GIẢ GỖ: Khi khách hỏi hệ giả gỗ (trên sắt hay xi măng), Sol phải tư vấn quy trình: 1 lớp lót nền + 2 LỚP PHỦ VÂN GỖ (Dùng cọ quét tạo vân). Bắt buộc phải sơn 2 lớp vân gỗ thì màng sơn mới đẹp và bền. 
+  + NGOÀI TRỜI: Nếu khách làm ngoài trời hoặc cần bền hơn, Sol PHẢI khuyên khách phủ thêm 1 lớp Phủ bóng bảo vệ (Lotus Shield/Hard Shield hoặc Lacquer/2K).
+  + Quy trình GIẢ GỖ TRÊN SẮT: Khi khách đã xác nhận là sắt/kẽm, Sol tư vấn: 1. Sơn lót nền giả gỗ (LMCP - 1 lớp) trực tiếp lên sắt và 2. Phủ vân gỗ (Metal Coat Finish giả gỗ/LWF - 2 LỚP).
+  + QUY TẮC MÃ MÀU SẮT: Màu bệt (LMCF), Màu bệt tiết kiệm 2-trong-1 (LDTM), Màu giả gỗ (LWF).
 - Bước 2 (Giải pháp): Tư vấn 3 hướng xử lý siêu tinh gọn dựa trên bề mặt khách đã chọn.
 
-QUY TẮC HIỂN THỊ: Ảnh: ![tên](url). Bảng: 8 cột. Thẻ ẩn khách: [THÔNG TIN KHÁCH HÀNG: Tên|SĐT|Địa chỉ].
+QUY TẮC HIỂN THỊ: Ảnh: ![tên](url). Bảng: 8 cột. Thẻ ẩn khách: [THÔNG TIN KHÁCH HÀNG: Tên|SĐT|Email|Sản phẩm quan tâm|Mức độ (Hot/Warm/Cold)].
+TRÍCH XUẤT TỰ ĐỘNG: Ngoài Tên/SĐT/Email, Sol phải tự suy luận thêm:
+- interest: Khách đang quan tâm đến dòng sản phẩm nào? (Gỗ tự nhiên, Giả gỗ, Kim loại...).
+- intent_level: Đánh giá mức độ tiềm năng (Hot: Muốn mua ngay/Báo giá chốt đơn; Warm: Đang tìm hiểu kỹ quy trình; Cold: Hỏi tham khảo).
 
 6. NHẬN DIỆN LEAD FULL: Nếu khách đã nhắn đầy đủ "Tên + SĐT + Địa chỉ", Sol phải xác nhận lại toàn bộ thông tin và cảm ơn, tuyệt đối CẤM hỏi lại tên hay bất kỳ thông tin nào đã có.
 
@@ -430,10 +437,23 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
                         .map(m => (m.role === 'user' ? 'Khách: ' : 'Sol: ') + m.content)
                         .join('\n\n');
                     
+                    // Parse tag ẩn từ tin nhắn cuối của AI để lấy thêm thông tin chi tiết
+                    let interest = 'N/A';
+                    let intentLevel = 'N/A';
+                    const tagMatch = reply.match(/\[THÔNG TIN KHÁCH HÀNG: (.*?)\]/);
+                    if (tagMatch) {
+                        const parts = tagMatch[1].split('|');
+                        // Tag format: Tên|SĐT|Email|Sản phẩm quan tâm|Mức độ
+                        if (parts.length >= 4) interest = parts[3].trim() || 'N/A';
+                        if (parts.length >= 5) intentLevel = parts[4].trim() || 'N/A';
+                    }
+                    
                     // 1. Gửi về Google Sheets
                     pushToCRM({
                         event: 'lead_captured',
                         phone: capturedPhone || 'N/A',
+                        interest: interest,
+                        intent_level: intentLevel,
                         chat_history: chatLog,
                         source: window.location.hostname
                     });
@@ -451,7 +471,7 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
                     }).catch(e => console.error("Email Error:", e));
 
                     // 3. Gửi Telegram thông báo real-time
-                    pushToTelegram(capturedPhone || 'N/A', chatLog);
+                    pushToTelegram(capturedPhone || 'N/A', chatLog, interest, intentLevel);
                 }
             }
         } catch (error) {
