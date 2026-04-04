@@ -137,11 +137,11 @@ Khi khách hàng hỏi chung chung như "Cần mua sơn gỗ" hoặc "Tư vấn 
 | SƠN GỖ | Màu Bệt Trong Nhà 2K (Wood Paint 2K33) | 216.000 | 1,026,000 | 3,888.000 |
 | SƠN GỖ | Màu Bệt Ngoài Trời 2K (Wood Paint 2K33) | 246.000 | 1,176,000 | 4,488.000 |
 | SƠN GỖ | Sơn Ngoại Thất & Sàn 2K (2K72) | 199.800 | 939.600 | 3.564.000 |
-| SƠN GIẢ GỖ | Phủ Màu Giả Gỗ Kim Loại (1K) | 297.000 | 1.366.200 | 5.303.880 |
-| KIM LOẠI (1K) | Lót Kim Loại Chống Gỉ (Metal Primer) | 217.080 | 986.040 | 3.723.840 |
-| KIM LOẠI (1K) | Phủ Màu Kim Loại (Metal Coat Finish) | 237.600 | 1.092.960 | 4.196.880 |
-| KIM LOẠI (1K) | Sơn Kim Loại 2 in 1 (DTM Metal Coat) | 254.880 | 1.188.000 | 4.639.680 |
-| KIM LOẠI (1K) | Metal Coat Finish giả gỗ | 297.000 | 1.366.200 | 5.303.880 |
+| SƠN GIẢ GỖ | Phủ Màu Giả Gỗ Kim Loại (1K) (LWF) | 297.000 | 1.366.200 | 5.303.880 |
+| KIM LOẠI (1K) | Lót Kim Loại Chống Gỉ (Metal Primer) (LMCP) | 217.080 | 986.040 | 3.723.840 |
+| KIM LOẠI (1K) | Phủ Màu Kim Loại (Metal Coat Finish) (LMCF) | 237.600 | 1.092.960 | 4.196.880 |
+| KIM LOẠI (1K) | Sơn Kim Loại 2 in 1 (DTM Metal Coat) (LDTM) | 254.880 | 1.188.000 | 4.639.680 |
+| KIM LOẠI (1K) | Metal Coat Finish giả gỗ (LWF) | 297.000 | 1.366.200 | 5.303.880 |
 | KIM LOẠI 2K | Lót Kim Loại 2K (Metal Coat Primer 2K) | 183.600 | 864.000 | 3.294.000 |
 | KIM LOẠI 2K | Phủ Màu Kim Loại 2K (Metal Coat Finish 2K) | 199.800 | 939.600 | 3.564.000 |
 | KIM LOẠI 2K | Kim Loại 2 in 1 2K (Metal Coat 2in1 2K) | 205.200 | 972.000 | 3.780.000 |
