@@ -89,8 +89,8 @@
     // State
     let knowledgeBase = `### THÔNG SỐ KỸ THUẬT & BẢNG GIÁ (KNOWLEDGE BASE V3.7)
 1. Lacquer 2K71 Indoor: Sơn phủ PU 2 thành phần. Giá: 185.000đ/kg. Tỷ lệ đóng rắn: 15%.
-2. Chất Đóng Rắn (Hardener): Giá 740.000đ (1kg), 390.000đ (0.5kg), 85.000đ (0.1kg).
-3. Sơn Gỗ Ngoài Trời 2K (2K33): Giá 216.000đ/kg. Tỷ lệ đóng rắn: 15%.
+2. Chất Đóng Rắn (Hardener): Giá 799.200đ (1kg), 421.200đ (0.5kg), 91.800đ (0.1kg).
+3. Sơn Gỗ Ngoài Trời 2K (2K33): Giá 234.360đ/kg. Tỷ lệ đóng rắn: 20%.
 
 BẢNG GIÁ ĐƯỢC CẬP NHẬT TỪ chatbot_data.txt (NẾU LOAD THÀNH CÔNG):
 | NHÓM SẢN PHẨM | TÊN SẢN PHẨM | GIÁ 1KG | GIÁ 5KG | GIÁ 20KG |
@@ -98,10 +98,10 @@ BẢNG GIÁ ĐƯỢC CẬP NHẬT TỪ chatbot_data.txt (NẾU LOAD THÀNH CÔNG
 | GỖ & GIẢ GỖ | Lót Trong Suốt (Sanding Sealer) | 145.800 | 648.000 | 2.447.280 |
 | GỖ & GIẢ GỖ | Lót Trắng (Wood Primer) | 145.800 | 648.000 | 2.447.280 |
 | GỖ & GIẢ GỖ | Sơn Lau Gỗ (Wood Stain) | 194.400 | 864.000 | 3.311.280 |
-| GỖ & GIẢ GỖ | Sơn Gỗ Ngoài Trời 2K (2K33) | 216.000 | 1.047.600 | 3.866.400 |
+| GỖ & GIẢ GỖ | Sơn Gỗ Ngoài Trời 2K (2K33) | 234.360 | 1.150.200 | 4.276.800 |
 | GỖ & GIẢ GỖ | Sơn Nội Thất (Finish Interior) | 199.800 | 939.600 | 3.564.000 |
 | GỖ & GIẢ GỖ | Sơn Ngoại Thất & Sàn (2K72) | 199.800 | 939.600 | 3.564.000 |
-| PHỤ TRỢ | Chất Đóng Rắn (Hardener) | 740.000 (1kg) | 390.000 (0.5kg) | 85.000 (0.1kg) |
+| PHỤ TRỢ | Chất Đóng Rắn (Hardener) | 799.200 (1kg) | 421.200 (0.5kg) | 91.800 (0.1kg) |
 | GỖ NGOÀI TRỜI | Sơn Màu Bệt Ngoài Trời (Wood Paint Exterior) | 291.600 | 1.404.000 | 5.248.800 |
 `;
     let isChatOpen = false;
@@ -187,9 +187,13 @@ BẢNG GIÁ ĐƯỢC CẬP NHẬT TỪ chatbot_data.txt (NẾU LOAD THÀNH CÔNG
                     if (foundHeader && trimmed === "") { foundHeader = false; }
                     return line;
                 }).join('\n');
-                // Chèn thêm dòng phân cách tiêu đề nếu thiếu
+                // Chèn thêm dòng phân cách tiêu đề nếu thiếu dựa vào số cột thực tế
                 if (fixedContent.includes("| STT |") && !fixedContent.includes("|---|")) {
-                    fixedContent = fixedContent.replace(/\| STT \|.*\|/g, "$&\n|---|---|---|---|---|---|---|---|");
+                    fixedContent = fixedContent.replace(/\| STT \|.*\|/g, (match) => {
+                        const colCount = (match.match(/\|/g) || []).length - 1;
+                        const divider = '|---'.repeat(Math.max(1, colCount)) + '|';
+                        return match + '\n' + divider;
+                    });
                 }
             }
             div.innerHTML = marked.parse(fixedContent.replace(/\[THÔNG TIN KHÁCH HÀNG:.*?\]/g, ""));
@@ -289,14 +293,19 @@ QUY TRÌNH GIẢ GỖ: Luôn tư vấn quy trình 3 lớp: 1 lót nền + 2 LỚ
 QUY TẮC: Khi thấy ảnh mã màu mẫu, hãy quan sát mã trên ảnh (thường ở góc trái trên, VD: LPM14.LWF1018) để tư vấn bộ đôi Lót + Phủ tương ứng.
 TRÍCH XUẤT DỮ LIỆU: Luôn tự suy luận và kèm theo thẻ ẩn ở cuối tin nhắn nếu có thông tin: [THÔNG TIN KHÁCH HÀNG: Tên|SĐT|Email|Sản phẩm quan tâm|Mức độ (Hot/Warm/Cold)]`;
 
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 90000); // 90 seconds timeout
+
                 const response = await fetch(OPENROUTER_URL, {
                     method: "POST",
                     headers: { "Authorization": `Bearer ${OPENROUTER_API_KEY}`, "Content-Type": "application/json" },
                     body: JSON.stringify({
                         model: OPENROUTER_MODEL,
                         messages: [{ role: "system", content: systemPrompt }, ...messageHistory.slice(-5)]
-                    })
+                    }),
+                    signal: controller.signal
                 });
+                clearTimeout(timeoutId);
                 
                 const data = await response.json();
                 hideTyping();
@@ -321,6 +330,9 @@ TRÍCH XUẤT DỮ LIỆU: Luôn tự suy luận và kèm theo thẻ ẩn ở cu
 
                         pushToTelegram(capturedPhone || 'N/A', chatLog);
                     }
+                } else {
+                    addMessageUI("Xin lỗi, hệ thống máy chủ ảnh đang bận. Anh chị vui lòng thử lại sau nhé!", "bot");
+                    console.error("API Error or Missing Choices:", data);
                 }
             } catch (err) {
                 console.error(err);
@@ -364,11 +376,15 @@ TRÍCH XUẤT DỮ LIỆU: Luôn tự suy luận và kèm theo thẻ ẩn ở cu
             const systemPrompt = `Bạn là Sol — nhân viên kỹ thuật tư vấn của Sơn Lotus (3 năm kinh nghiệm thực chiến), KHÔNG phải chatbot.
 
 3. CHỐT ĐƠN PHẢI ĐỦ CẶP: Với hệ giả gỗ, khi khách chọn mã màu dạng "LPMx.LWFx", Sol phải tư vấn mua cả Sơn Lót (Primer) và Sơn Phủ (Plank Paint) tương ứng. Tuyệt đối không để khách chỉ mua 1 loại vì sẽ không lên đúng màu.
-4. CÔNG THỨC 2K TRỌN BỘ (QUAN TRỌNG): Khi báo giá sơn 2K, tỷ lệ % (7% hoặc 15%) là tỷ lệ KHỐI LƯỢNG đóng rắn cần pha. Giá đóng rắn = [Khối lượng] x 740.000đ/kg. Tuyệt đối KHÔNG lấy % giá tiền sơn để tính giá đóng rắn.
-   - Ví dụ bộ 1kg Phủ 2K (15%): Giá sơn + 111.000đ (đóng rắn).
-   - Ví dụ bộ 1kg Lót 2K (7%): Giá sơn + 51.800đ (đóng rắn).
+4. CÔNG THỨC báo giá BỘ 2K TRỌN BỘ (QUAN TRỌNG): Khi khách hỏi giá hoặc tư vấn hệ sơn 2K, bắt buộc phải báo giá GỘP luôn cả Sơn và Đóng rắn. Tuyệt đối không để khách tự cộng.
+   - Tính tiền cực nhanh bằng cách cộng thêm tiền Đóng Rắn vào mỗi kg sơn:
+     + Nếu tỷ lệ 10%: Cộng thêm 79.920đ/kg sơn.
+     + Nếu tỷ lệ 15%: Cộng thêm 119.880đ/kg sơn.
+     + Nếu tỷ lệ 20%: Cộng thêm 159.840đ/kg sơn.
+     + Nếu tỷ lệ 25%: Cộng thêm 199.800đ/kg sơn.
+   - Ví dụ Bộ 5kg Phủ 2K.33 (Tỷ lệ 20%): [Tổng tiền 5kg Sơn] + (159.840đ x 5).
 5. TRA CỨU GIÁ THEO MÃ (BẮT BUỘC): Khi thấy mã viết tắt (LMCP, LPM, LWF, LMCF, LDTM), hãy đối soát ngay giá trong Bảng Giá tri thức (trong ngoặc đơn). 
-6. GIÁ BỘ COMBO XI MĂNG (LPM+LWF): Nếu khách hỏi giả gỗ xi măng, nhắc ngay giá Combo Tiết kiệm: Bộ 2kg (**442.800đ**), Bộ 7kg (**1.366.200đ**). TUYỆT ĐỐI không báo "Chưa có bảng giá nội bộ".
+6. GIÁ BỘ COMBO XI MĂNG (LPM+LWF): Nếu khách hỏi giả gỗ xi măng, nhắc ngay giá Combo Tiết kiệm: Bộ 2kg (**445.500đ**), Bộ 7kg (**1.539.450đ**). TUYỆT ĐỐI không báo "Chưa có bảng giá nội bộ".
 
 TÔN CHỈ: "NHẮN TIN NHƯ NGƯỜI THẬT TRÊN ZALO - ĐI THẲNG TRỌNG TÂM".
 
@@ -416,16 +432,23 @@ TRÍCH XUẤT TỰ ĐỘNG: Ngoài Tên/SĐT/Email, Sol phải tự suy luận t
 ${isLeadCaptured ? "- KHÁCH ĐÃ CUNG CẤP THÔNG TIN LIÊN HỆ. Tuyệt đối KHÔNG hỏi lại SĐT, Tên hay Zalo nữa. Hãy chuyển sang chốt đơn hoặc hẹn lịch gọi." : (userMessageCount >= 2 ? "- Hiện tại đã có thể gợi ý để lại SĐT/Zalo: 'Anh/chị để lại SĐT/Zalo giúp em để bộ phận kỹ thuật hỗ trợ mình kỹ hơn ạ.' (Chỉ dùng khi tư vấn sâu/báo giá)." : "- Chặn tuyệt đối: KHÔNG được hỏi SĐT/Zalo trong 2 tin nhắn đầu tiên.") }
 
 Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 90000); // 90 seconds timeout
+
             const response = await fetch(OPENROUTER_URL, {
                 method: "POST",
                 headers: { "Authorization": `Bearer ${OPENROUTER_API_KEY}`, "Content-Type": "application/json" },
                 body: JSON.stringify({
                     model: OPENROUTER_MODEL,
                     messages: [{ role: "system", content: systemPrompt }, ...messageHistory.slice(-10)]
-                })
+                }),
+                signal: controller.signal
             });
+            clearTimeout(timeoutId);
+            
             const data = await response.json();
             hideTyping();
+            
             if (data.choices && data.choices[0]) {
                 const reply = data.choices[0].message.content;
                 messageHistory.push({ role: "assistant", content: reply });
@@ -474,6 +497,9 @@ Tri thức chuyên môn của bạn: ${knowledgeBase}.`;
                     // 3. Gửi Telegram thông báo real-time
                     pushToTelegram(capturedPhone || 'N/A', chatLog, interest, intentLevel);
                 }
+            } else {
+                addMessageUI("Xin lỗi anh chị, hệ thống đang xử lý phép toán hoặc tải dữ liệu bị nghẽn. Anh chị vui lòng nhắc lại giúp em mã sơn cụ thể hoặc mô tả rút gọn để em báo giá ngay ạ!", "bot");
+                console.error("API Error or Missing Choices:", data);
             }
         } catch (error) {
             hideTyping();
